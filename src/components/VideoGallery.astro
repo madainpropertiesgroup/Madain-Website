@@ -1,5 +1,6 @@
 ---
-const poster = 'https://www.figma.com/api/mcp/asset/5c7f02db-3de1-4d2f-a31d-d39cff076621.png';
+const videoId = '708CyAP9wE4';
+const startSeconds = 12;
 ---
 
 <section class="w-full bg-gold-gradient-v py-16 lg:py-24 text-white">
@@ -13,17 +14,26 @@ const poster = 'https://www.figma.com/api/mcp/asset/5c7f02db-3de1-4d2f-a31d-d39c
     </div>
 
     <div class="relative aspect-video w-full overflow-hidden bg-black shadow-2xl">
-      <img src={poster} alt="Video preview" class="h-full w-full object-cover opacity-80" />
-      <button
-        class="absolute inset-0 flex items-center justify-center"
-        aria-label="Play video"
+      <iframe
+        class="absolute inset-0 h-full w-full"
+        src={`https://www.youtube.com/embed/${videoId}?start=${startSeconds}&rel=0`}
+        title="Mada'in Square Virtual Tour"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        referrerpolicy="strict-origin-when-cross-origin"
+      ></iframe>
+    </div>
+
+    <div class="mt-6 text-center">
+      <a
+        href={`https://www.youtube.com/watch?v=${videoId}&t=${startSeconds}s`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-xs font-light uppercase tracking-widest2 text-white/90 underline underline-offset-4 hover:text-white"
       >
-        <span class="flex h-20 w-20 items-center justify-center rounded-full bg-white/90 text-madain-shaft transition hover:scale-110">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </span>
-      </button>
+        Watch on YouTube &rarr;
+      </a>
     </div>
   </div>
 </section>
