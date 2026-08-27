@@ -1,0 +1,53 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+const posts = [
+  {
+    image: 'https://www.figma.com/api/mcp/asset/7974b43d-421b-488e-b542-090bdaf1ecb5.png',
+    tag: 'Investment',
+    title: 'Investing In Sharjah',
+    excerpt: "Discover why Sharjah's emerging residential market is capturing the attention of investors.",
+    href: 'https://madain.com/investing-in-sharjah/',
+  },
+  {
+    image: 'https://www.figma.com/api/mcp/asset/a07db27f-d818-4cdd-b339-78d6a235b4bb.png',
+    tag: 'Market',
+    title: 'Investing In Dubai Marina',
+    excerpt: 'Dubai Marina remains one of the most sought-after neighborhoods for premium returns.',
+    href: 'https://madain.com/investing-in-dubai-marina/',
+  },
+  {
+    image: 'https://www.figma.com/api/mcp/asset/16a3e700-7040-472b-b666-300a07237d12.png',
+    tag: 'City Guide',
+    title: 'Dubai',
+    excerpt: 'A closer look at what makes Dubai a global capital for lifestyle and investment.',
+    href: 'https://madain.com/dubai/',
+  },
+];
+---
+
+<section class="w-full bg-white py-16 lg:py-24">
+  <SectionHeading eyebrow="Read" title="Blog" />
+  <div class="mx-auto grid max-w-container gap-8 px-6 md:grid-cols-3">
+    {posts.map((post) => (
+      <article class="group flex flex-col overflow-hidden bg-white ring-1 ring-madain-gallery transition hover:shadow-xl">
+        <div class="aspect-[16/10] overflow-hidden">
+          <img src={post.image} alt={post.title} class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        </div>
+        <div class="flex flex-1 flex-col p-6">
+          <p class="mb-2 text-xs font-light uppercase tracking-widest2 text-madain-gold">{post.tag}</p>
+          <h3 class="mb-3 text-lg font-light uppercase tracking-widest2 text-madain-shaft">{post.title}</h3>
+          <p class="mb-6 flex-1 text-sm font-light leading-6 text-madain-tundora">{post.excerpt}</p>
+          <a href={post.href} class="w-fit text-xs font-light uppercase tracking-widest2 text-madain-shaft transition hover:text-madain-gold">
+            Read More &rarr;
+          </a>
+        </div>
+      </article>
+    ))}
+  </div>
+  <div class="mt-12 text-center">
+    <a href="https://madain.com/blog/" class="inline-block rounded-[30px] border border-madain-shaft bg-white px-8 py-3 text-xs font-light uppercase tracking-widest2 text-madain-shaft transition hover:bg-madain-shaft hover:text-white">
+      All Posts
+    </a>
+  </div>
+</section>

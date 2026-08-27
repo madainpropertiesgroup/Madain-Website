@@ -1,0 +1,17 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+}
+const { eyebrow, title } = Astro.props;
+---
+
+<div class="mx-auto mb-12 max-w-container px-6 text-center">
+  {eyebrow && (
+    <p class="mb-3 text-xs font-light uppercase tracking-widest2 text-madain-gold">{eyebrow}</p>
+  )}
+  <h2 class="font-light uppercase tracking-widest2 text-madain-shaft text-[clamp(24px,3vw,36px)]">
+    {title}
+  </h2>
+  <div class="mx-auto mt-4 h-[2px] w-16 bg-madain-gold"></div>
+</div>

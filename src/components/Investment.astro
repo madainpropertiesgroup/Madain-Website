@@ -1,0 +1,40 @@
+---
+const sharjahImg = 'https://www.figma.com/api/mcp/asset/95fc32e2-6256-492d-94b5-2b5637186d07.png';
+const dubaiImg = 'https://www.figma.com/api/mcp/asset/93d5ebb1-73c4-4a23-9936-c4651fa0881d.png';
+---
+
+<section class="w-full bg-gold-gradient py-16 lg:py-24 text-white">
+  <div class="mx-auto max-w-container px-6">
+    <div class="mb-12 text-center">
+      <p class="mb-3 text-xs font-light uppercase tracking-widest2 text-white/80">Opportunities</p>
+      <h2 class="font-light uppercase tracking-widest2 text-[clamp(24px,3vw,36px)]">Investment</h2>
+      <div class="mx-auto mt-4 h-[2px] w-16 bg-white/70"></div>
+    </div>
+
+    <div class="grid gap-10 md:grid-cols-2">
+      <div class="overflow-hidden bg-white/10 backdrop-blur-sm ring-1 ring-white/20">
+        <img src={sharjahImg} alt="Reem-E Villas in Sharjah" class="aspect-[16/10] w-full object-cover" />
+        <div class="p-6">
+          <p class="mb-2 text-xs font-light uppercase tracking-widest2 text-madain-straw">Sharjah</p>
+          <h3 class="mb-3 text-lg font-light uppercase tracking-widest2">Villa Community</h3>
+          <p class="text-sm font-light leading-6 text-white/90">
+            When it comes to experiencing the pinnacle of luxury living, Mada'in Properties has set
+            the bar high with its exceptional offering in the heart of Sharjah.
+          </p>
+        </div>
+      </div>
+
+      <div class="overflow-hidden bg-white/10 backdrop-blur-sm ring-1 ring-white/20">
+        <img src={dubaiImg} alt="Madain Tower in Dubai Marina" class="aspect-[16/10] w-full object-cover" />
+        <div class="p-6">
+          <p class="mb-2 text-xs font-light uppercase tracking-widest2 text-madain-straw">Dubai Marina</p>
+          <h3 class="mb-3 text-lg font-light uppercase tracking-widest2">Mada'in Tower</h3>
+          <p class="text-sm font-light leading-6 text-white/90">
+            A paradigm of urban architecture with spectacular views of Dubai's central business
+            district — every space planned to perfection.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,30 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import ProjectCard from './ProjectCard.astro';
+
+const projects = [
+  {
+    image: 'https://www.figma.com/api/mcp/asset/91f13ae1-d006-4ac8-b4b6-138397db1d2e.png',
+    location: 'Dubai Marina',
+    title: "Mada'in Mall",
+    description:
+      "Dubai Marina is renowned for its architectural marvels, upscale residences, and bustling commercial spaces. Nestled within this dynamic district, the Marina Center emerges as a prime destination.",
+    href: 'https://madain.com/madain-mall/',
+  },
+  {
+    image: 'https://www.figma.com/api/mcp/asset/0686c14b-b93b-44e6-8bb3-cea3695663f0.png',
+    location: 'Dubai',
+    title: "Mada'in Tower",
+    description:
+      "With spectacular views Mada'in Tower is a paradigm of urban architecture and design, located in Dubai's central business district. Every space is planned to perfection.",
+    href: 'https://madain.com/madain-tower/',
+  },
+];
+---
+
+<section class="w-full bg-madain-gallery/50 py-16 lg:py-24">
+  <SectionHeading eyebrow="Coming Soon" title="Upcoming Projects" />
+  <div class="mx-auto grid max-w-container gap-8 px-6 md:grid-cols-2">
+    {projects.map((p) => <ProjectCard {...p} />)}
+  </div>
+</section>

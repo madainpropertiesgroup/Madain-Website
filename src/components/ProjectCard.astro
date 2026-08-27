@@ -1,0 +1,36 @@
+---
+interface Props {
+  image: string;
+  location?: string;
+  title: string;
+  description: string;
+  href?: string;
+}
+const { image, location, title, description, href = '#' } = Astro.props;
+---
+
+<article class="group flex flex-col overflow-hidden bg-white shadow-sm ring-1 ring-madain-gallery transition hover:shadow-xl">
+  <div class="relative aspect-[16/10] overflow-hidden">
+    <img
+      src={image}
+      alt={title}
+      class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+    />
+  </div>
+  <div class="flex flex-1 flex-col p-6">
+    {location && (
+      <p class="mb-2 text-xs font-light uppercase tracking-widest2 text-madain-gold">{location}</p>
+    )}
+    <h3 class="mb-3 text-lg font-light uppercase tracking-widest2 text-madain-shaft">{title}</h3>
+    <p class="mb-6 flex-1 text-sm font-light leading-6 text-madain-tundora">{description}</p>
+    <a
+      href={href}
+      class="inline-flex w-fit items-center gap-2 text-xs font-light uppercase tracking-widest2 text-madain-shaft transition hover:text-madain-gold"
+    >
+      Know More
+      <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M1 5h13m0 0L10 1m4 4l-4 4" />
+      </svg>
+    </a>
+  </div>
+</article>

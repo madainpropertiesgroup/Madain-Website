@@ -1,0 +1,85 @@
+---
+const logo = 'https://www.figma.com/api/mcp/asset/f217987f-6d9d-4dee-a2e9-5119ac569505.png';
+const BASE = 'https://madain.com';
+
+const columns = [
+  {
+    title: 'Projects',
+    links: [
+      { label: 'Investment', href: `${BASE}/investment/` },
+      { label: 'Completed', href: `${BASE}/completed-projects/` },
+      { label: 'Upcoming', href: `${BASE}/upcoming-projects/` },
+    ],
+  },
+  {
+    title: 'Other Services',
+    links: [
+      { label: 'Currency Converter', href: `${BASE}/currency-converter/` },
+      { label: 'Video Gallery', href: `${BASE}/video-gallery/` },
+      { label: 'Media Center', href: `${BASE}/media-center/` },
+    ],
+  },
+  {
+    title: 'Policy',
+    links: [
+      { label: 'Privacy Policy', href: `${BASE}/privacy-policy/` },
+      { label: 'Careers', href: `${BASE}/careers/` },
+      { label: 'Contact', href: `${BASE}/contact-us/` },
+      { label: 'About Us', href: `${BASE}/about-us/` },
+      { label: 'Blog', href: `${BASE}/blog/` },
+    ],
+  },
+];
+---
+
+<footer>
+  <div class="w-full bg-footer-gradient py-16 text-white lg:py-20">
+    <div class="mx-auto grid max-w-container gap-12 px-6 md:grid-cols-4">
+      <div>
+        <a href={`${BASE}/`}>
+          <img src="/images/logo.png" alt="Mada'in Properties" class="mb-6 h-14 w-auto brightness-0 invert" />
+        </a>
+        <p class="mb-4 text-sm font-light leading-6 text-white/90">
+          Marina Arcade &mdash; Al Naseem St,<br />
+          Dubai Marina, PO Box 212525.
+        </p>
+        <p class="text-sm font-light leading-6 text-white/90">
+          <a href="tel:+97142481444" class="hover:text-white">+971 4 248 1444</a><br />
+          <a href="tel:800370" class="hover:text-white">+971 800 370 &middot; 800 370</a>
+        </p>
+      </div>
+
+      {columns.map((col) => (
+        <div>
+          <h4 class="mb-6 text-sm font-light uppercase tracking-widest2 text-white">{col.title}</h4>
+          <ul class="space-y-3">
+            {col.links.map((l) => (
+              <li>
+                <a href={l.href} class="text-sm font-light text-white/90 transition hover:text-white">
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="mx-auto mt-12 max-w-container border-t border-white/20 px-6 pt-6">
+      <p class="text-sm font-light text-white/80">
+        Mon &ndash; Fri: 08:00 AM &ndash; 05:00 PM &nbsp;|&nbsp; Closed: Sat &ndash; Sun
+      </p>
+    </div>
+  </div>
+
+  <div class="w-full border-t border-madain-abbey bg-white/95 py-4">
+    <div class="mx-auto flex max-w-container flex-col items-center justify-between gap-2 px-6 text-xs font-light text-madain-tundora md:flex-row">
+      <p>&copy; {new Date().getFullYear()} MADA'IN PROPERTIES CO (MADA'IN) (P.J.S.C). All rights reserved.</p>
+      <nav class="flex gap-4">
+        <a href={`${BASE}/privacy-policy/`} class="hover:text-madain-gold">Privacy</a>
+        <a href={`${BASE}/terms/`} class="hover:text-madain-gold">Terms</a>
+        <a href={`${BASE}/sitemap/`} class="hover:text-madain-gold">Sitemap</a>
+      </nav>
+    </div>
+  </div>
+</footer>
