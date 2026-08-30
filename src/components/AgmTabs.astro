@@ -1,0 +1,33 @@
+---
+interface Props {
+  active: 'overview' | 'agenda' | 'documents' | 'proxy';
+}
+
+const { active } = Astro.props;
+
+const tabs = [
+  { id: 'overview', label: 'Overview', href: '/general-assembly-2026/' },
+  { id: 'agenda', label: 'Agenda', href: '/general-assembly-2026/agenda/' },
+  { id: 'documents', label: 'Documents', href: '/general-assembly-2026/documents/' },
+  { id: 'proxy', label: 'Proxy Form', href: '/general-assembly-2026/proxy/' },
+];
+---
+
+<nav class="sticky top-0 z-40 w-full border-y border-madain-gallery bg-white/95 backdrop-blur">
+  <div class="mx-auto flex max-w-container flex-wrap items-center justify-center gap-1 px-6 md:justify-start">
+    {tabs.map((tab) => (
+      <a
+        href={tab.href}
+        class:list={[
+          'inline-block px-5 py-4 text-sm font-light uppercase tracking-[0.12em] transition-colors',
+          tab.id === active
+            ? 'border-b-2 border-madain-gold text-madain-gold'
+            : 'border-b-2 border-transparent text-madain-tundora hover:text-madain-gold',
+        ]}
+        aria-current={tab.id === active ? 'page' : undefined}
+      >
+        {tab.label}
+      </a>
+    ))}
+  </div>
+</nav>
