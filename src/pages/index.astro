@@ -1,100 +1,27 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import AgmTabs from '../../components/AgmTabs.astro';
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import AnnouncementBanner from '../components/AnnouncementBanner.astro';
+import About from '../components/About.astro';
+import CompletedProjects from '../components/CompletedProjects.astro';
+import UpcomingProjects from '../components/UpcomingProjects.astro';
+import Investment from '../components/Investment.astro';
+import VideoGallery from '../components/VideoGallery.astro';
+import Blog from '../components/Blog.astro';
+import AppointmentCTA from '../components/AppointmentCTA.astro';
+import Footer from '../components/Footer.astro';
 ---
-
-<Layout
-  title="General Assembly Meeting 2026 — Mada'in Properties"
-  description="Mada'in Real Estate Company PJSC — Annual General Assembly Meeting, Wednesday 02 September 2026, 10:00 AM. Agenda, documents, and shareholder information."
->
+<Layout>
   <Header />
   <main>
-    <!-- Hero -->
-    <section class="w-full bg-gold-gradient-v text-white">
-      <div class="mx-auto max-w-container px-6 py-16 text-center md:py-20">
-        <p class="mb-4 text-sm font-light uppercase tracking-widest2 text-madain-straw">
-          Mada'in Real Estate Company PJSC
-        </p>
-        <h1 class="mb-6 text-3xl font-light uppercase leading-tight tracking-wide md:text-5xl">
-          Annual General Assembly Meeting
-        </h1>
-        <p class="mx-auto max-w-2xl text-base font-light leading-relaxed text-white/90 md:text-lg">
-          The Board of Directors of Mada'in Real Estate Company PJSC is pleased to invite
-          the shareholders to attend the Annual General Assembly Meeting.
-        </p>
-      </div>
-    </section>
-
-    <!-- Meeting details -->
-    <section class="w-full bg-white">
-      <div class="mx-auto max-w-container px-6 py-14">
-        <div class="grid gap-6 md:grid-cols-3">
-          <div class="rounded-md border border-madain-gallery bg-white p-8 text-center shadow-sm">
-            <p class="mb-2 text-xs font-normal uppercase tracking-widest2 text-madain-gold">Date</p>
-            <p class="text-xl font-light text-madain-shaft">Wednesday</p>
-            <p class="text-xl font-light text-madain-shaft">02 September 2026</p>
-          </div>
-          <div class="rounded-md border border-madain-gallery bg-white p-8 text-center shadow-sm">
-            <p class="mb-2 text-xs font-normal uppercase tracking-widest2 text-madain-gold">Time</p>
-            <p class="text-xl font-light text-madain-shaft">10:00 AM</p>
-            <p class="text-sm font-light text-madain-boulder">(UAE time)</p>
-          </div>
-          <div class="rounded-md border border-madain-gallery bg-white p-8 text-center shadow-sm">
-            <p class="mb-2 text-xs font-normal uppercase tracking-widest2 text-madain-gold">Venue</p>
-            <p class="text-xl font-light text-madain-shaft">Company Headquarters</p>
-            <p class="text-sm font-light text-madain-boulder">and via electronic attendance</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Tabs -->
-    <AgmTabs active="overview" />
-
-    <!-- Overview content -->
-    <section class="w-full bg-white">
-      <div class="mx-auto max-w-container px-6 py-14">
-        <div class="mx-auto max-w-3xl">
-          <h2 class="mb-6 text-center text-2xl font-light uppercase tracking-wide text-madain-shaft md:text-3xl">
-            Meeting Overview
-          </h2>
-          <div class="mx-auto mb-10 h-[3px] w-16 bg-madain-gold"></div>
-
-          <p class="mb-6 font-light leading-relaxed text-madain-tundora">
-            In compliance with the applicable laws and regulations of the United Arab Emirates,
-            and pursuant to the Company's Articles of Association, the Annual General Assembly
-            Meeting of the shareholders of Mada'in Real Estate Company PJSC will convene to
-            discuss and approve the matters set out in the agenda.
-          </p>
-          <p class="mb-6 font-light leading-relaxed text-madain-tundora">
-            Shareholders may review the meeting agenda, the Board of Directors' report, the
-            audited financial statements, and the proxy attendance form through the tabs above.
-          </p>
-
-          <div class="mt-10 rounded-md bg-madain-gallery/50 p-8">
-            <h3 class="mb-4 text-lg font-normal uppercase tracking-wide text-madain-shaft">
-              Important Notes for Shareholders
-            </h3>
-            <ul class="list-disc space-y-3 pl-5 font-light leading-relaxed text-madain-tundora">
-              <li>
-                Every shareholder registered in the Company's share register is entitled to attend
-                the General Assembly Meeting in person or by proxy.
-              </li>
-              <li>
-                A proxy must be issued in writing using the approved proxy form available in the
-                Proxy Form tab.
-              </li>
-              <li>
-                In the event that the quorum is not met at the first meeting, a second meeting
-                will be held in accordance with the applicable regulations.
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+    <AnnouncementBanner />
+    <About />
+    <CompletedProjects />
+    <UpcomingProjects />
+    <Investment />
+    <VideoGallery />
+    <Blog />
+    <AppointmentCTA />
   </main>
   <Footer />
 </Layout>
