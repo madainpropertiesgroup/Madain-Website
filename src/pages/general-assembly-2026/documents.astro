@@ -1,12 +1,14 @@
 ---
 import AgmLayout from '../../layouts/AgmLayout.astro';
 
+const NOTICE = '/general-assembly-2026/documents/agm-notice-alwatan-2026-07-24.pdf';
+
 const MAPS_URL =
   'https://maps.google.com/?q=Grant+Thornton+The+Offices+5+One+Central+Dubai+World+Trade+Centre';
 
 const agenda = [
-  'انتخاب أعضاء مجلس الإدارة وفق إجراءات الترشيح والانتخاب المعتمدة.',
-  'النظر في التسوية المرتبطة بالعور وما لها من آثار قانونية ومالية.',
+  'عرض تقرير تقصي الحقائق المعد من قبل شركة إرنست ويونغ (EY)، ومناقشة ما ورد فيه من نتائج وملاحظات، واتخاذ ما تراه الجمعية العمومية مناسباً من قرارات وإجراءات وفقاً لأحكام القانون.',
+  'النظر في التسوية المرتبطة بأحد الأطراف ذات العلاقة السيد/ عبدالرؤوف العور وآثارها القانونية والمالية على الشركة، واتخاذ القرار المناسب بشأنها بما يحقق مصلحة الشركة ومساهميها.',
   'مراجعة إدارة وتصرفات مجالس الإدارة السابقة، بما في ذلك الأراضي والأصول محل البحث.',
   'بحث المسؤولية والإجراءات القانونية المحتملة بحق مجالس الإدارة السابقة والتصرفات محل العرض.',
   'بحث مسؤولية أعضاء مجلس الإدارة السابقين المستثمرين وفق البنود المعروضة.',
@@ -16,7 +18,7 @@ const agenda = [
 ];
 
 const documents = [
-  { ar: 'دعوة الجمعية المنشورة', en: 'AGM Notice', href: null },
+  { ar: 'دعوة الجمعية المنشورة', en: 'AGM Notice', href: NOTICE },
   { ar: 'جدول الأعمال', en: 'Agenda', href: null },
   { ar: 'قائمة المرشحين لعضوية مجلس الإدارة', en: 'Board Nominees', href: '/general-assembly-2026/nominees/' },
   { ar: 'السير الذاتية للمرشحين', en: 'Candidate CVs', href: '/general-assembly-2026/nominees/' },
@@ -119,15 +121,17 @@ const documents = [
       </ol>
 
       <div class="mt-6 flex flex-col gap-3 sm:flex-row-reverse sm:justify-center">
-        <span
-          aria-disabled="true"
-          class="inline-flex cursor-not-allowed items-center justify-center gap-2 rounded-md bg-[#0B2545]/45 px-6 py-3 text-[14px] font-bold text-white"
+        <a
+          href={NOTICE}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center justify-center gap-2 rounded-md bg-[#0B2545] px-6 py-3 text-[14px] font-bold text-white transition hover:bg-[#153a67] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-madain-gold"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 3v12M7.5 11l4.5 4.5 4.5-4.5M4 20h16" />
           </svg>
           عرض الدعوة المنشورة
-        </span>
+        </a>
         <span
           aria-disabled="true"
           class="inline-flex cursor-not-allowed items-center justify-center gap-2 rounded-md border-2 border-madain-gold/45 px-6 py-3 text-[14px] font-bold text-madain-gold/70"
@@ -138,7 +142,7 @@ const documents = [
           عرض جدول الأعمال
         </span>
       </div>
-      <p class="mt-2 text-center text-[12.5px] text-madain-boulder">يتاح الملفان فور اعتماد نشرهما.</p>
+      <p class="mt-2 text-center text-[12.5px] text-madain-boulder">جدول الأعمال الكامل وارد ضمن الدعوة المنشورة.</p>
     </section>
   </div>
 
@@ -150,16 +154,18 @@ const documents = [
         <p class="mt-2 max-w-[62ch] text-[14px] text-madain-boulder">
           يمكنكم قراءة أو تحميل نسخة الدعوة كما تم نشرها في الصحف المحلية.
         </p>
-        <span
-          aria-disabled="true"
-          class="mt-4 inline-flex cursor-not-allowed items-center gap-2 rounded-md bg-madain-gold/45 px-6 py-2.5 text-[13.5px] font-bold text-white"
+        <a
+          href={NOTICE}
+          target="_blank"
+          rel="noopener"
+          class="mt-4 inline-flex items-center gap-2 rounded-md bg-madain-gold px-6 py-2.5 text-[13.5px] font-bold text-white transition hover:bg-madain-goldDark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-madain-goldDark"
         >
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 3v12M7.5 11l4.5 4.5 4.5-4.5M4 20h16" />
           </svg>
           عرض / تحميل الدعوة (PDF)
-        </span>
-        <p class="mt-2 text-[12.5px] text-madain-boulder">يتاح الملف فور رفع نسخة النشر الصحفي.</p>
+        </a>
+        <p class="mt-2 text-[12.5px] text-madain-boulder">جريدة الوطن — العدد 5028، الجمعة 24 يوليو 2026.</p>
       </div>
       <div class="mx-auto flex h-[110px] w-[160px] items-center justify-center rounded-lg border border-[#EFE7D6] bg-[#FDFBF5]">
         <svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">

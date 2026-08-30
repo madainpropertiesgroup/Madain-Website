@@ -51,10 +51,6 @@ const votingPoints = [
   },
 ];
 
-const pending = [
-  'المستندات المطلوب إحضارها عند التسجيل للحضور الشخصي.',
-  'ما إذا كان يلزم تقديم أصل نموذج التوكيل بعد إرسال النسخة الإلكترونية.',
-];
 ---
 
 <AgmLayout title="الحضور والتسجيل والتصويت والتوكيلات | الجمعية العمومية 2026" active="attendance">
@@ -233,21 +229,7 @@ const pending = [
     </div>
   </section>
 
-  <!-- Pending details -->
-  <section class="mt-6 rounded-2xl border border-madain-gold/50 bg-[#FDFBF1] p-6 shadow-sm md:p-7">
-    <h2 class="text-[17px] font-bold text-madain-shaft">تفاصيل قيد التأكيد</h2>
-    <p class="mt-1.5 text-[13.5px] text-madain-boulder">
-      يجري استكمال التفاصيل التالية مع منظمي الاجتماع، وسيتم نشرها على هذه الصفحة فور اعتمادها:
-    </p>
-    <ul class="mt-4 space-y-2.5">
-      {pending.map((item) => (
-        <li class="flex gap-3 text-[14px] leading-relaxed text-madain-tundora">
-          <span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-madain-gold"></span>
-          <span>{item}</span>
-        </li>
-      ))}
-    </ul>
-  </section>
+  
 
   <!-- Contact -->
   <section class="mt-6 rounded-2xl border border-[#E8E2D4] bg-white p-6 shadow-sm md:p-7">
