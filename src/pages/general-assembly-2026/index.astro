@@ -1,0 +1,145 @@
+---
+import AgmLayout from '../../layouts/AgmLayout.astro';
+import { nominees } from '../../data/nominees.js';
+
+const guidelines = [
+  { label: 'المواعيد النهائية', icon: 'clock' },
+  { label: 'التصويت الإلكتروني', icon: 'vote' },
+  { label: 'التوكيلات ومتطلباتها', icon: 'doc' },
+  { label: 'الحضور الشخصي', icon: 'person' },
+  { label: 'التسجيل عن بُعد', icon: 'remote' },
+];
+---
+
+<AgmLayout title="الجمعية العمومية 2026 | مدائن العقارية" active="meeting">
+  <!-- Hero -->
+  <section class="relative isolate overflow-hidden rounded-2xl">
+    <img src="/images/agm-hero.jpg" alt="" aria-hidden="true" class="absolute inset-0 -z-10 h-full w-full object-cover" />
+    <div class="absolute inset-0 -z-10 bg-black/15"></div>
+
+    <div class="grid gap-5 p-5 md:grid-cols-[1fr_230px] md:p-7">
+      <div class="rounded-xl bg-[#0B2545]/95 p-7 text-white md:p-8">
+        <h1 class="text-[26px] font-bold leading-tight md:text-[32px]">الجمعية العمومية</h1>
+        <p class="mt-1.5 text-[18px] font-bold text-madain-straw md:text-[20px]">لشركة مدائن العقارية ش.م.خ</p>
+        <p class="mt-4 max-w-[46ch] text-[14.5px] leading-relaxed text-white/85">
+          للاطلاع على معلومات ومستندات الجمعية العمومية
+        </p>
+        <a
+          href="/general-assembly-2026/attendance-voting/"
+          class="mt-6 inline-flex items-center gap-2 rounded-md bg-madain-gold px-7 py-3 text-[14.5px] font-bold text-white transition hover:bg-madain-goldDark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        >
+          عرض التفاصيل
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 6l-6 6 6 6" />
+          </svg>
+        </a>
+      </div>
+
+      <aside class="flex flex-col items-center justify-center gap-5 rounded-xl bg-[#FBF6EA] px-5 py-7 text-center">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.3" stroke-linecap="round">
+          <rect x="3" y="5" width="18" height="16" rx="2" /><path d="M8 3v4M16 3v4M3 10h18" />
+        </svg>
+        <div class="leading-none">
+          <div class="text-[14px] font-bold text-madain-goldDark">الأربعاء</div>
+          <div class="font-inter mt-1 text-[46px] font-bold leading-none text-madain-goldDark">02</div>
+          <div class="mt-1.5 text-[16px] font-bold text-madain-goldDark">سبتمبر</div>
+          <div class="font-inter text-[16px] text-madain-goldDark">2026</div>
+        </div>
+        <div class="h-px w-20 bg-madain-gold/40"></div>
+        <div class="flex items-center gap-2.5">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.4" stroke-linecap="round">
+            <circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" />
+          </svg>
+          <div class="text-right text-[13.5px] leading-tight text-madain-goldDark">
+            <div>الساعة</div>
+            <div class="font-bold">10:00 صباحاً</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Nominees -->
+  <section class="mt-6 rounded-2xl border border-madain-gold/35 bg-white p-6 shadow-sm md:p-7">
+    <div class="flex flex-wrap items-baseline justify-between gap-3">
+      <h2 class="text-[20px] font-bold text-madain-shaft">المرشحون لعضوية مجلس الإدارة</h2>
+      <a href="/general-assembly-2026/nominees/" class="text-[13.5px] font-bold text-madain-goldDark transition hover:text-madain-gold">
+        عرض جميع المرشحين
+      </a>
+    </div>
+
+    <div class="mt-5 grid gap-4 sm:grid-cols-3 lg:grid-cols-5">
+      {nominees.map((nominee) => (
+        <article class="flex flex-col text-center">
+          <img
+            src={nominee.photo}
+            alt={nominee.name}
+            class="aspect-[3/4] w-full rounded-lg border border-[#EFE7D6] object-cover object-top"
+            width="300"
+            height="400"
+            loading="lazy"
+          />
+          <h3 class="mt-3 min-h-[42px] text-[13.5px] font-bold leading-snug text-madain-shaft">{nominee.name}</h3>
+          <a
+            href={`/general-assembly-2026/nominees/${nominee.slug}/`}
+            class="mt-2 inline-flex items-center justify-center gap-1.5 rounded-md border border-madain-gold px-3 py-1.5 text-[12px] font-bold text-madain-goldDark transition hover:bg-[#FDF9F0]"
+          >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" /><path d="M14 3v5h5" />
+            </svg>
+            عرض السيرة الذاتية
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Attendance guidelines teaser -->
+  <section class="mt-5 rounded-2xl border border-madain-gold/35 bg-white p-6 text-center shadow-sm md:p-7">
+    <h2 class="text-[20px] font-bold text-madain-shaft">تعليمات الحضور والتصويت</h2>
+
+    <div class="mt-6 grid gap-5 sm:grid-cols-3 lg:grid-cols-5">
+      {guidelines.map((item) => (
+        <div class="flex flex-col items-center gap-2.5">
+          <span class="flex h-11 w-11 items-center justify-center">
+            {item.icon === 'clock' && (
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.3" stroke-linecap="round">
+                <circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" />
+              </svg>
+            )}
+            {item.icon === 'vote' && (
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="12" width="18" height="8" rx="2" /><path d="M7 12V5.5a1.5 1.5 0 0 1 1.5-1.5H16l2 3-2 3H8.5" />
+              </svg>
+            )}
+            {item.icon === 'doc' && (
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" /><path d="M14 3v5h5" />
+                <path d="M8.5 12.5h7M8.5 16h4.5" />
+              </svg>
+            )}
+            {item.icon === 'person' && (
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="3.6" /><path d="M5 20v-1.2A5.8 5.8 0 0 1 10.8 13h2.4A5.8 5.8 0 0 1 19 18.8V20" />
+              </svg>
+            )}
+            {item.icon === 'remote' && (
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2.5" y="4.5" width="19" height="13" rx="2" /><path d="M8 21h8M12 17.5V21" />
+                <circle cx="12" cy="10" r="2.2" />
+              </svg>
+            )}
+          </span>
+          <span class="text-[13px] font-bold leading-snug text-madain-shaft">{item.label}</span>
+        </div>
+      ))}
+    </div>
+
+    <a
+      href="/general-assembly-2026/attendance-voting/"
+      class="mt-7 inline-block rounded-md bg-madain-gold px-9 py-3 text-[14.5px] font-bold text-white transition hover:bg-madain-goldDark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-madain-goldDark"
+    >
+      عرض التعليمات
+    </a>
+  </section>
+</AgmLayout>

@@ -1,17 +1,93 @@
 ---
-// General Assembly Meeting — full-width banner image.
+// General Assembly Meeting — the approved artwork on wide screens, and a
+// readable card on phones where the artwork's text becomes too small.
+const DETAILS_URL = '/general-assembly-2026/';
+
+const meeting = {
+  day: 'الأربعاء',
+  date: '02',
+  month: 'سبتمبر',
+  year: '2026',
+  time: '10:00 صباحاً',
+};
 ---
 
-<section class="w-full bg-white">
-  <a
-    href="https://madain.com/general-assembly-meeting/"
-    aria-label="General Assembly Meeting — Wednesday 02 September 2026, 10:00 AM"
-    class="block"
-  >
-    <img
-      src="/images/announcement-banner.png"
-      alt="General Assembly Meeting — Mada'in Real Estate Company PJSC — Wednesday 02 September 2026, 10:00 AM"
-      class="block w-full h-auto"
-    />
-  </a>
+<section class="w-full bg-[#F3F1EA] py-5 md:py-7">
+  <div class="mx-auto w-[94%] max-w-[1000px]">
+    <!-- Artwork: tablets and up -->
+    <a
+      href={DETAILS_URL}
+      aria-label="اجتماع الجمعية العمومية — الأربعاء 02 سبتمبر 2026، الساعة 10:00 صباحاً — عرض التفاصيل"
+      class="hidden overflow-hidden rounded-t-xl shadow-md transition hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-madain-gold md:block"
+    >
+      <img
+        src="/images/announcement-banner.png"
+        alt="اجتماع الجمعية العمومية لشركة مدائن العقارية ش.م.خ — الأربعاء 02 سبتمبر 2026، الساعة 10:00 صباحاً"
+        class="block h-auto w-full"
+        width="2000"
+        height="830"
+      />
+    </a>
+
+    <!-- Live call to action under the artwork -->
+    <div
+      class="hidden items-center justify-between gap-4 rounded-b-xl bg-[#0B2545] px-6 py-3.5 shadow-md md:flex"
+      dir="rtl"
+    >
+      <p class="text-[14.5px] text-white/90">
+        الدعوة ومستندات الجمعية العمومية متاحة الآن للاطلاع والتحميل
+      </p>
+      <a
+        href={DETAILS_URL}
+        class="shrink-0 rounded-md bg-madain-gold px-6 py-2 text-[13.5px] font-bold text-white transition hover:bg-madain-goldDark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+      >
+        عرض التفاصيل
+      </a>
+    </div>
+
+    <!-- Phones -->
+    <a
+      href={DETAILS_URL}
+      dir="rtl"
+      class="block overflow-hidden rounded-xl bg-[#FBF6EA] shadow-md md:hidden"
+    >
+      <div class="flex items-center gap-5 bg-[linear-gradient(160deg,#d3aa3b,#9c791b_70%,#7e641d)] px-5 py-4 text-white">
+        <div class="text-center leading-none">
+          <div class="text-[13px] font-bold">{meeting.day}</div>
+          <div class="font-inter text-[40px] font-extrabold leading-none">{meeting.date}</div>
+          <div class="mt-0.5 text-[15px] font-bold">{meeting.month}</div>
+          <div class="font-inter text-[15px]">{meeting.year}</div>
+        </div>
+        <div class="border-s border-white/50 ps-5 text-[13.5px] leading-tight">
+          الساعة<br /><b>{meeting.time}</b>
+        </div>
+      </div>
+
+      <div class="px-5 py-5 text-center">
+        <h2 class="text-[21px] font-bold leading-tight text-[#0B2545]">اجتماع الجمعية العمومية</h2>
+        <p class="mt-1 text-[15px] font-bold text-madain-goldDark">شركة مدائن العقارية ش.م.خ</p>
+        <div class="mx-auto my-3.5 h-px w-32 bg-madain-gold/40"></div>
+        <p class="text-[13.5px] leading-relaxed text-madain-tundora">
+          الدعوة ومستندات الجمعية العمومية متاحة الآن للاطلاع والتحميل
+        </p>
+        <span
+          class="mt-4 inline-block w-full rounded-md bg-[#0B2545] px-6 py-3 text-[14px] font-bold text-white"
+        >
+          عرض التفاصيل
+        </span>
+      </div>
+
+      <div class="flex items-center justify-center gap-6 bg-[#0B2545] px-5 py-3 text-white">
+        <span class="text-center text-[12.5px] leading-tight">
+          <span class="block text-white/60">واتساب</span>
+          <span class="font-inter font-semibold" dir="ltr">800 370</span>
+        </span>
+        <span class="h-7 w-px bg-white/20"></span>
+        <span class="text-center text-[12.5px] leading-tight">
+          <span class="block text-white/60">هاتف</span>
+          <span class="font-inter font-semibold" dir="ltr">+971 56 477 7666</span>
+        </span>
+      </div>
+    </a>
+  </div>
 </section>

@@ -1,0 +1,278 @@
+---
+import AgmLayout from '../../layouts/AgmLayout.astro';
+
+const PROXY_FORM = '/general-assembly-2026/forms/madain-proxy-form.pdf';
+const PROXY_EMAIL = 'harshana.s@ae.gt.com';
+const PROXY_PHONE = '+971 50 989 7071';
+
+const proxyPoints = [
+  'يتعين على المساهمين الراغبين في تعيين وكيل للحضور والتصويت نيابةً عنهم تقديم جميع المستندات المتعلقة بالتفويض في موعد أقصاه أربع وعشرون (24) ساعة قبل انعقاد اجتماع الجمعية العمومية.',
+  'تخضع جميع نماذج التفويض والمستندات المساندة لعمليات المراجعة والتدقيق والتحقق من قبل سوق دبي المالي والشركة وفقاً للمتطلبات التنظيمية والقانونية المعمول بها، ويظل قبول أي تفويض مرهوناً باستكمال إجراءات التحقق بنجاح.',
+  'سيتم إخطار المساهمين المستحقين ووكلائهم المعتمدين بشأن اجتماع الجمعية العمومية من خلال المراسلات والإشعارات الصادرة عن سوق دبي المالي بعد استكمال إجراءات التحقق ذات الصلة.',
+  'قد لا يتم النظر في مستندات التفويض المقدمة بعد الموعد المحدد لأغراض التدقيق أو التحقق أو الاعتماد.',
+  'لن يتم قبول أي تفويض يتم تقديمه حضورياً في يوم انعقاد الجمعية العمومية ما لم تكن مستندات التفويض قد خضعت مسبقاً للمراجعة والتحقق والاعتماد وفقاً للإجراءات المعمول بها.',
+];
+
+const attendancePoints = [
+  'يجوز للمساهمين المستحقين حضور اجتماع الجمعية العمومية إما حضورياً أو عن بُعد عبر الوسائل الإلكترونية، وذلك شريطة استيفاء متطلبات التسجيل المعمول بها.',
+  'سيتم تزويد المساهمين المعتمدين والممثلين المفوضين والوكلاء المعتمدين فقط ببيانات الدخول وروابط المشاركة الإلكترونية وبيانات التصويت الإلكترونية، إن وجدت، من قبل سوق دبي المالي، استناداً إلى بيانات الاتصال المدرجة في سجل مساهمي سوق دبي المالي والمعلومات التي تم التحقق منها أثناء عملية التسجيل.',
+  'يتم إرسال رابط الاجتماع الإلكتروني من قبل سوق دبي المالي إلى عنوان البريد الإلكتروني المسجل للمشاركين الذين تم التحقق من بياناتهم واعتمادهم فقط.',
+  'يُرسل رابط التسجيل والتصويت الإلكتروني بتاريخ 31 أغسطس 2026 إلى كافة المساهمين الذين قاموا بتحديث بياناتهم (KYC) لدى سوق دبي المالي.',
+  'على المساهمين الذين لم يُحدّثوا بياناتهم إرسال معلوماتهم إلى البريد الإلكتروني: FinancialServices@dfm.ae',
+  'لن يتم توزيع رابط الدخول إلى الجمعية العمومية ضمن الإشعارات العامة الموجهة إلى المساهمين، وإنما سيتم توفيره فقط بعد استكمال جميع متطلبات التحقق الخاصة بالحضور بنجاح.',
+  'يبدأ استقبال وتسجيل المساهمين للحضور الشخصي الساعة 9:00 صباحاً، ويُغلق باب التسجيل قبل بدء انعقاد الجمعية العمومية الساعة 10:00 صباحاً.',
+  'قد يُطلب من المساهمين المشاركين عن بُعد استكمال إجراءات التحقق من الهوية وتقديم المستندات الداعمة التي يطلبها سوق دبي المالي أو أي مزود خدمات معتمد آخر.',
+  'يتم تحديد أهلية الحضور وحقوق التصويت استناداً إلى سجل المساهمين ومتطلبات الأهلية المعتمدة والمتحقق منها من قبل سوق دبي المالي والجهات السوقية المختصة في تاريخ الاستحقاق المعتمد.',
+];
+
+const votingPoints = [
+  {
+    title: 'إدارة عملية التصويت',
+    text: 'تتم إدارة عملية التصويت الخاصة بالجمعية العمومية من خلال منصة التصويت الإلكتروني والترتيبات المعتمدة للاجتماع، على أن تتولى الجهات المعينة لتقديم خدمات الجمعية العمومية و/أو سوق دبي المالي جمع الأصوات وفرزها واحتسابها وإعداد التقارير المتعلقة بها وفقاً للإجراءات المعمول بها.',
+  },
+  {
+    title: 'التصويت أثناء انعقاد الجمعية العمومية',
+    text: 'يتم التصويت على جميع القرارات المطروحة أثناء انعقاد الجمعية العمومية، ولن يكون هناك أي نظام للتصويت المسبق أو التصويت قبل موعد الاجتماع.',
+  },
+  {
+    title: 'القيود على التصويت',
+    text: 'يجوز استبعاد أي مساهم أو ممثل أو وكيل من التصويت على بند معين من جدول الأعمال إذا كان خاضعاً لحالة تعارض مصالح أو قيد قانوني أو تنظيمي يتعلق بذلك البند، وذلك وفقاً لأحكام القوانين واللوائح والأنظمة المعمول بها.',
+  },
+  {
+    title: 'احتساب نتائج التصويت',
+    text: 'في حال عدم أحقية أحد المساهمين في التصويت على قرار معين، يتم استبعاد الأسهم المملوكة لذلك المساهم من قاعدة احتساب الأصوات الخاصة بذلك القرار، وتحتسب نسب التصويت بالاستناد حصراً إلى الأسهم التي يحق لها التصويت على الموضوع محل القرار.',
+  },
+  {
+    title: 'إعلان النتائج',
+    text: 'يتم إعلان نتائج التصويت الخاصة بكل قرار خلال اجتماع الجمعية العمومية بعد استكمال عملية التصويت وفرز الأصوات واعتماد النتائج.',
+  },
+  {
+    title: 'نتائج انتخابات أعضاء مجلس الإدارة',
+    text: 'في حال إجراء انتخابات لعضوية مجلس الإدارة، ستتضمن النتائج المعلنة خلال الجمعية العمومية أسماء المرشحين الفائزين، كما قد تتضمن عدد الأصوات التي حصل عليها كل مرشح بالقدر الذي تقتضيه القوانين واللوائح والإجراءات المنظمة لاجتماعات الجمعيات العمومية.',
+  },
+];
+
+---
+
+<AgmLayout title="الحضور والتسجيل والتصويت والتوكيلات | الجمعية العمومية 2026" active="attendance">
+  <header class="text-center">
+    <h1 class="text-[24px] font-bold text-madain-shaft md:text-[30px]">الحضور والتسجيل والتصويت والتوكيلات</h1>
+    <p class="font-inter mt-1 text-[12.5px] font-semibold uppercase tracking-[0.14em] text-madain-gold">
+      Attendance, Registration, Voting &amp; Proxies
+    </p>
+    <p class="mt-3 text-[14.5px] font-bold text-madain-shaft">
+      الأربعاء 02 سبتمبر 2026 &nbsp;|&nbsp; الساعة 10:00 صباحاً
+    </p>
+    <div class="mx-auto mt-4 h-px w-24 bg-madain-gold/50"></div>
+  </header>
+
+  <!-- 1. Proxy -->
+  <section class="mt-8 rounded-2xl border border-[#E8E2D4] bg-white p-6 shadow-sm md:p-8">
+    <div class="flex items-center gap-3">
+      <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-madain-gold font-inter text-[14px] font-bold text-white">1</span>
+      <div>
+        <h2 class="text-[19px] font-bold text-madain-shaft">متطلبات التفويض (التوكيل)</h2>
+        <p class="font-inter text-[11.5px] font-semibold uppercase tracking-[0.12em] text-madain-gold">Proxy Requirements</p>
+      </div>
+    </div>
+
+    <ul class="mt-5 space-y-3">
+      {proxyPoints.slice(0, 1).map((point) => (
+        <li class="flex gap-3 text-[14.5px] leading-relaxed text-madain-tundora">
+          <span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-madain-gold"></span>
+          <span>{point}</span>
+        </li>
+      ))}
+    </ul>
+
+    <div class="mt-5 grid gap-4 md:grid-cols-2">
+      <article class="rounded-xl border border-[#EFEADD] bg-[#FBF9F4] p-5">
+        <h3 class="text-[15.5px] font-bold text-madain-shaft">المساهمون من الأشخاص الطبيعيين</h3>
+        <p class="mt-2 text-[14px] leading-relaxed text-madain-tundora">
+          يجب استكمال نموذج التفويض والتوقيع عليه أصولاً من قبل المساهم، مع توثيقه من الجهة المختصة، على أن يرفق به نسخة
+          من بطاقة الهوية الإماراتية أو جواز السفر لكل من المساهم والوكيل المعيّن.
+        </p>
+      </article>
+
+      <article class="rounded-xl border border-[#EFEADD] bg-[#FBF9F4] p-5">
+        <h3 class="text-[15.5px] font-bold text-madain-shaft">المساهمون من الأشخاص الاعتباريين (الشركات)</h3>
+        <p class="mt-2 text-[14px] leading-relaxed text-madain-tundora">
+          يجب أن يكون نموذج التفويض مرفقاً بقرار صادر عن مجلس الإدارة أو خطاب تفويض يخوّل الممثل المعتمد حضور الاجتماع
+          والتصويت نيابةً عن الشخص الاعتباري، بالإضافة إلى المستندات المؤيدة ذات الصلة (بما في ذلك، حسب الاقتضاء، الرخصة
+          التجارية و/أو الوكالة القانونية)، ونسخ من بطاقة الهوية الإماراتية أو جواز السفر للمفوض بالتوقيع والوكيل المعتمد.
+        </p>
+      </article>
+    </div>
+
+    <ul class="mt-5 space-y-3">
+      {proxyPoints.slice(1).map((point) => (
+        <li class="flex gap-3 text-[14.5px] leading-relaxed text-madain-tundora">
+          <span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-madain-gold"></span>
+          <span>{point}</span>
+        </li>
+      ))}
+    </ul>
+
+    <div class="mt-6 grid gap-4 md:grid-cols-2">
+      <div class="rounded-xl border border-madain-gold/50 bg-[#FDFBF1] p-5">
+        <h3 class="text-[15.5px] font-bold text-madain-shaft">الموعد النهائي لتقديم التوكيل</h3>
+        <p class="mt-1.5 text-[15px] font-bold text-madain-goldDark">الثلاثاء 01 سبتمبر 2026 — الساعة 10:00 صباحاً</p>
+        <p class="mt-1 text-[13.5px] text-madain-tundora">أي 24 ساعة قبل موعد انعقاد الجمعية العمومية.</p>
+      </div>
+      <div class="rounded-xl border border-madain-gold/50 bg-[#FDFBF1] p-5">
+        <h3 class="text-[15.5px] font-bold text-madain-shaft">الجهة المعتمدة لاستلام مستندات التوكيل</h3>
+        <a href={`mailto:${PROXY_EMAIL}`} dir="ltr" class="mt-1.5 block text-[14.5px] font-bold text-madain-goldDark transition hover:text-madain-gold">{PROXY_EMAIL}</a>
+        <a href="tel:+971509897071" dir="ltr" class="mt-0.5 block text-[14.5px] font-bold text-madain-goldDark transition hover:text-madain-gold">{PROXY_PHONE}</a>
+      </div>
+    </div>
+
+    <div class="mt-4 flex flex-col items-center gap-4 rounded-xl border border-madain-gold/50 bg-[#FDFBF1] p-5 md:flex-row-reverse md:justify-between">
+      <p class="text-center text-[13.5px] text-madain-tundora md:text-right">
+        للاطلاع على متطلبات التوكيل والمستندات المطلوبة، يرجى تحميل نموذج التوكيل.
+      </p>
+      <a
+        href={PROXY_FORM}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex shrink-0 items-center gap-2 rounded-md bg-[#0B1B3B] px-7 py-3 text-[14px] font-bold text-white transition hover:bg-[#132a58] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-madain-gold"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3v12M7.5 11l4.5 4.5 4.5-4.5M4 20h16" />
+        </svg>
+        تحميل نموذج التوكيل
+      </a>
+    </div>
+  </section>
+
+  <!-- 2. Attendance -->
+  <section class="mt-6 rounded-2xl border border-[#E8E2D4] bg-white p-6 shadow-sm md:p-8">
+    <div class="flex items-center gap-3">
+      <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-madain-gold font-inter text-[14px] font-bold text-white">2</span>
+      <div>
+        <h2 class="text-[19px] font-bold text-madain-shaft">ترتيبات الحضور</h2>
+        <p class="font-inter text-[11.5px] font-semibold uppercase tracking-[0.12em] text-madain-gold">Attendance Arrangements</p>
+      </div>
+    </div>
+
+    <div class="mt-5 flex flex-col gap-4 rounded-xl border border-[#EFEADD] bg-[#FBF9F4] p-5 md:flex-row md:items-start">
+      <svg class="shrink-0" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z" /><circle cx="12" cy="10" r="2.6" />
+      </svg>
+      <div>
+        <h3 class="text-[15.5px] font-bold text-madain-shaft">موقع الاجتماع (الحضور الشخصي)</h3>
+        <address class="mt-1.5 space-y-0.5 text-[14px] not-italic leading-relaxed text-madain-tundora" dir="ltr">
+          <div>Grant Thornton</div>
+          <div>The Offices 5, Level 3, Office 303</div>
+          <div>One Central, Dubai World Trade Centre</div>
+          <div>Dubai, United Arab Emirates</div>
+        </address>
+        <a
+          href="https://maps.google.com/?q=Grant+Thornton+The+Offices+5+One+Central+Dubai+World+Trade+Centre"
+          target="_blank"
+          rel="noopener"
+          class="mt-3 inline-flex items-center gap-2 rounded-md bg-[#0B2545] px-5 py-2.5 text-[13.5px] font-bold text-white transition hover:bg-[#153a67] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-madain-gold"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z" /><circle cx="12" cy="10" r="2.4" />
+          </svg>
+          فتح في الخرائط
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-4 grid gap-4 sm:grid-cols-2">
+      <div class="rounded-xl border border-[#EFEADD] bg-white p-5 text-center">
+        <div class="text-[13.5px] text-madain-boulder">بدء تسجيل الحضور الشخصي</div>
+        <div class="mt-1 text-[19px] font-bold text-madain-goldDark">9:00 صباحاً</div>
+      </div>
+      <div class="rounded-xl border border-[#EFEADD] bg-white p-5 text-center">
+        <div class="text-[13.5px] text-madain-boulder">إغلاق التسجيل وبدء الاجتماع</div>
+        <div class="mt-1 text-[19px] font-bold text-madain-goldDark">10:00 صباحاً</div>
+      </div>
+    </div>
+
+    <div class="mt-4 rounded-xl border border-madain-gold/50 bg-[#FDF9F0] p-5">
+      <h3 class="text-[15.5px] font-bold text-madain-shaft">لم يصلك رابط التسجيل؟</h3>
+      <p class="mt-2 text-[14px] leading-relaxed text-madain-tundora">
+        الرابط يُرسل بتاريخ 31 أغسطس 2026. في حال عدم استلامه حتى يوم 01 سبتمبر 2026، يرجى التحقق من تحديث بياناتكم (KYC) لدى سوق دبي المالي (DFM).
+        وإذا استمرت المشكلة، يرجى التواصل مع فريق دعم المستثمرين لدى الشركة عبر واتساب:
+        <a href="https://wa.me/971800370" dir="ltr" class="font-bold text-madain-goldDark transition hover:text-madain-gold">+971 800 370</a>
+      </p>
+    </div>
+
+    <ul class="mt-5 space-y-3">
+      {attendancePoints.map((point) => (
+        <li class="flex gap-3 text-[14.5px] leading-relaxed text-madain-tundora">
+          <span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-madain-gold"></span>
+          <span>{point}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- 3. Voting -->
+  <section class="mt-6 rounded-2xl border border-[#E8E2D4] bg-white p-6 shadow-sm md:p-8">
+    <div class="flex items-center gap-3">
+      <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-madain-gold font-inter text-[14px] font-bold text-white">3</span>
+      <div>
+        <h2 class="text-[19px] font-bold text-madain-shaft">إجراءات التصويت</h2>
+        <p class="font-inter text-[11.5px] font-semibold uppercase tracking-[0.12em] text-madain-gold">Voting Procedures</p>
+      </div>
+    </div>
+
+    <div class="mt-5 grid gap-4 md:grid-cols-2">
+      {votingPoints.map((item) => (
+        <article class="rounded-xl border border-[#EFEADD] bg-[#FBF9F4] p-5">
+          <h3 class="text-[15.5px] font-bold text-madain-shaft">{item.title}</h3>
+          <p class="mt-2 text-[14px] leading-relaxed text-madain-tundora">{item.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  
+
+  <!-- Contact -->
+  <section class="mt-6 rounded-2xl border border-[#E8E2D4] bg-white p-6 shadow-sm md:p-7">
+    <h2 class="text-center text-[17px] font-bold text-madain-shaft">إرسال مستندات التوكيل والدعم الفني والاستفسارات</h2>
+    <p class="mt-1.5 text-center text-[13.5px] text-madain-boulder">لحالات عدم استلام رابط التسجيل أو تعذّر التسجيل أو الدخول أو التصويت الإلكتروني.</p>
+    <div class="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-10">
+      <a href="tel:+971509897071" dir="ltr" class="inline-flex items-center gap-2 text-[15px] font-bold text-madain-shaft transition hover:text-madain-gold">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+        </svg>
+        +971 50 989 7071
+      </a>
+      <span class="hidden h-6 w-px bg-[#E8E2D4] sm:block"></span>
+      <a href="mailto:harshana.s@ae.gt.com" dir="ltr" class="inline-flex items-center gap-2 text-[15px] font-bold text-madain-shaft transition hover:text-madain-gold">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2.5" y="5" width="19" height="14" rx="2" /><polyline points="21,7 12,13.5 3,7" />
+        </svg>
+        harshana.s@ae.gt.com
+      </a>
+    </div>
+  </section>
+
+  <!-- Disclaimer -->
+  <section class="mt-6 rounded-2xl border border-[#E8E2D4] bg-[#FBF9F4] p-6 shadow-sm md:p-7">
+    <h2 class="text-[16px] font-bold text-madain-shaft">إشعار هام</h2>
+    <div class="mt-3 space-y-3 text-[13.5px] leading-relaxed text-madain-boulder">
+      <p>
+        تم إعداد المعلومات الواردة أعلاه استناداً إلى الإجراءات والترتيبات الخاصة باجتماع الجمعية العمومية والمتفق عليها مع
+        سوق دبي المالي وإدارة الشركة، وقد أُعدت لأغراض تعريفية وإرشادية عامة فقط، وتعكس فهم الشركة ومنظمي الاجتماع
+        للإجراءات المطبقة في ذلك التاريخ.
+      </p>
+      <p>
+        ولا تشكل هذه المعلومات استشارة قانونية أو تنظيمية أو ضريبية أو مهنية من أي نوع. وفي حال وجود أي تعارض أو اختلاف
+        بين هذه الإرشادات وبين أحكام القوانين أو الأنظمة أو اللوائح المعمول بها، أو متطلبات سوق دبي المالي، أو النظام
+        الأساسي للشركة، أو أي تعليمات أو قرارات صادرة عن الجهات المختصة، فإن تلك الأحكام والأنظمة والتعليمات تكون هي
+        الواجبة التطبيق والنافذة.
+      </p>
+      <p>
+        وتحتفظ الشركة وسوق دبي المالي ومنظمو الجمعية العمومية بالحق في تعديل أو استكمال أو تحديث إجراءات الحضور أو
+        التسجيل أو التفويض أو التصويت متى اقتضت ذلك القوانين أو اللوائح أو تعليمات الجهات المختصة أو المتطلبات التشغيلية
+        قبل انعقاد الجمعية العمومية.
+      </p>
+    </div>
+  </section>
+</AgmLayout>

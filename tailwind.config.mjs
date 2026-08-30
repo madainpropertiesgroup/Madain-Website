@@ -19,6 +19,7 @@ export default {
       fontFamily: {
         sans: ['Lato', 'system-ui', 'sans-serif'],
         inter: ['Inter', 'system-ui', 'sans-serif'],
+        arabic: ['Tajawal', 'Lato', 'system-ui', 'sans-serif'],
       },
       backgroundImage: {
         'gold-gradient': 'linear-gradient(90deg, #78682A 0%, #9C8830 100%)',
