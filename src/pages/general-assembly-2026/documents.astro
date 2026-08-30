@@ -1,25 +1,27 @@
 ---
 import AgmLayout from '../../layouts/AgmLayout.astro';
 
-const NOTICE = '/general-assembly-2026/documents/agm-notice-alwatan-2026-07-24.pdf';
+const NOTICE = '/general-assembly-2026/documents/agm-notice-2026.pdf';
+const PRESS_AR = '/general-assembly-2026/documents/agm-notice-alwatan-2026-07-24.pdf';
+const PRESS_EN = '/general-assembly-2026/documents/agm-notice-gulftime-2026-07-24.pdf';
 
 const MAPS_URL =
   'https://maps.google.com/?q=Grant+Thornton+The+Offices+5+One+Central+Dubai+World+Trade+Centre';
 
 const agenda = [
   'عرض تقرير تقصي الحقائق المعد من قبل شركة إرنست ويونغ (EY)، ومناقشة ما ورد فيه من نتائج وملاحظات، واتخاذ ما تراه الجمعية العمومية مناسباً من قرارات وإجراءات وفقاً لأحكام القانون.',
-  'النظر في التسوية المرتبطة بأحد الأطراف ذات العلاقة السيد/ عبدالرؤوف العور وآثارها القانونية والمالية على الشركة، واتخاذ القرار المناسب بشأنها بما يحقق مصلحة الشركة ومساهميها.',
-  'مراجعة إدارة وتصرفات مجالس الإدارة السابقة، بما في ذلك الأراضي والأصول محل البحث.',
-  'بحث المسؤولية والإجراءات القانونية المحتملة بحق مجالس الإدارة السابقة والتصرفات محل العرض.',
-  'بحث مسؤولية أعضاء مجلس الإدارة السابقين المستثمرين وفق البنود المعروضة.',
-  'تعيين مدقق الحسابات.',
-  'النظر في مقترح إعادة الهيكلة.',
-  'انتخاب أربعة أعضاء لاستكمال أعضاء اللجنة المشار إليها في الدعوة (إن وُجدت).',
+  'النظر في التسوية المرتبطة بأحد الأطراف ذات العلاقة السيد/ عبدالعزيز عبدالرؤوف العور وآثارها القانونية والمالية على الشركة، واتخاذ القرار المناسب بشأنها بما يحقق مصلحة الشركة ومساهميها.',
+  'النظر في مراجعة القرارات الجوهرية السابقة الصادرة عن مجالس الإدارة السابقة، والتحقق من مدى توافقها مع أحكام القانون والنظام الأساسي ومصلحة الشركة، بما في ذلك القرارات المتعلقة ببيع الأراضي أو التصرف في الأصول الجوهرية للشركة، واتخاذ ما يلزم بشأنها أو إحالتها للمجلس الجديد لاستكمال الدراسة واتخاذ القرار المناسب.',
+  'النظر في اتخاذ إجراءات تحريك دعاوى المسؤولية والإجراءات القانونية المناسبة بحق أعضاء مجالس الإدارة السابقة أو من تثبت مسؤوليتهم قانوناً عما لحق بالشركة من أضرار أو خسائر، في حال ثبوتها، واتخاذ ما يلزم من قرارات وفقاً لأحكام قانون الشركات التجارية.',
+  'النظر في مسؤولية أعضاء مجلس الإدارة المستقيلين عن فترة عضويتهم، وإبراء ذمتهم أو عدم إبرائها، واتخاذ القرار المناسب في ضوء ما تسفر عنه المناقشات والتقارير والوثائق المعروضة على الجمعية العمومية.',
+  'النظر في الإبقاء على مدقق حسابات الشركة الحالي أو تفويض مجلس الإدارة المنتخب بترشيح مدقق حسابات مستقل آخر، وعرض التوصية على الجمعية العمومية لاتخاذ القرار النهائي وفقاً لأحكام القانون.',
+  'دراسة ومناقشة مقترح إعادة هيكلة الشركة، والنظر في المقترحات المرتبطة بإعادة تنظيم أنشطتها أو أصولها أو التزاماتها، بما في ذلك التصرف في بعض الأراضي أو الأصول عند الاقتضاء، بما يحقق مصلحة الشركة ومساهميها، واتخاذ ما يلزم بشأن ذلك وفقاً للقانون.',
+  'انتخاب عدد 4 أعضاء لمجلس الإدارة لشغل المقاعد الشاغرة واستكمال تشكيل مجلس الإدارة وفقاً لأحكام النظام الأساسي للشركة والقوانين النافذة.',
 ];
 
 const documents = [
   { ar: 'دعوة الجمعية المنشورة', en: 'AGM Notice', href: NOTICE },
-  { ar: 'جدول الأعمال', en: 'Agenda', href: null },
+  { ar: 'جدول الأعمال', en: 'Agenda', href: NOTICE },
   { ar: 'قائمة المرشحين لعضوية مجلس الإدارة', en: 'Board Nominees', href: '/general-assembly-2026/nominees/' },
   { ar: 'السير الذاتية للمرشحين', en: 'Candidate CVs', href: '/general-assembly-2026/nominees/' },
   { ar: 'تعليمات الحضور والتصويت', en: 'Attendance & Voting Guidelines', href: '/general-assembly-2026/attendance-voting/' },
@@ -154,18 +156,33 @@ const documents = [
         <p class="mt-2 max-w-[62ch] text-[14px] text-madain-boulder">
           يمكنكم قراءة أو تحميل نسخة الدعوة كما تم نشرها في الصحف المحلية.
         </p>
-        <a
-          href={NOTICE}
-          target="_blank"
-          rel="noopener"
-          class="mt-4 inline-flex items-center gap-2 rounded-md bg-madain-gold px-6 py-2.5 text-[13.5px] font-bold text-white transition hover:bg-madain-goldDark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-madain-goldDark"
-        >
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 3v12M7.5 11l4.5 4.5 4.5-4.5M4 20h16" />
-          </svg>
-          عرض / تحميل الدعوة (PDF)
-        </a>
-        <p class="mt-2 text-[12.5px] text-madain-boulder">جريدة الوطن — العدد 5028، الجمعة 24 يوليو 2026.</p>
+        <div class="mt-4 flex flex-col gap-3 sm:flex-row">
+          <a
+            href={PRESS_AR}
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center justify-center gap-2 rounded-md bg-madain-gold px-6 py-2.5 text-[13.5px] font-bold text-white transition hover:bg-madain-goldDark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-madain-goldDark"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3v12M7.5 11l4.5 4.5 4.5-4.5M4 20h16" />
+            </svg>
+            جريدة الوطن (عربي)
+          </a>
+          <a
+            href={PRESS_EN}
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center justify-center gap-2 rounded-md border border-madain-gold px-6 py-2.5 text-[13.5px] font-bold text-madain-goldDark transition hover:bg-[#FDF9F0]"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3v12M7.5 11l4.5 4.5 4.5-4.5M4 20h16" />
+            </svg>
+            Gulf Time (English)
+          </a>
+        </div>
+        <p class="mt-2 text-[12.5px] text-madain-boulder">
+          جريدة الوطن — العدد 5028، الجمعة 24 يوليو 2026 &nbsp;·&nbsp; Gulf Time — 24-26 July 2026.
+        </p>
       </div>
       <div class="mx-auto flex h-[110px] w-[160px] items-center justify-center rounded-lg border border-[#EFE7D6] bg-[#FDFBF5]">
         <svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
