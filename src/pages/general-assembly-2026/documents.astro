@@ -1,202 +1,257 @@
 ---
 import AgmLayout from '../../layouts/AgmLayout.astro';
 
+const MAPS_URL =
+  'https://maps.google.com/?q=Grant+Thornton+The+Offices+5+One+Central+Dubai+World+Trade+Centre';
+
+const agenda = [
+  'انتخاب أعضاء مجلس الإدارة وفق إجراءات الترشيح والانتخاب المعتمدة.',
+  'النظر في التسوية المرتبطة بالعور وما لها من آثار قانونية ومالية.',
+  'مراجعة إدارة وتصرفات مجالس الإدارة السابقة، بما في ذلك الأراضي والأصول محل البحث.',
+  'بحث المسؤولية والإجراءات القانونية المحتملة بحق مجالس الإدارة السابقة والتصرفات محل العرض.',
+  'بحث مسؤولية أعضاء مجلس الإدارة السابقين المستثمرين وفق البنود المعروضة.',
+  'تعيين مدقق الحسابات.',
+  'النظر في مقترح إعادة الهيكلة.',
+  'انتخاب أربعة أعضاء لاستكمال أعضاء اللجنة المشار إليها في الدعوة (إن وُجدت).',
+];
+
 const documents = [
-  { title: 'دعوة الجمعية وجدول الأعمال', icon: 'clipboard', href: null },
-  { title: 'نموذج التوكيل', icon: 'form', href: '/general-assembly-2026/forms/madain-proxy-form.pdf', label: 'تحميل' },
-  { title: 'قائمة المرشحين', icon: 'people', href: null },
-  { title: 'السير الذاتية للمرشحين', icon: 'file', href: '#all-documents' },
-  { title: 'تعليمات الحضور والتصويت', icon: 'book', href: '/general-assembly-2026/attendance-voting/' },
-];
-
-const nominees = [
-  { name: 'أسماء موسى محمد عبدالرحمن', file: 'asma-moosa.pdf' },
-  { name: 'عبدالعزيز حسن المندوس البلوشي', file: 'abdulaziz-alblooshi.pdf' },
-  { name: 'أحمد شبيب الظاهري', file: 'ahmed-al-dhaheri.pdf' },
-  { name: 'أحمد عبدالرحيم أحمد محمد الأنصاري', file: 'ahmad-alansari.pdf' },
-  { name: 'خالد علي حسين العامري', file: 'khalid-alamri.pdf' },
-];
-
-const contacts = [
-  { label: 'هاتف الجمعية', value: '+971 800 370', href: 'tel:+971800370', icon: 'phone', ltr: true },
-  { label: 'البريد الإلكتروني', value: 'harshana.s@ae.gt.com', href: 'mailto:harshana.s@ae.gt.com', icon: 'mail', ltr: true },
-  { label: 'استفسارات التوكيلات', value: '+971 50 989 7071', href: 'tel:+971509897071', icon: 'proxy', ltr: true },
-  {
-    label: 'عنوان الاجتماع',
-    value: 'Grant Thornton, The Offices 5\nLevel 3, Office 303, One Central\nDubai World Trade Centre, Dubai, UAE',
-    href: null,
-    icon: 'pin',
-    ltr: true,
-  },
+  { ar: 'دعوة الجمعية المنشورة', en: 'AGM Notice', href: null },
+  { ar: 'جدول الأعمال', en: 'Agenda', href: null },
+  { ar: 'قائمة المرشحين لعضوية مجلس الإدارة', en: 'Board Nominees', href: '/general-assembly-2026/nominees/' },
+  { ar: 'السير الذاتية للمرشحين', en: 'Candidate CVs', href: '/general-assembly-2026/nominees/' },
+  { ar: 'تعليمات الحضور والتصويت', en: 'Attendance & Voting Guidelines', href: '/general-assembly-2026/attendance-voting/' },
+  { ar: 'نموذج التوكيل', en: 'Proxy Form', href: '/general-assembly-2026/forms/madain-proxy-form.pdf' },
 ];
 ---
 
-<AgmLayout title="المستندات والدعوة والتواصل | الجمعية العمومية 2026" active="documents">
-  <!-- Notice & agenda -->
-  <section class="rounded-xl border border-[#E8E2D4] bg-white p-6 shadow-sm md:p-8">
-    <div class="grid items-center gap-6 md:grid-cols-[1fr_150px]">
+<AgmLayout title="دعوة الجمعية والمستندات والتواصل | الجمعية العمومية 2026" active="documents">
+  <nav class="mb-5 flex items-center justify-end gap-2 text-[13px] text-madain-boulder" aria-label="مسار التنقل">
+    <span class="text-madain-shaft">الدعوة والمستندات</span>
+    <span class="text-madain-gold/60">|</span>
+    <a href="/general-assembly-2026/" class="transition hover:text-madain-gold">الجمعية العمومية 2026</a>
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" />
+    </svg>
+  </nav>
+
+  <header class="text-center">
+    <h1 class="text-[24px] font-bold text-madain-shaft md:text-[30px]">دعوة الجمعية والمستندات والتواصل</h1>
+    <p class="font-inter mt-1 text-[12.5px] font-semibold uppercase tracking-[0.14em] text-madain-gold">
+      AGM Notice, Documents &amp; Contact
+    </p>
+    <p class="mt-3 text-[14.5px] font-bold text-madain-shaft">
+      الأربعاء 02 سبتمبر 2026 &nbsp;|&nbsp; الساعة 10:00 صباحاً
+    </p>
+  </header>
+
+  <div class="mt-7 grid gap-5 lg:grid-cols-2">
+    <!-- Documents -->
+    <section class="rounded-2xl border border-madain-gold/35 bg-white p-6 shadow-sm md:p-7">
+      <div class="flex items-center justify-end gap-4">
+        <div class="text-right">
+          <h2 class="text-[19px] font-bold text-madain-shaft">مستندات الجمعية</h2>
+          <p class="font-inter text-[11.5px] font-semibold uppercase tracking-[0.12em] text-madain-gold">
+            General Assembly Documents
+          </p>
+        </div>
+        <span class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-madain-gold/40 bg-[#FDF9F0]">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 7a2 2 0 0 1 2-2h4l2 2.5h8a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          </svg>
+        </span>
+      </div>
+
+      <ul class="mt-6 space-y-3">
+        {documents.map((doc) => (
+          <li class="flex items-center gap-3 rounded-xl border border-[#EFE7D6] bg-[#FDFBF5] p-4">
+            <svg class="shrink-0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" /><path d="M14 3v5h5" />
+              <path d="M8.5 12.5h7M8.5 16h4.5" />
+            </svg>
+            <div class="min-w-0 flex-1">
+              <div class="text-[14.5px] font-bold leading-snug text-madain-shaft">{doc.ar}</div>
+              <div class="font-inter text-[11px] font-semibold uppercase tracking-[0.1em] text-madain-boulder">{doc.en}</div>
+            </div>
+            {doc.href ? (
+              <a
+                href={doc.href}
+                class="shrink-0 rounded-md px-3 py-1.5 text-[13px] font-bold text-madain-goldDark transition hover:bg-[#F6EFDD] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-madain-gold"
+              >
+                عرض
+              </a>
+            ) : (
+              <span class="shrink-0 px-3 py-1.5 text-[13px] font-bold text-madain-boulder/70">قريباً</span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Notice & agenda -->
+    <section class="rounded-2xl border border-madain-gold/35 bg-white p-6 shadow-sm md:p-7">
+      <div class="flex items-center justify-end gap-4">
+        <div class="text-right">
+          <h2 class="text-[19px] font-bold text-madain-shaft">دعوة الجمعية وجدول الأعمال</h2>
+          <p class="font-inter text-[11.5px] font-semibold uppercase tracking-[0.12em] text-madain-gold">
+            AGM Notice &amp; Agenda
+          </p>
+        </div>
+        <span class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-madain-gold/40 bg-[#FDF9F0]">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" /><path d="M14 3v5h5" />
+            <path d="M8.5 12.5h7M8.5 16h4.5" />
+          </svg>
+        </span>
+      </div>
+
+      <p class="mt-5 text-center text-[13.5px] text-madain-boulder">البنود الرئيسية الواردة في الدعوة المنشورة:</p>
+
+      <ol class="mt-4 divide-y divide-dashed divide-[#EFE7D6]">
+        {agenda.map((item, index) => (
+          <li class="flex items-start gap-3 py-3">
+            <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#0B2545] font-inter text-[12px] font-bold text-white">
+              {index + 1}
+            </span>
+            <span class="text-[13.5px] leading-relaxed text-madain-tundora">{item}</span>
+          </li>
+        ))}
+      </ol>
+
+      <div class="mt-6 flex flex-col gap-3 sm:flex-row-reverse sm:justify-center">
+        <span
+          aria-disabled="true"
+          class="inline-flex cursor-not-allowed items-center justify-center gap-2 rounded-md bg-[#0B2545]/45 px-6 py-3 text-[14px] font-bold text-white"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3v12M7.5 11l4.5 4.5 4.5-4.5M4 20h16" />
+          </svg>
+          عرض الدعوة المنشورة
+        </span>
+        <span
+          aria-disabled="true"
+          class="inline-flex cursor-not-allowed items-center justify-center gap-2 rounded-md border-2 border-madain-gold/45 px-6 py-3 text-[14px] font-bold text-madain-gold/70"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" /><path d="M14 3v5h5" />
+          </svg>
+          عرض جدول الأعمال
+        </span>
+      </div>
+      <p class="mt-2 text-center text-[12.5px] text-madain-boulder">يتاح الملفان فور اعتماد نشرهما.</p>
+    </section>
+  </div>
+
+  <!-- Press notice -->
+  <section class="mt-5 rounded-2xl border border-madain-gold/35 bg-white p-6 shadow-sm md:p-7">
+    <div class="grid items-center gap-6 md:grid-cols-[1fr_170px]">
       <div>
-        <h1 class="text-[22px] font-bold text-madain-shaft md:text-[26px]">دعوة الجمعية وجدول الأعمال</h1>
-        <p class="mt-3 max-w-[58ch] text-[14px] text-madain-boulder">
-          يمكنكم الاطلاع على دعوة الجمعية وجدول الأعمال الكامل والبنود المدرجة للمناقشة والتصويت.
+        <h2 class="text-[18px] font-bold text-madain-shaft">اطلع على نسخة الدعوة المنشورة في الصحف المحلية</h2>
+        <p class="mt-2 max-w-[62ch] text-[14px] text-madain-boulder">
+          يمكنكم قراءة أو تحميل نسخة الدعوة كما تم نشرها في الصحف المحلية.
         </p>
         <span
           aria-disabled="true"
-          class="mt-5 inline-block cursor-not-allowed rounded-md bg-madain-gold/45 px-7 py-2.5 text-[14px] font-medium text-white"
+          class="mt-4 inline-flex cursor-not-allowed items-center gap-2 rounded-md bg-madain-gold/45 px-6 py-2.5 text-[13.5px] font-bold text-white"
         >
-          عرض الدعوة وجدول الأعمال
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3v12M7.5 11l4.5 4.5 4.5-4.5M4 20h16" />
+          </svg>
+          عرض / تحميل الدعوة (PDF)
         </span>
-        <p class="mt-2 text-[12.5px] text-madain-boulder">سيتاح الملف فور اعتماده ورفعه.</p>
+        <p class="mt-2 text-[12.5px] text-madain-boulder">يتاح الملف فور رفع نسخة النشر الصحفي.</p>
       </div>
-      <div class="mx-auto flex h-[130px] w-[130px] items-center justify-center rounded-full bg-[#FBF9F4]">
-        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="4" y="3.5" width="16" height="18" rx="2.2" />
-          <path d="M9 3.5V2.8A1.3 1.3 0 0 1 10.3 1.5h3.4A1.3 1.3 0 0 1 15 2.8v.7z" />
-          <path d="M8.2 10h1.4M8.2 13.4h1.4M8.2 16.8h1.4M12 10h4M12 13.4h4M12 16.8h3" />
+      <div class="mx-auto flex h-[110px] w-[160px] items-center justify-center rounded-lg border border-[#EFE7D6] bg-[#FDFBF5]">
+        <svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 5h13a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a2 2 0 0 1-2-2V6a1 1 0 0 1 1-1z" />
+          <path d="M18 9h2a1 1 0 0 1 1 1v7a2 2 0 0 1-2 2" />
+          <path d="M6.5 8h5v4h-5zM14 8.5h2M14 11h2M6.5 15h9" />
         </svg>
       </div>
     </div>
   </section>
 
-  <!-- Documents -->
-  <section class="mt-8 rounded-xl border border-[#E8E2D4] bg-white p-6 shadow-sm md:p-8">
-    <h2 class="text-center text-[20px] font-bold text-madain-shaft">مستندات الجمعية العمومية</h2>
-
-    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-      {documents.map((doc) => (
-        <article class="flex flex-col items-center rounded-xl border border-[#E8E2D4] bg-white px-4 py-5 text-center">
-          <div class="flex h-12 items-center">
-            {doc.icon === 'clipboard' && (
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="4" y="3.5" width="16" height="18" rx="2.2" />
-                <path d="M9 3.5V2.8A1.3 1.3 0 0 1 10.3 1.5h3.4A1.3 1.3 0 0 1 15 2.8v.7z" />
-                <path d="M8.5 11h7M8.5 15h5" />
-              </svg>
-            )}
-            {doc.icon === 'form' && (
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" /><path d="M14 3v5h5" />
-                <path d="M20.4 3.6a1.7 1.7 0 0 1 0 2.4l-5 5-2.6.6.6-2.6 5-5a1.7 1.7 0 0 1 2-.4z" />
-              </svg>
-            )}
-            {doc.icon === 'people' && (
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9.5" cy="7" r="3.2" />
-                <path d="M22 20v-2a4 4 0 0 0-3-3.87M16.5 4.2a3.2 3.2 0 0 1 0 5.6" />
-              </svg>
-            )}
-            {doc.icon === 'file' && (
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" /><path d="M14 3v5h5" />
-                <path d="M8.5 12.5h7M8.5 16h4.5" />
-              </svg>
-            )}
-            {doc.icon === 'book' && (
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 5.5A2 2 0 0 1 5 3.5h5v17H5a2 2 0 0 1-2-2z" /><path d="M21 5.5a2 2 0 0 0-2-2h-5v17h5a2 2 0 0 0 2-2z" />
-              </svg>
-            )}
-          </div>
-          <h3 class="mt-3 min-h-[42px] text-[14px] font-bold leading-snug text-madain-shaft">{doc.title}</h3>
-          {doc.href ? (
-            <a
-              href={doc.href}
-              class="mt-3 inline-block rounded-md bg-madain-gold px-6 py-1.5 text-[13px] font-medium text-white transition hover:bg-madain-goldDark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-madain-goldDark"
-            >
-              {doc.label ?? 'عرض'}
-            </a>
-          ) : (
-            <span aria-disabled="true" class="mt-3 inline-block cursor-not-allowed rounded-md bg-madain-gold/40 px-6 py-1.5 text-[13px] font-medium text-white">
-              قريباً
-            </span>
-          )}
-        </article>
-      ))}
-    </div>
-
-    <a
-      href="#all-documents"
-      class="mt-6 block rounded-md border border-madain-gold py-3 text-center text-[14px] font-medium text-madain-goldDark transition hover:bg-[#FBF9F4]"
-    >
-      عرض جميع المستندات
-    </a>
-  </section>
-
-  <!-- Available documents -->
-  <section id="all-documents" class="mt-8 scroll-mt-6 rounded-xl border border-[#E8E2D4] bg-[#FBF9F4] p-6 shadow-sm md:p-8">
-    <h2 class="text-[19px] font-bold text-madain-shaft">السير الذاتية للمرشحين</h2>
-    <p class="mt-1.5 text-[13.5px] text-madain-boulder">
-      تم ترتيب الأسماء دون أي أفضلية أو توصية من الشركة لأي مرشح.
-    </p>
-    <ul class="mt-5 divide-y divide-[#E8E2D4] border-y border-[#E8E2D4]">
-      {nominees.map((n) => (
-        <li class="flex flex-col gap-2 py-3 sm:flex-row sm:items-center sm:justify-between">
-          <span class="text-[14.5px] text-madain-shaft">{n.name}</span>
-          <a
-            href={`/general-assembly-2026/cv/${n.file}`}
-            target="_blank"
-            rel="noopener"
-            class="inline-flex w-fit items-center gap-2 rounded-md border border-madain-gold px-4 py-1.5 text-[13px] font-medium text-madain-goldDark transition hover:bg-white"
-          >
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 3v12M7.5 11l4.5 4.5 4.5-4.5M4 20h16" />
-            </svg>
-            تحميل السيرة الذاتية
-          </a>
-        </li>
-      ))}
-    </ul>
-    <p class="mt-5 text-[13.5px] text-madain-boulder">
-      بقية المستندات — دعوة الجمعية وجدول الأعمال وقائمة المرشحين — سيتم نشرها في هذا القسم فور اعتمادها.
-    </p>
-  </section>
-
   <!-- Contact -->
-  <section class="mt-8 rounded-xl border border-[#E8E2D4] bg-white p-6 shadow-sm md:p-8">
-    <h2 class="text-center text-[20px] font-bold text-madain-shaft">تواصل معنا</h2>
-    <p class="mt-1.5 text-center text-[14px] text-madain-boulder">نحن هنا للإجابة على استفساراتكم</p>
+  <section class="mt-5 rounded-2xl border border-madain-gold/35 bg-white p-6 shadow-sm md:p-8">
+    <h2 class="text-center text-[19px] font-bold text-madain-shaft">التواصل والاستفسارات</h2>
+    <p class="font-inter text-center text-[11.5px] font-semibold uppercase tracking-[0.12em] text-madain-gold">
+      General Inquiries
+    </p>
 
-    <div class="mt-6 grid gap-5 md:grid-cols-2">
-      {contacts.map((c) => (
-        <div class="flex items-start gap-4 rounded-lg border border-[#EFEADD] bg-[#FBF9F4] p-4">
-          <span class="mt-0.5 shrink-0">
-            {c.icon === 'phone' && (
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="9.2" />
-                <path d="M9 8.6a10 10 0 0 0 6.4 6.4l1-1.3a1 1 0 0 1 1-.3c.6.2 1.2.3 1.8.3v1.9c0 .5-.4.9-.9.8A12.6 12.6 0 0 1 6.6 5.7c0-.5.3-.9.8-.9h1.9c0 .6.1 1.2.3 1.8a1 1 0 0 1-.3 1z" />
-              </svg>
-            )}
-            {c.icon === 'mail' && (
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2.5" y="5" width="19" height="14" rx="2" /><polyline points="21,7 12,13.5 3,7" />
-              </svg>
-            )}
-            {c.icon === 'proxy' && (
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="16" rx="2.4" /><circle cx="12" cy="11" r="2.6" />
-                <path d="M7.6 17a5 5 0 0 1 8.8 0" />
-              </svg>
-            )}
-            {c.icon === 'pin' && (
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z" /><circle cx="12" cy="10" r="2.6" />
-              </svg>
-            )}
-          </span>
-          <div>
-            <div class="text-[14px] font-bold text-madain-shaft">{c.label}</div>
-            {c.href ? (
-              <a href={c.href} dir="ltr" class="mt-0.5 block text-[13.5px] text-madain-boulder transition hover:text-madain-gold">
-                {c.value}
-              </a>
-            ) : (
-              <div dir="ltr" class="mt-0.5 whitespace-pre-line text-[13.5px] leading-relaxed text-madain-boulder">
-                {c.value}
-              </div>
-            )}
-          </div>
-        </div>
-      ))}
+    <div class="mt-6 grid gap-6 md:grid-cols-3 md:divide-x md:divide-x-reverse md:divide-[#EFE7D6]">
+      <div class="px-2 text-center">
+        <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-madain-gold/40 bg-[#FDF9F0]">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2.5" y="5" width="19" height="14" rx="2" /><polyline points="21,7 12,13.5 3,7" />
+          </svg>
+        </span>
+        <h3 class="mt-3 text-[15.5px] font-bold text-madain-shaft">استفسارات التوكيلات</h3>
+        <a href="tel:+971509897071" dir="ltr" class="mt-2 block text-[15px] font-bold text-madain-goldDark transition hover:text-madain-gold">
+          +971 50 989 7071
+        </a>
+        <a href="mailto:harshana.s@ae.gt.com" dir="ltr" class="mt-1 block text-[15px] font-bold text-madain-goldDark transition hover:text-madain-gold">
+          harshana.s@ae.gt.com
+        </a>
+      </div>
+
+      <div class="px-2 text-center">
+        <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-madain-gold/40 bg-[#FDF9F0]">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#9C8830">
+            <path d="M12 2a10 10 0 0 0-8.6 15.05L2 22l5.1-1.33A10 10 0 1 0 12 2Zm5.5 14.1c-.23.65-1.34 1.25-1.86 1.29-.5.04-.98.2-3.3-.7-2.78-1.1-4.53-3.94-4.67-4.12-.13-.18-1.11-1.48-1.11-2.83 0-1.34.7-2 .95-2.28.25-.27.54-.34.72-.34h.52c.17 0 .4-.06.62.48.23.55.79 1.9.86 2.04.07.13.11.29.02.47-.09.18-.13.29-.27.44l-.4.47c-.13.13-.27.28-.12.55.15.27.66 1.09 1.42 1.77.98.87 1.8 1.14 2.07 1.27.27.14.42.11.58-.07.15-.18.66-.77.84-1.04.18-.27.35-.22.6-.13.24.09 1.58.74 1.85.88.27.13.45.2.52.31.07.11.07.64-.16 1.29Z" />
+          </svg>
+        </span>
+        <h3 class="mt-3 text-[15.5px] font-bold text-madain-shaft">للاستفسارات العامة</h3>
+        <p class="mt-2 text-[14px] text-madain-boulder">WhatsApp</p>
+        <a href="https://wa.me/971800370" dir="ltr" class="mt-1 block text-[15px] font-bold text-madain-goldDark transition hover:text-madain-gold">
+          +971 800 370
+        </a>
+      </div>
+
+      <div class="px-2 text-center">
+        <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-madain-gold/40 bg-[#FDF9F0]">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z" /><circle cx="12" cy="10" r="2.6" />
+          </svg>
+        </span>
+        <h3 class="mt-3 text-[15.5px] font-bold text-madain-shaft">مكان الاجتماع</h3>
+        <address class="mt-2 space-y-0.5 text-[13px] not-italic leading-relaxed text-madain-tundora" dir="ltr">
+          <div class="font-bold">Grant Thornton – One Central</div>
+          <div>The Offices 5, Level 3, Office 303</div>
+          <div>One Central, Dubai World Trade Centre</div>
+          <div>Dubai, United Arab Emirates</div>
+        </address>
+        <a
+          href={MAPS_URL}
+          target="_blank"
+          rel="noopener"
+          class="mt-4 inline-flex items-center gap-2 rounded-md bg-[#0B2545] px-5 py-2.5 text-[13.5px] font-bold text-white transition hover:bg-[#153a67] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-madain-gold"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z" /><circle cx="12" cy="10" r="2.4" />
+          </svg>
+          فتح في الخرائط
+        </a>
+      </div>
     </div>
+  </section>
+
+  <!-- Notes -->
+  <section class="mt-5 rounded-2xl border border-madain-gold/35 bg-[#FDF9F0] p-6 shadow-sm">
+    <div class="flex items-center justify-center gap-2">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.6" stroke-linecap="round">
+        <circle cx="12" cy="12" r="9" /><path d="M12 11v5.5" /><circle cx="12" cy="7.8" r=".9" fill="#9C8830" stroke="none" />
+      </svg>
+      <h2 class="text-[16px] font-bold text-madain-shaft">ملاحظات مهمة</h2>
+    </div>
+    <ul class="mx-auto mt-4 max-w-[80ch] space-y-2.5">
+      <li class="flex gap-3 text-[13.5px] leading-relaxed text-madain-tundora">
+        <span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-madain-gold"></span>
+        <span>تخضع إجراءات الدعوة والمستندات والتسجيل والتصويت والتوكيلات للمتطلبات القانونية والتنظيمية وتعليمات سوق دبي المالي والجهات المختصة.</span>
+      </li>
+      <li class="flex gap-3 text-[13.5px] leading-relaxed text-madain-tundora">
+        <span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-madain-gold"></span>
+        <span>تُعرض المستندات المتاحة والمعتمدة للنشر فقط، وتُضاف أي مستندات أخرى بعد اعتمادها من الشركة.</span>
+      </li>
+    </ul>
   </section>
 </AgmLayout>

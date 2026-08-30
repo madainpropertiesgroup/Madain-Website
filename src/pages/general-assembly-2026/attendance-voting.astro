@@ -2,6 +2,8 @@
 import AgmLayout from '../../layouts/AgmLayout.astro';
 
 const PROXY_FORM = '/general-assembly-2026/forms/madain-proxy-form.pdf';
+const PROXY_EMAIL = 'harshana.s@ae.gt.com';
+const PROXY_PHONE = '+971 50 989 7071';
 
 const proxyPoints = [
   'يتعين على المساهمين الراغبين في تعيين وكيل للحضور والتصويت نيابةً عنهم تقديم جميع المستندات المتعلقة بالتفويض في موعد أقصاه أربع وعشرون (24) ساعة قبل انعقاد اجتماع الجمعية العمومية.',
@@ -15,8 +17,9 @@ const attendancePoints = [
   'يجوز للمساهمين المستحقين حضور اجتماع الجمعية العمومية إما حضورياً أو عن بُعد عبر الوسائل الإلكترونية، وذلك شريطة استيفاء متطلبات التسجيل المعمول بها.',
   'سيتم تزويد المساهمين المعتمدين والممثلين المفوضين والوكلاء المعتمدين فقط ببيانات الدخول وروابط المشاركة الإلكترونية وبيانات التصويت الإلكترونية، إن وجدت، من قبل سوق دبي المالي، استناداً إلى بيانات الاتصال المدرجة في سجل مساهمي سوق دبي المالي والمعلومات التي تم التحقق منها أثناء عملية التسجيل.',
   'يتم إرسال رابط الاجتماع الإلكتروني من قبل سوق دبي المالي إلى عنوان البريد الإلكتروني المسجل للمشاركين الذين تم التحقق من بياناتهم واعتمادهم فقط.',
+  'سيتم إرسال رابط التسجيل والمشاركة إلى المساهمين والوكلاء المعتمدين قبل موعد انعقاد الجمعية العمومية.',
   'لن يتم توزيع رابط الدخول إلى الجمعية العمومية ضمن الإشعارات العامة الموجهة إلى المساهمين، وإنما سيتم توفيره فقط بعد استكمال جميع متطلبات التحقق الخاصة بالحضور بنجاح.',
-  'يُغلق باب التسجيل للحضور الشخصي في الموعد النهائي المحدد قبل بدء انعقاد الجمعية العمومية، وسيتم الإعلان عن الموعد النهائي للتسجيل من خلال دعوة الجمعية العمومية والمراسلات الموجهة إلى المساهمين والموقع الإلكتروني للشركة.',
+  'يبدأ استقبال وتسجيل المساهمين للحضور الشخصي الساعة 9:00 صباحاً، ويُغلق باب التسجيل قبل بدء انعقاد الجمعية العمومية الساعة 10:00 صباحاً.',
   'قد يُطلب من المساهمين المشاركين عن بُعد استكمال إجراءات التحقق من الهوية وتقديم المستندات الداعمة التي يطلبها سوق دبي المالي أو أي مزود خدمات معتمد آخر.',
   'يتم تحديد أهلية الحضور وحقوق التصويت استناداً إلى سجل المساهمين ومتطلبات الأهلية المعتمدة والمتحقق منها من قبل سوق دبي المالي والجهات السوقية المختصة في تاريخ الاستحقاق المعتمد.',
 ];
@@ -49,10 +52,8 @@ const votingPoints = [
 ];
 
 const pending = [
-  'وقت بدء استقبال وتسجيل المساهمين للحضور الشخصي، والموعد النهائي لإغلاق التسجيل، والمستندات المطلوب إحضارها.',
-  'الوسيلة المعتمدة لإرسال مستندات التوكيل، وما إذا كان يلزم تقديم أصل التوكيل بعد إرسال النسخة الإلكترونية.',
-  'الإجراء المطلوب من المساهم الراغب في المشاركة عن بُعد إذا لم يصله رابط أو إشعار من سوق دبي المالي.',
-  'موعد إرسال رابط الدخول للمشاركين المعتمدين، وأي إجراء إضافي مطلوب من الوكيل المعتمد قبل يوم الاجتماع.',
+  'المستندات المطلوب إحضارها عند التسجيل للحضور الشخصي.',
+  'ما إذا كان يلزم تقديم أصل نموذج التوكيل بعد إرسال النسخة الإلكترونية.',
 ];
 ---
 
@@ -115,7 +116,20 @@ const pending = [
       ))}
     </ul>
 
-    <div class="mt-6 flex flex-col items-center gap-4 rounded-xl border border-madain-gold/50 bg-[#FDFBF1] p-5 md:flex-row-reverse md:justify-between">
+    <div class="mt-6 grid gap-4 md:grid-cols-2">
+      <div class="rounded-xl border border-madain-gold/50 bg-[#FDFBF1] p-5">
+        <h3 class="text-[15.5px] font-bold text-madain-shaft">الموعد النهائي لتقديم التوكيل</h3>
+        <p class="mt-1.5 text-[15px] font-bold text-madain-goldDark">الثلاثاء 01 سبتمبر 2026 — الساعة 10:00 صباحاً</p>
+        <p class="mt-1 text-[13.5px] text-madain-tundora">أي 24 ساعة قبل موعد انعقاد الجمعية العمومية.</p>
+      </div>
+      <div class="rounded-xl border border-madain-gold/50 bg-[#FDFBF1] p-5">
+        <h3 class="text-[15.5px] font-bold text-madain-shaft">الجهة المعتمدة لاستلام مستندات التوكيل</h3>
+        <a href={`mailto:${PROXY_EMAIL}`} dir="ltr" class="mt-1.5 block text-[14.5px] font-bold text-madain-goldDark transition hover:text-madain-gold">{PROXY_EMAIL}</a>
+        <a href="tel:+971509897071" dir="ltr" class="mt-0.5 block text-[14.5px] font-bold text-madain-goldDark transition hover:text-madain-gold">{PROXY_PHONE}</a>
+      </div>
+    </div>
+
+    <div class="mt-4 flex flex-col items-center gap-4 rounded-xl border border-madain-gold/50 bg-[#FDFBF1] p-5 md:flex-row-reverse md:justify-between">
       <p class="text-center text-[13.5px] text-madain-tundora md:text-right">
         للاطلاع على متطلبات التوكيل والمستندات المطلوبة، يرجى تحميل نموذج التوكيل.
       </p>
@@ -155,7 +169,38 @@ const pending = [
           <div>One Central, Dubai World Trade Centre</div>
           <div>Dubai, United Arab Emirates</div>
         </address>
+        <a
+          href="https://maps.google.com/?q=Grant+Thornton+The+Offices+5+One+Central+Dubai+World+Trade+Centre"
+          target="_blank"
+          rel="noopener"
+          class="mt-3 inline-flex items-center gap-2 rounded-md bg-[#0B2545] px-5 py-2.5 text-[13.5px] font-bold text-white transition hover:bg-[#153a67] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-madain-gold"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z" /><circle cx="12" cy="10" r="2.4" />
+          </svg>
+          فتح في الخرائط
+        </a>
       </div>
+    </div>
+
+    <div class="mt-4 grid gap-4 sm:grid-cols-2">
+      <div class="rounded-xl border border-[#EFEADD] bg-white p-5 text-center">
+        <div class="text-[13.5px] text-madain-boulder">بدء تسجيل الحضور الشخصي</div>
+        <div class="mt-1 text-[19px] font-bold text-madain-goldDark">9:00 صباحاً</div>
+      </div>
+      <div class="rounded-xl border border-[#EFEADD] bg-white p-5 text-center">
+        <div class="text-[13.5px] text-madain-boulder">إغلاق التسجيل وبدء الاجتماع</div>
+        <div class="mt-1 text-[19px] font-bold text-madain-goldDark">10:00 صباحاً</div>
+      </div>
+    </div>
+
+    <div class="mt-4 rounded-xl border border-madain-gold/50 bg-[#FDF9F0] p-5">
+      <h3 class="text-[15.5px] font-bold text-madain-shaft">لم يصلك رابط التسجيل؟</h3>
+      <p class="mt-2 text-[14px] leading-relaxed text-madain-tundora">
+        في حال عدم استلام رابط التسجيل حتى يوم 01 سبتمبر 2026، يرجى التحقق من تحديث بياناتكم لدى سوق دبي المالي (DFM).
+        وإذا استمرت المشكلة، يرجى التواصل مع فريق دعم المستثمرين لدى الشركة عبر واتساب:
+        <a href="https://wa.me/971800370" dir="ltr" class="font-bold text-madain-goldDark transition hover:text-madain-gold">+971 800 370</a>
+      </p>
     </div>
 
     <ul class="mt-5 space-y-3">
@@ -206,7 +251,8 @@ const pending = [
 
   <!-- Contact -->
   <section class="mt-6 rounded-2xl border border-[#E8E2D4] bg-white p-6 shadow-sm md:p-7">
-    <h2 class="text-center text-[17px] font-bold text-madain-shaft">إرسال مستندات التوكيل والاستفسارات</h2>
+    <h2 class="text-center text-[17px] font-bold text-madain-shaft">إرسال مستندات التوكيل والدعم الفني والاستفسارات</h2>
+    <p class="mt-1.5 text-center text-[13.5px] text-madain-boulder">لحالات عدم استلام رابط التسجيل أو تعذّر التسجيل أو الدخول أو التصويت الإلكتروني.</p>
     <div class="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-10">
       <a href="tel:+971509897071" dir="ltr" class="inline-flex items-center gap-2 text-[15px] font-bold text-madain-shaft transition hover:text-madain-gold">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
