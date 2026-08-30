@@ -1,0 +1,202 @@
+---
+import AgmLayout from '../../layouts/AgmLayout.astro';
+
+const documents = [
+  { title: 'دعوة الجمعية وجدول الأعمال', icon: 'clipboard', href: null },
+  { title: 'نموذج التوكيل', icon: 'form', href: null },
+  { title: 'قائمة المرشحين', icon: 'people', href: null },
+  { title: 'السير الذاتية للمرشحين', icon: 'file', href: '#all-documents' },
+  { title: 'تعليمات الحضور والتصويت', icon: 'book', href: '/general-assembly-2026/attendance-voting/' },
+];
+
+const nominees = [
+  { name: 'أسماء موسى محمد عبدالرحمن', file: 'asma-moosa.pdf' },
+  { name: 'عبدالعزيز حسن المندوس البلوشي', file: 'abdulaziz-alblooshi.pdf' },
+  { name: 'أحمد شبيب الظاهري', file: 'ahmed-al-dhaheri.pdf' },
+  { name: 'أحمد عبدالرحيم أحمد محمد الأنصاري', file: 'ahmad-alansari.pdf' },
+  { name: 'خالد علي حسين العامري', file: 'khalid-alamri.pdf' },
+];
+
+const contacts = [
+  { label: 'هاتف الجمعية', value: '+971 800 370', href: 'tel:+971800370', icon: 'phone', ltr: true },
+  { label: 'البريد الإلكتروني', value: 'harshana.s@ae.gt.com', href: 'mailto:harshana.s@ae.gt.com', icon: 'mail', ltr: true },
+  { label: 'استفسارات التوكيلات', value: '+971 50 989 7071', href: 'tel:+971509897071', icon: 'proxy', ltr: true },
+  {
+    label: 'عنوان الاجتماع',
+    value: 'Grant Thornton, The Offices 5\nLevel 3, Office 303, One Central\nDubai World Trade Centre, Dubai, UAE',
+    href: null,
+    icon: 'pin',
+    ltr: true,
+  },
+];
+---
+
+<AgmLayout title="المستندات والدعوة والتواصل | الجمعية العمومية 2026" active="documents">
+  <!-- Notice & agenda -->
+  <section class="rounded-xl border border-[#E8E2D4] bg-white p-6 shadow-sm md:p-8">
+    <div class="grid items-center gap-6 md:grid-cols-[1fr_150px]">
+      <div>
+        <h1 class="text-[22px] font-bold text-madain-shaft md:text-[26px]">دعوة الجمعية وجدول الأعمال</h1>
+        <p class="mt-3 max-w-[58ch] text-[14px] text-madain-boulder">
+          يمكنكم الاطلاع على دعوة الجمعية وجدول الأعمال الكامل والبنود المدرجة للمناقشة والتصويت.
+        </p>
+        <span
+          aria-disabled="true"
+          class="mt-5 inline-block cursor-not-allowed rounded-md bg-madain-gold/45 px-7 py-2.5 text-[14px] font-medium text-white"
+        >
+          عرض الدعوة وجدول الأعمال
+        </span>
+        <p class="mt-2 text-[12.5px] text-madain-boulder">سيتاح الملف فور اعتماده ورفعه.</p>
+      </div>
+      <div class="mx-auto flex h-[130px] w-[130px] items-center justify-center rounded-full bg-[#FBF9F4]">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="3.5" width="16" height="18" rx="2.2" />
+          <path d="M9 3.5V2.8A1.3 1.3 0 0 1 10.3 1.5h3.4A1.3 1.3 0 0 1 15 2.8v.7z" />
+          <path d="M8.2 10h1.4M8.2 13.4h1.4M8.2 16.8h1.4M12 10h4M12 13.4h4M12 16.8h3" />
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Documents -->
+  <section class="mt-8 rounded-xl border border-[#E8E2D4] bg-white p-6 shadow-sm md:p-8">
+    <h2 class="text-center text-[20px] font-bold text-madain-shaft">مستندات الجمعية العمومية</h2>
+
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+      {documents.map((doc) => (
+        <article class="flex flex-col items-center rounded-xl border border-[#E8E2D4] bg-white px-4 py-5 text-center">
+          <div class="flex h-12 items-center">
+            {doc.icon === 'clipboard' && (
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="3.5" width="16" height="18" rx="2.2" />
+                <path d="M9 3.5V2.8A1.3 1.3 0 0 1 10.3 1.5h3.4A1.3 1.3 0 0 1 15 2.8v.7z" />
+                <path d="M8.5 11h7M8.5 15h5" />
+              </svg>
+            )}
+            {doc.icon === 'form' && (
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" /><path d="M14 3v5h5" />
+                <path d="M20.4 3.6a1.7 1.7 0 0 1 0 2.4l-5 5-2.6.6.6-2.6 5-5a1.7 1.7 0 0 1 2-.4z" />
+              </svg>
+            )}
+            {doc.icon === 'people' && (
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9.5" cy="7" r="3.2" />
+                <path d="M22 20v-2a4 4 0 0 0-3-3.87M16.5 4.2a3.2 3.2 0 0 1 0 5.6" />
+              </svg>
+            )}
+            {doc.icon === 'file' && (
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" /><path d="M14 3v5h5" />
+                <path d="M8.5 12.5h7M8.5 16h4.5" />
+              </svg>
+            )}
+            {doc.icon === 'book' && (
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 5.5A2 2 0 0 1 5 3.5h5v17H5a2 2 0 0 1-2-2z" /><path d="M21 5.5a2 2 0 0 0-2-2h-5v17h5a2 2 0 0 0 2-2z" />
+              </svg>
+            )}
+          </div>
+          <h3 class="mt-3 min-h-[42px] text-[14px] font-bold leading-snug text-madain-shaft">{doc.title}</h3>
+          {doc.href ? (
+            <a
+              href={doc.href}
+              class="mt-3 inline-block rounded-md bg-madain-gold px-6 py-1.5 text-[13px] font-medium text-white transition hover:bg-madain-goldDark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-madain-goldDark"
+            >
+              عرض
+            </a>
+          ) : (
+            <span aria-disabled="true" class="mt-3 inline-block cursor-not-allowed rounded-md bg-madain-gold/40 px-6 py-1.5 text-[13px] font-medium text-white">
+              قريباً
+            </span>
+          )}
+        </article>
+      ))}
+    </div>
+
+    <a
+      href="#all-documents"
+      class="mt-6 block rounded-md border border-madain-gold py-3 text-center text-[14px] font-medium text-madain-goldDark transition hover:bg-[#FBF9F4]"
+    >
+      عرض جميع المستندات
+    </a>
+  </section>
+
+  <!-- Available documents -->
+  <section id="all-documents" class="mt-8 scroll-mt-6 rounded-xl border border-[#E8E2D4] bg-[#FBF9F4] p-6 shadow-sm md:p-8">
+    <h2 class="text-[19px] font-bold text-madain-shaft">السير الذاتية للمرشحين</h2>
+    <p class="mt-1.5 text-[13.5px] text-madain-boulder">
+      تم ترتيب الأسماء دون أي أفضلية أو توصية من الشركة لأي مرشح.
+    </p>
+    <ul class="mt-5 divide-y divide-[#E8E2D4] border-y border-[#E8E2D4]">
+      {nominees.map((n) => (
+        <li class="flex flex-col gap-2 py-3 sm:flex-row sm:items-center sm:justify-between">
+          <span class="text-[14.5px] text-madain-shaft">{n.name}</span>
+          <a
+            href={`/general-assembly-2026/cv/${n.file}`}
+            target="_blank"
+            rel="noopener"
+            class="inline-flex w-fit items-center gap-2 rounded-md border border-madain-gold px-4 py-1.5 text-[13px] font-medium text-madain-goldDark transition hover:bg-white"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3v12M7.5 11l4.5 4.5 4.5-4.5M4 20h16" />
+            </svg>
+            تحميل السيرة الذاتية
+          </a>
+        </li>
+      ))}
+    </ul>
+    <p class="mt-5 text-[13.5px] text-madain-boulder">
+      بقية المستندات — دعوة الجمعية وجدول الأعمال، نموذج التوكيل، وقائمة المرشحين — سيتم نشرها في هذا القسم فور اعتمادها.
+    </p>
+  </section>
+
+  <!-- Contact -->
+  <section class="mt-8 rounded-xl border border-[#E8E2D4] bg-white p-6 shadow-sm md:p-8">
+    <h2 class="text-center text-[20px] font-bold text-madain-shaft">تواصل معنا</h2>
+    <p class="mt-1.5 text-center text-[14px] text-madain-boulder">نحن هنا للإجابة على استفساراتكم</p>
+
+    <div class="mt-6 grid gap-5 md:grid-cols-2">
+      {contacts.map((c) => (
+        <div class="flex items-start gap-4 rounded-lg border border-[#EFEADD] bg-[#FBF9F4] p-4">
+          <span class="mt-0.5 shrink-0">
+            {c.icon === 'phone' && (
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9.2" />
+                <path d="M9 8.6a10 10 0 0 0 6.4 6.4l1-1.3a1 1 0 0 1 1-.3c.6.2 1.2.3 1.8.3v1.9c0 .5-.4.9-.9.8A12.6 12.6 0 0 1 6.6 5.7c0-.5.3-.9.8-.9h1.9c0 .6.1 1.2.3 1.8a1 1 0 0 1-.3 1z" />
+              </svg>
+            )}
+            {c.icon === 'mail' && (
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2.5" y="5" width="19" height="14" rx="2" /><polyline points="21,7 12,13.5 3,7" />
+              </svg>
+            )}
+            {c.icon === 'proxy' && (
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="16" rx="2.4" /><circle cx="12" cy="11" r="2.6" />
+                <path d="M7.6 17a5 5 0 0 1 8.8 0" />
+              </svg>
+            )}
+            {c.icon === 'pin' && (
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z" /><circle cx="12" cy="10" r="2.6" />
+              </svg>
+            )}
+          </span>
+          <div>
+            <div class="text-[14px] font-bold text-madain-shaft">{c.label}</div>
+            {c.href ? (
+              <a href={c.href} dir="ltr" class="mt-0.5 block text-[13.5px] text-madain-boulder transition hover:text-madain-gold">
+                {c.value}
+              </a>
+            ) : (
+              <div dir="ltr" class="mt-0.5 whitespace-pre-line text-[13.5px] leading-relaxed text-madain-boulder">
+                {c.value}
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</AgmLayout>
