@@ -1,51 +1,8 @@
 // Board of Directors nominees — data extracted from the CVs submitted with
-// each nomination file. Names are ordered alphabetically in Arabic; the order
-// carries no preference or recommendation from the company.
+// each nomination file. The array is in Arabic alphabetical order by full
+// name, which every page renders as-is; the order carries no preference or
+// recommendation from the company.
 export const nominees = [
-  {
-    slug: 'asma-moosa',
-    name: 'أسماء موسى محمد عبدالرحمن',
-    nameEn: 'Asma Moosa Mohammad Abdulrahman',
-    role: 'مرشحة لعضوية مجلس الإدارة',
-    photo: '/images/nominees/asma-moosa.jpeg',
-    cv: '/general-assembly-2026/cv/asma-moosa.pdf',
-    summary:
-      'مديرة ذات خبرة في التميز المؤسسي وإدارة الجودة، مع خبرات في القيادة وبناء الفرق والتدريب وإدارة المخاطر.',
-    experience: [
-      { org: 'مؤسسة محمد بن راشد للإسكان', role: 'مدير إدارة التميز', period: '2008 - 2011' },
-      { org: 'بلدية دبي', role: 'رئيس قسم الجودة في التدقيق', period: '2005 - 2007' },
-      { org: 'النيابة العامة', role: 'منسق جودة', period: '2000 - 2004' },
-      { org: 'منسق تدريب', role: '', period: '1995 - 2000' },
-    ],
-    education: [
-      { degree: 'ماجستير العلوم في التميز المؤسسي — التميز والجودة', place: 'جامعة حمدان بن محمد الذكية — دبي', year: '2009' },
-      { degree: 'بكالوريوس إدارة الأعمال — إدارة الأعمال والجودة', place: 'جامعة عجمان', year: '2003' },
-      { degree: 'دبلوم تعليم عالٍ في إدارة الأعمال', place: 'كليات التقنية العليا', year: '1998' },
-    ],
-    note: 'عضو في جمعية الإمارات للتوحد ومجلس أولياء أمور الأولمبياد الخاص الإماراتي، ولديها مشاركات تطوعية وجوائز في التميز والعمل المجتمعي.',
-  },
-  {
-    slug: 'abdulaziz-alblooshi',
-    name: 'عبدالعزيز حسن المندوس البلوشي',
-    nameEn: 'Abdulaziz Hassan Almandoos Alblooshi',
-    role: 'مرشح لعضوية مجلس الإدارة',
-    photo: '/images/nominees/abdulaziz-alblooshi.JPG',
-    cv: '/general-assembly-2026/cv/abdulaziz-alblooshi.pdf',
-    summary: 'خبرة تنفيذية ومصرفية ممتدة في الخدمات المصرفية التجارية وإدارة الأعمال والعمليات.',
-    experience: [
-      { org: 'Ruya Community Islamic Bank', role: 'Head of Business', period: 'منذ 12/2023' },
-      { org: 'MTS Bank', role: 'Chief Operating Officer (COO)', period: '01/2023 - 12/2023' },
-      { org: 'FAB — UAE', role: 'Head of Corporate Client Service Unit', period: '01/2020 - 01/2023' },
-      { org: 'FAB — Egypt', role: 'Head of Client Service Unit', period: '01/2019 - 12/2019' },
-      { org: 'FAB — Egypt', role: 'Head of Community Banking', period: '09/2015 - 12/2018' },
-      { org: 'FAB — UAE', role: 'Director, Real Estate — Commercial Banking', period: '02/2014 - 09/2015' },
-    ],
-    education: [
-      { degree: 'B.A., Major: Accounts — Minor: Information Systems', place: 'Al Ain University', year: '1989' },
-    ],
-    courses: ['Credit Risk Analysis & Management', 'Credit & Control', 'Bank Guarantee', 'Team Building'],
-    note: 'للاطلاع على كامل الخبرات والمؤهلات والدورات، يرجى عرض السيرة الذاتية الأصلية.',
-  },
   {
     slug: 'ahmed-al-dhaheri',
     name: 'أحمد شبيب الظاهري',
@@ -93,6 +50,28 @@ export const nominees = [
       'عضويات مجالس الإدارة تشمل الاتحاد التعاوني وسوق إكسترا ومركز النور؛ والخبرات السابقة تشمل إعمار مولز ومعهد المدققين الداخليين — فرع الإمارات.',
   },
   {
+    slug: 'asma-moosa',
+    name: 'أسماء موسى محمد عبدالرحمن',
+    nameEn: 'Asma Moosa Mohammad Abdulrahman',
+    role: 'مرشحة لعضوية مجلس الإدارة',
+    photo: '/images/nominees/asma-moosa.jpeg',
+    cv: '/general-assembly-2026/cv/asma-moosa.pdf',
+    summary:
+      'مديرة ذات خبرة في التميز المؤسسي وإدارة الجودة، مع خبرات في القيادة وبناء الفرق والتدريب وإدارة المخاطر.',
+    experience: [
+      { org: 'مؤسسة محمد بن راشد للإسكان', role: 'مدير إدارة التميز', period: '2008 - 2011' },
+      { org: 'بلدية دبي', role: 'رئيس قسم الجودة في التدقيق', period: '2005 - 2007' },
+      { org: 'النيابة العامة', role: 'منسق جودة', period: '2000 - 2004' },
+      { org: 'منسق تدريب', role: '', period: '1995 - 2000' },
+    ],
+    education: [
+      { degree: 'ماجستير العلوم في التميز المؤسسي — التميز والجودة', place: 'جامعة حمدان بن محمد الذكية — دبي', year: '2009' },
+      { degree: 'بكالوريوس إدارة الأعمال — إدارة الأعمال والجودة', place: 'جامعة عجمان', year: '2003' },
+      { degree: 'دبلوم تعليم عالٍ في إدارة الأعمال', place: 'كليات التقنية العليا', year: '1998' },
+    ],
+    note: 'عضو في جمعية الإمارات للتوحد ومجلس أولياء أمور الأولمبياد الخاص الإماراتي، ولديها مشاركات تطوعية وجوائز في التميز والعمل المجتمعي.',
+  },
+  {
     slug: 'khalid-alamri',
     name: 'خالد علي حسين العامري',
     nameEn: 'Khalid Ali Hussain Alamri',
@@ -112,5 +91,27 @@ export const nominees = [
     ],
     note:
       'الكفاءات الأساسية تشمل إدارة الأعمال وريادة الأعمال واستراتيجية العلامة التجارية وعمليات الإعلان والتخطيط الاستراتيجي وقيادة الفرق.',
+  },
+  {
+    slug: 'abdulaziz-alblooshi',
+    name: 'عبدالعزيز حسن المندوس البلوشي',
+    nameEn: 'Abdulaziz Hassan Almandoos Alblooshi',
+    role: 'مرشح لعضوية مجلس الإدارة',
+    photo: '/images/nominees/abdulaziz-alblooshi.JPG',
+    cv: '/general-assembly-2026/cv/abdulaziz-alblooshi.pdf',
+    summary: 'خبرة تنفيذية ومصرفية ممتدة في الخدمات المصرفية التجارية وإدارة الأعمال والعمليات.',
+    experience: [
+      { org: 'Ruya Community Islamic Bank', role: 'Head of Business', period: 'منذ 12/2023' },
+      { org: 'MTS Bank', role: 'Chief Operating Officer (COO)', period: '01/2023 - 12/2023' },
+      { org: 'FAB — UAE', role: 'Head of Corporate Client Service Unit', period: '01/2020 - 01/2023' },
+      { org: 'FAB — Egypt', role: 'Head of Client Service Unit', period: '01/2019 - 12/2019' },
+      { org: 'FAB — Egypt', role: 'Head of Community Banking', period: '09/2015 - 12/2018' },
+      { org: 'FAB — UAE', role: 'Director, Real Estate — Commercial Banking', period: '02/2014 - 09/2015' },
+    ],
+    education: [
+      { degree: 'B.A., Major: Accounts — Minor: Information Systems', place: 'Al Ain University', year: '1989' },
+    ],
+    courses: ['Credit Risk Analysis & Management', 'Credit & Control', 'Bank Guarantee', 'Team Building'],
+    note: 'للاطلاع على كامل الخبرات والمؤهلات والدورات، يرجى عرض السيرة الذاتية الأصلية.',
   },
 ];
