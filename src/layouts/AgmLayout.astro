@@ -3,7 +3,7 @@ import '../styles/global.css';
 
 interface Props {
   title: string;
-  active: 'meeting' | 'attendance' | 'documents';
+  active: 'meeting' | 'nominees' | 'attendance' | 'documents';
 }
 
 const { title, active } = Astro.props;
@@ -11,6 +11,7 @@ const { title, active } = Astro.props;
 const SITE = 'https://madain.com';
 const tabs = [
   { key: 'meeting', label: 'موعد ومكان الاجتماع', href: '/general-assembly-2026/' },
+  { key: 'nominees', label: 'المرشحون', href: '/general-assembly-2026/nominees/' },
   { key: 'attendance', label: 'الحضور والتصويت', href: '/general-assembly-2026/attendance-voting/' },
   { key: 'documents', label: 'المستندات والتواصل', href: '/general-assembly-2026/documents/' },
 ];
