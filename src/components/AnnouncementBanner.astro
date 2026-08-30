@@ -1,82 +1,23 @@
 ---
-// General Assembly Meeting banner — mirrors the approved package
-// (madain_website_updated_20260830) and links to the AGM hub page.
+// General Assembly Meeting — the approved announcement artwork, linked to
+// the assembly pages.
 const DETAILS_URL = '/general-assembly-2026/';
-
-const meeting = {
-  day: 'الأربعاء',
-  date: '02',
-  month: 'سبتمبر',
-  year: '2026',
-  time: '10:00 صباحًا',
-};
 ---
 
-<section class="agm-banner w-full py-6 md:py-8">
-  <div class="mx-auto w-[92%] max-w-[1180px]">
-    <div
-      dir="rtl"
-      class="grid overflow-hidden rounded-[22px] border border-[#a98622]/45 bg-[#fbfaf6] shadow-[0_14px_38px_rgba(8,40,70,.12)] md:rounded-[30px] lg:min-h-[420px] lg:grid-cols-[250px_1fr_180px]"
+<section class="w-full bg-[#F3F1EA] py-5 md:py-7">
+  <div class="mx-auto w-[94%] max-w-[1000px]">
+    <a
+      href={DETAILS_URL}
+      aria-label="اجتماع الجمعية العمومية — الأربعاء 02 سبتمبر 2026، الساعة 10:00 صباحاً — عرض التفاصيل"
+      class="block overflow-hidden rounded-xl shadow-md transition hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-madain-gold"
     >
-      <!-- Date panel -->
-      <aside
-        class="flex items-center justify-center gap-8 bg-[linear-gradient(160deg,#d3aa3b,#9c791b_70%,#7e641d)] px-6 py-6 text-center text-white lg:flex-col lg:gap-0 lg:px-6 lg:py-10"
-      >
-        <div class="leading-none">
-          <div class="text-[17px] font-bold">{meeting.day}</div>
-          <div class="text-[64px] font-extrabold leading-none lg:text-[82px]">{meeting.date}</div>
-          <div class="mt-1 text-[20px] font-extrabold lg:text-[22px]">{meeting.month}</div>
-          <div class="text-[24px] lg:text-[28px]">{meeting.year}</div>
-        </div>
-        <div class="border-s border-white/55 ps-8 lg:mt-[22px] lg:border-s-0 lg:border-t lg:ps-0 lg:pt-[14px]">
-          الساعة<br /><b>{meeting.time}</b>
-        </div>
-      </aside>
-
-      <!-- Main -->
-      <div class="flex flex-col justify-center px-6 py-10 text-center md:px-14 lg:py-[58px]">
-        <h1 class="m-0 mb-1.5 text-[32px] leading-[1.35] text-[#082846] md:text-[38px] lg:text-[45px]">
-          الجمعية العمومية
-        </h1>
-        <h2 class="m-0 text-[20px] font-bold text-[#a98622] md:text-[22px] lg:text-[25px]">
-          لشركة مدائن العقارية ش.م.خ
-        </h2>
-        <div class="mx-auto my-5 h-px w-[70%] bg-[#c7a642]"></div>
-        <div class="mb-[22px] mt-0.5 text-[17px] font-bold lg:text-[19px]">
-          {meeting.date} {meeting.month} {meeting.year} &nbsp; | &nbsp; الساعة {meeting.time}
-        </div>
-        <p class="mx-auto mb-[18px] max-w-[650px] text-[15px] lg:text-[17px]">
-          للاطلاع على معلومات ومستندات الجمعية العمومية
-        </p>
-        <a
-          class="inline-flex w-full max-w-[300px] flex-col items-center justify-center self-center rounded-lg border-2 border-[#a98622] bg-[#082846] px-8 py-3 font-bold text-white transition hover:bg-[#0b3559] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a98622]"
-          href={DETAILS_URL}
-        >
-          اضغط هنا
-          <span class="text-[13px] tracking-[0.5px] text-[#e4c45e]">VIEW DETAILS</span>
-        </a>
-      </div>
-
-      <!-- Monogram -->
-      <div class="relative hidden items-center justify-center lg:flex">
-        <span class="absolute h-[250px] w-px bg-[#c7a642]"></span>
-        <span
-          class="relative z-10 flex h-[82px] w-[82px] items-center justify-center rounded-full border-2 border-[#a98622] bg-[#fbfaf6] font-serif text-[44px] text-[#a98622]"
-        >
-          M
-        </span>
-      </div>
-    </div>
+      <img
+        src="/images/announcement-banner.png"
+        alt="اجتماع الجمعية العمومية لشركة مدائن العقارية ش.م.خ — الأربعاء 02 سبتمبر 2026، الساعة 10:00 صباحاً — واتساب 800 370، هاتف +971 56 477 7666"
+        class="block h-auto w-full"
+        width="2000"
+        height="830"
+      />
+    </a>
   </div>
 </section>
-
-<style>
-  .agm-banner {
-    background:
-      linear-gradient(rgba(7, 38, 66, 0.18), rgba(7, 38, 66, 0.18)),
-      linear-gradient(135deg, #d8cfb3 0%, #f4f0e4 45%, #e4dcc7 100%);
-    font-family: Arial, Tahoma, sans-serif;
-    color: #13263c;
-    line-height: 1.65;
-  }
-</style>
