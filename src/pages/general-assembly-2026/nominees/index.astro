@@ -4,12 +4,12 @@ import { nominees } from '../../../data/nominees.js';
 
 // Order below matches the approved publication list; the cards flow
 // left-to-right exactly as in the supplied design.
-const upcoming = [
-  { ar: 'دعوة الجمعية العمومية', icon: 'megaphone' },
-  { ar: 'إجراءات الحضور والمشاركة عن بُعد', icon: 'remote' },
-  { ar: 'إجراءات التصويت الإلكتروني', icon: 'vote' },
-  { ar: 'نموذج / تعليمات التوكيل', icon: 'proxy' },
-  { ar: 'التواصل والاستفسارات', icon: 'support' },
+const resources = [
+  { ar: 'دعوة الجمعية العمومية', icon: 'megaphone', href: '/general-assembly-2026/documents/' },
+  { ar: 'إجراءات الحضور والمشاركة عن بُعد', icon: 'remote', href: '/general-assembly-2026/attendance-voting/' },
+  { ar: 'إجراءات التصويت الإلكتروني', icon: 'vote', href: '/general-assembly-2026/attendance-voting/' },
+  { ar: 'نموذج / تعليمات التوكيل', icon: 'proxy', href: '/general-assembly-2026/forms/madain-proxy-form.pdf' },
+  { ar: 'التواصل والاستفسارات', icon: 'support', href: '/general-assembly-2026/documents/' },
 ];
 ---
 
@@ -119,8 +119,11 @@ const upcoming = [
     </p>
 
     <div class="mt-6 grid gap-4 sm:grid-cols-3 lg:grid-cols-5">
-      {upcoming.map((item) => (
-        <article class="flex flex-col items-center rounded-xl border border-[#EFE7D6] bg-white px-4 py-5 text-center">
+      {resources.map((item) => (
+        <a
+          href={item.href}
+          class="flex flex-col items-center rounded-xl border border-[#EFE7D6] bg-white px-4 py-5 text-center transition hover:border-madain-gold hover:bg-[#FDFBF5] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-madain-gold"
+        >
           <span class="flex h-12 items-center">
             {item.icon === 'megaphone' && (
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
@@ -153,8 +156,8 @@ const upcoming = [
             )}
           </span>
           <h3 class="mt-2 min-h-[40px] text-[13.5px] font-bold leading-snug text-madain-shaft">{item.ar}</h3>
-          <p class="mt-1 text-[12.5px] text-madain-boulder">سيتم النشر قريباً</p>
-        </article>
+          <span class="mt-1 text-[12.5px] font-bold text-madain-goldDark">عرض</span>
+        </a>
       ))}
     </div>
   </section>

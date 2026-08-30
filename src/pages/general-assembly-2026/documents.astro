@@ -77,16 +77,12 @@ const documents = [
               <div class="text-[14.5px] font-bold leading-snug text-madain-shaft">{doc.ar}</div>
               <div class="font-inter text-[11px] font-semibold uppercase tracking-[0.1em] text-madain-boulder">{doc.en}</div>
             </div>
-            {doc.href ? (
-              <a
-                href={doc.href}
-                class="shrink-0 rounded-md px-3 py-1.5 text-[13px] font-bold text-madain-goldDark transition hover:bg-[#F6EFDD] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-madain-gold"
-              >
-                عرض
-              </a>
-            ) : (
-              <span class="shrink-0 px-3 py-1.5 text-[13px] font-bold text-madain-boulder/70">قريباً</span>
-            )}
+            <a
+              href={doc.href}
+              class="shrink-0 rounded-md px-3 py-1.5 text-[13px] font-bold text-madain-goldDark transition hover:bg-[#F6EFDD] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-madain-gold"
+            >
+              عرض
+            </a>
           </li>
         ))}
       </ul>
@@ -134,15 +130,17 @@ const documents = [
           </svg>
           عرض الدعوة المنشورة
         </a>
-        <span
-          aria-disabled="true"
-          class="inline-flex cursor-not-allowed items-center justify-center gap-2 rounded-md border-2 border-madain-gold/45 px-6 py-3 text-[14px] font-bold text-madain-gold/70"
+        <a
+          href={NOTICE}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center justify-center gap-2 rounded-md border-2 border-madain-gold px-6 py-3 text-[14px] font-bold text-madain-goldDark transition hover:bg-[#FDF9F0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-madain-gold"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
             <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" /><path d="M14 3v5h5" />
           </svg>
           عرض جدول الأعمال
-        </span>
+        </a>
       </div>
       <p class="mt-2 text-center text-[12.5px] text-madain-boulder">جدول الأعمال الكامل وارد ضمن الدعوة المنشورة.</p>
     </section>
