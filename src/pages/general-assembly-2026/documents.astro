@@ -4,7 +4,6 @@ import AgmLayout from '../../layouts/AgmLayout.astro';
 const NOTICE = '/general-assembly-2026/documents/agm-notice-2026.pdf';
 const PRESS_AR = '/general-assembly-2026/documents/agm-notice-alwatan-2026-07-24.pdf';
 const PRESS_EN = '/general-assembly-2026/documents/agm-notice-gulftime-2026-07-24.pdf';
-const MOET_LETTER = '/general-assembly-2026/documents/moet-agenda-letter-2026-07-02.pdf';
 
 const MAPS_URL =
   'https://maps.google.com/?q=Grant+Thornton+The+Offices+5+One+Central+Dubai+World+Trade+Centre';
@@ -22,8 +21,7 @@ const agenda = [
 
 const documents = [
   { ar: 'دعوة الجمعية المنشورة', en: 'AGM Notice', href: NOTICE },
-  { ar: 'جدول الأعمال', en: 'Agenda', href: MOET_LETTER },
-  { ar: 'كتاب وزارة الاقتصاد والسياحة', en: 'Ministry of Economy & Tourism Letter', href: MOET_LETTER },
+  { ar: 'جدول الأعمال', en: 'Agenda', href: NOTICE },
   { ar: 'قائمة المرشحين لعضوية مجلس الإدارة', en: 'Board Nominees', href: '/general-assembly-2026/nominees/' },
   { ar: 'السير الذاتية للمرشحين', en: 'Candidate CVs', href: '/general-assembly-2026/nominees/' },
   { ar: 'تعليمات الحضور والتصويت', en: 'Attendance & Voting Guidelines', href: '/general-assembly-2026/attendance-voting/' },
@@ -107,9 +105,7 @@ const documents = [
         </span>
       </div>
 
-      <p class="mt-5 text-center text-[13.5px] text-madain-boulder">
-        بنود جدول الأعمال كما وردت في كتاب وزارة الاقتصاد والسياحة رقم (م و ز / ش ك / 224) بتاريخ 2 يوليو 2026:
-      </p>
+      <p class="mt-5 text-center text-[13.5px] text-madain-boulder">بنود جدول الأعمال المعروضة على الجمعية العمومية:</p>
 
       <ol class="mt-4 divide-y divide-dashed divide-[#EFE7D6]">
         {agenda.map((item, index) => (
@@ -135,7 +131,7 @@ const documents = [
           عرض الدعوة المنشورة
         </a>
         <a
-          href={MOET_LETTER}
+          href={NOTICE}
           target="_blank"
           rel="noopener"
           class="inline-flex items-center justify-center gap-2 rounded-md border-2 border-madain-gold px-6 py-3 text-[14px] font-bold text-madain-goldDark transition hover:bg-[#FDF9F0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-madain-gold"
@@ -146,9 +142,7 @@ const documents = [
           عرض جدول الأعمال
         </a>
       </div>
-      <p class="mt-2 text-center text-[12.5px] text-madain-boulder">
-        جدول الأعمال أعلاه منقول حرفياً عن كتاب وزارة الاقتصاد والسياحة، وهو المعتمد لانعقاد الجمعية العمومية.
-      </p>
+      <p class="mt-2 text-center text-[12.5px] text-madain-boulder">جدول الأعمال الكامل وارد ضمن الدعوة المنشورة.</p>
     </section>
   </div>
 
