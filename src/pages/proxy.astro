@@ -1,0 +1,132 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AgmTabs from '../../components/AgmTabs.astro';
+---
+
+<Layout
+  title="Proxy Form — General Assembly Meeting 2026 — Mada'in Properties"
+  description="Proxy attendance form for the Annual General Assembly Meeting of Mada'in Real Estate Company PJSC — 02 September 2026."
+>
+  <Header />
+  <main>
+    <section class="w-full bg-gold-gradient-v text-white">
+      <div class="mx-auto max-w-container px-6 py-14 text-center md:py-16">
+        <p class="mb-4 text-sm font-light uppercase tracking-widest2 text-madain-straw">
+          Annual General Assembly Meeting — 02 September 2026
+        </p>
+        <h1 class="text-3xl font-light uppercase leading-tight tracking-wide md:text-4xl">
+          Proxy Attendance Form
+        </h1>
+      </div>
+    </section>
+
+    <AgmTabs active="proxy" />
+
+    <section class="w-full bg-white">
+      <div class="mx-auto max-w-container px-6 py-14">
+        <div class="mx-auto max-w-3xl">
+          <p class="mb-10 text-center font-light leading-relaxed text-madain-tundora">
+            A shareholder who is unable to attend the General Assembly Meeting in person may
+            appoint another person as proxy to attend and vote on their behalf, in accordance
+            with the Company's Articles of Association and the applicable regulations.
+          </p>
+
+          <div class="rounded-md border border-madain-gallery bg-white p-8 shadow-sm md:p-10">
+            <h2 class="mb-8 text-center text-xl font-light uppercase tracking-wide text-madain-shaft">
+              Proxy Form
+            </h2>
+
+            <form class="space-y-6" onsubmit="return false;">
+              <div class="grid gap-6 md:grid-cols-2">
+                <div>
+                  <label for="shareholder-name" class="mb-2 block text-sm font-normal text-madain-shaft">
+                    Shareholder Full Name
+                  </label>
+                  <input
+                    id="shareholder-name"
+                    type="text"
+                    class="w-full rounded-md border border-madain-gallery bg-white px-4 py-3 font-light text-madain-shaft outline-none transition focus:border-madain-gold"
+                    placeholder="As registered in the share register"
+                  />
+                </div>
+                <div>
+                  <label for="shareholder-id" class="mb-2 block text-sm font-normal text-madain-shaft">
+                    Investor / Shareholder Number
+                  </label>
+                  <input
+                    id="shareholder-id"
+                    type="text"
+                    class="w-full rounded-md border border-madain-gallery bg-white px-4 py-3 font-light text-madain-shaft outline-none transition focus:border-madain-gold"
+                    placeholder="e.g. 123456"
+                  />
+                </div>
+              </div>
+
+              <div class="grid gap-6 md:grid-cols-2">
+                <div>
+                  <label for="proxy-name" class="mb-2 block text-sm font-normal text-madain-shaft">
+                    Proxy Full Name
+                  </label>
+                  <input
+                    id="proxy-name"
+                    type="text"
+                    class="w-full rounded-md border border-madain-gallery bg-white px-4 py-3 font-light text-madain-shaft outline-none transition focus:border-madain-gold"
+                    placeholder="Person appointed to attend"
+                  />
+                </div>
+                <div>
+                  <label for="proxy-id" class="mb-2 block text-sm font-normal text-madain-shaft">
+                    Proxy Emirates ID / Passport No.
+                  </label>
+                  <input
+                    id="proxy-id"
+                    type="text"
+                    class="w-full rounded-md border border-madain-gallery bg-white px-4 py-3 font-light text-madain-shaft outline-none transition focus:border-madain-gold"
+                    placeholder="Identification number"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label for="shares" class="mb-2 block text-sm font-normal text-madain-shaft">
+                  Number of Shares Held
+                </label>
+                <input
+                  id="shares"
+                  type="text"
+                  class="w-full rounded-md border border-madain-gallery bg-white px-4 py-3 font-light text-madain-shaft outline-none transition focus:border-madain-gold"
+                  placeholder="Total shares registered under the shareholder's name"
+                />
+              </div>
+
+              <p class="rounded-md bg-madain-gallery/50 p-5 text-sm font-light leading-relaxed text-madain-tundora">
+                I, the undersigned shareholder, hereby appoint the above-named person as my
+                proxy to attend the Annual General Assembly Meeting of Mada'in Real Estate
+                Company PJSC to be held on Wednesday 02 September 2026 at 10:00 AM, and to
+                vote on my behalf on all matters presented to the meeting.
+              </p>
+
+              <div class="text-center">
+                <button
+                  type="submit"
+                  class="inline-block rounded-full bg-gold-gradient px-10 py-4 text-sm font-light uppercase tracking-[0.15em] text-white shadow transition hover:opacity-90"
+                >
+                  Submit Proxy Request
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <p class="mt-8 text-center text-sm font-light leading-relaxed text-madain-boulder">
+            For assistance with the proxy process, please contact
+            <a href="mailto:sales@madain.ae" class="text-madain-gold underline underline-offset-4 hover:text-madain-goldDark">sales@madain.ae</a>
+            or call <a href="tel:+971800370" class="text-madain-gold underline underline-offset-4 hover:text-madain-goldDark">+971 800 370</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
