@@ -88,6 +88,9 @@ Paced bulk SMS sender
   --window <range>    permitted sending hours, local time (default: ${DEFAULTS.window})
                       TDRA bars promotional SMS 21:00-07:00; "off" for OTP/alerts
   --job <name>        job name; its log makes the run resumable (default: CSV filename)
+  --only <numbers>    allowlist: send ONLY to these (comma-separated). Everyone
+                      else in the CSV is dropped. Also settable as SMS_ALLOWLIST
+                      in .env, which no command line can override away
   --limit <n>         stop after n messages this run
   --retries <n>       attempts per message on transient errors (default: ${DEFAULTS.retries})
   --live              actually send; without it nothing leaves the machine
@@ -217,6 +220,17 @@ function minutesUntilOpen(window, now = new Date()) {
 
 // ----------------------------------------------------------------- messages
 
+function parseAllowlist(spec, countryCode) {
+  if (!spec || !spec.trim()) return null;
+  const numbers = new Set();
+  for (const raw of spec.split(/[,\s]+/).filter(Boolean)) {
+    const phone = normalisePhone(raw, countryCode);
+    if (!phone) throw new Error(`Allowlist entry "${raw}" is not a valid mobile number`);
+    numbers.add(phone);
+  }
+  return numbers.size === 0 ? null : numbers;
+}
+
 function renderTemplate(template, row) {
   return template.replace(/\{\{\s*([\w.-]+)\s*\}\}/g, (match, key) => {
     const value = row[key];
@@ -295,6 +309,7 @@ async function main() {
   }
 
   const env = loadDotEnv();
+  const allowlist = parseAllowlist(args.only ?? env.SMS_ALLOWLIST, args.country);
   const template = args.text ?? readFileSync(resolve(args.template), 'utf8').trim();
   const rows = parseCsv(readFileSync(resolve(args.file), 'utf8'));
   if (rows.length === 0) throw new Error(`No rows in ${args.file}`);
@@ -321,7 +336,15 @@ async function main() {
   const logPath = resolve(logDir, `${jobName}.jsonl`);
   const alreadySent = loadSent(logPath);
 
-  let pending = queue.filter((item) => !alreadySent.has(item.to));
+  const blocked = [];
+  if (allowlist) {
+    for (const item of queue) {
+      if (!allowlist.has(item.to)) blocked.push(item.to);
+    }
+  }
+  const permitted = allowlist ? queue.filter((item) => allowlist.has(item.to)) : queue;
+
+  let pending = permitted.filter((item) => !alreadySent.has(item.to));
   if (args.limit) pending = pending.slice(0, args.limit);
 
   const sendWindow = parseWindow(args.window);
@@ -331,12 +354,18 @@ async function main() {
 
   console.log(`\nJob        ${jobName}`);
   console.log(`Provider   ${provider.label}${args.live ? '' : '  (DRY RUN - nothing will be sent)'}`);
+  if (allowlist) {
+    console.log(`Allowlist  ACTIVE - only ${[...allowlist].join(', ')} can be reached`);
+  }
   console.log(`Rows       ${rows.length} in CSV`);
   console.log(`Valid      ${queue.length} unique numbers`);
   if (invalid.length > 0) {
     console.log(`Invalid    ${invalid.length} skipped:`);
     for (const bad of invalid.slice(0, 10)) console.log(`             line ${bad.line}: ${bad.value}`);
     if (invalid.length > 10) console.log(`             ...and ${invalid.length - 10} more`);
+  }
+  if (blocked.length > 0) {
+    console.log(`Blocked    ${blocked.length} recipient(s) held back by the allowlist`);
   }
   if (alreadySent.size > 0) console.log(`Done       ${alreadySent.size} already sent in an earlier run`);
   console.log(`To send    ${pending.length} messages, ${segments} SMS parts`);
