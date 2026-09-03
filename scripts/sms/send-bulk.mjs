@@ -28,11 +28,22 @@ import { providers } from './providers.mjs';
 const HERE = dirname(fileURLToPath(import.meta.url));
 const DEFAULTS = {
   rate: 50,           // messages per hour
-  provider: 'taqnyat',
+  provider: 'unifonic',
   column: 'phone',
-  country: '966',     // Saudi Arabia
+  country: '971',     // United Arab Emirates
   retries: 3,
   pacing: 'spread',   // 'spread' = one every 3600/rate s, 'burst' = a batch per hour
+  window: '07:00-21:00', // TDRA: no promotional SMS between 21:00 and 07:00
+};
+
+/**
+ * Mobile number shapes per country code, used to reject landlines and typos
+ * before they cost anything. Both the UAE and Saudi Arabia are <cc> + 5 + 8
+ * digits. Countries not listed fall back to a plain length check.
+ */
+const MOBILE_PATTERNS = {
+  971: /^9715\d{8}$/,  // UAE   — e&, du, Virgin
+  966: /^9665\d{8}$/,  // Saudi — STC, Mobily, Zain
 };
 
 // ---------------------------------------------------------------- arguments
@@ -74,6 +85,8 @@ Paced bulk SMS sender
   --pacing <mode>     spread = evenly across the hour (default) | burst = a batch on the hour
   --column <name>     CSV column holding the number (default: ${DEFAULTS.column})
   --country <code>    country code for local numbers (default: ${DEFAULTS.country})
+  --window <range>    permitted sending hours, local time (default: ${DEFAULTS.window})
+                      TDRA bars promotional SMS 21:00-07:00; "off" for OTP/alerts
   --job <name>        job name; its log makes the run resumable (default: CSV filename)
   --limit <n>         stop after n messages this run
   --retries <n>       attempts per message on transient errors (default: ${DEFAULTS.retries})
@@ -158,11 +171,48 @@ function normalisePhone(raw, countryCode) {
 
   if (!/^\d{10,15}$/.test(digits)) return null;
 
-  // Saudi mobiles are 9665XXXXXXXX — 12 digits starting 9665. Catch landlines
-  // and typos here rather than paying the provider to reject them.
-  if (countryCode === '966' && !/^9665\d{8}$/.test(digits)) return null;
+  const pattern = MOBILE_PATTERNS[countryCode];
+  if (pattern && !pattern.test(digits)) return null;
 
   return digits;
+}
+
+// ------------------------------------------------------------- sending hours
+
+/**
+ * The UAE's TDRA bars promotional SMS between 21:00 and 07:00, and fines run to
+ * AED 400,000 per violation. A 300-message run at 50/hour takes six hours, so
+ * it is entirely possible to start legally and finish illegally — the sender
+ * therefore pauses at the edge of the window and resumes when it reopens,
+ * rather than trusting whoever launched it to have done the arithmetic.
+ *
+ * Times are the machine's local time. Pass --window off for transactional
+ * messages (OTP, delivery alerts), which the rule does not restrict.
+ */
+function parseWindow(spec) {
+  if (!spec || spec === 'off') return null;
+  const match = spec.match(/^(\d{1,2}):(\d{2})-(\d{1,2}):(\d{2})$/);
+  if (!match) throw new Error(`--window must look like 07:00-21:00 (or "off"), got "${spec}"`);
+  const [, h1, m1, h2, m2] = match.map(Number);
+  const open = h1 * 60 + m1;
+  const close = h2 * 60 + m2;
+  if (open === close) throw new Error('--window start and end cannot be the same time');
+  return { open, close, spec };
+}
+
+/** Minutes to wait before the window is open; 0 when it already is. */
+function minutesUntilOpen(window, now = new Date()) {
+  if (!window) return 0;
+  const current = now.getHours() * 60 + now.getMinutes();
+  const { open, close } = window;
+
+  // A window that wraps past midnight (e.g. 22:00-06:00) is open outside [close, open).
+  const isOpen = open < close
+    ? current >= open && current < close
+    : current >= open || current < close;
+  if (isOpen) return 0;
+
+  return current < open ? open - current : 24 * 60 - current + open;
 }
 
 // ----------------------------------------------------------------- messages
@@ -274,6 +324,7 @@ async function main() {
   let pending = queue.filter((item) => !alreadySent.has(item.to));
   if (args.limit) pending = pending.slice(0, args.limit);
 
+  const sendWindow = parseWindow(args.window);
   const intervalMs = args.pacing === 'burst' ? 1000 : Math.round(3_600_000 / args.rate);
   const segments = pending.reduce((total, item) => total + segmentCount(item.text), 0);
   const hours = pending.length / args.rate;
@@ -290,7 +341,22 @@ async function main() {
   if (alreadySent.size > 0) console.log(`Done       ${alreadySent.size} already sent in an earlier run`);
   console.log(`To send    ${pending.length} messages, ${segments} SMS parts`);
   console.log(`Rate       ${args.rate}/hour (${args.pacing}) - about ${hours.toFixed(1)} hours`);
+  if (sendWindow) {
+    const held = minutesUntilOpen(sendWindow);
+    const now = new Date().toTimeString().slice(0, 5);
+    console.log(`Window     ${sendWindow.spec} local time (now ${now})${held > 0 ? ` - CLOSED, would hold ${held} min` : ''}`);
+  } else {
+    console.log('Window     off - sending around the clock (transactional messages only)');
+  }
   console.log(`Log        ${logPath}\n`);
+
+  // Promotional SMS in the UAE must carry an opt-out. Warn rather than block:
+  // the same script sends transactional messages, where no opt-out belongs.
+  const hasOptOut = /stop|unsubscribe|إيقاف|الغاء|إلغاء/i.test(template);
+  if (sendWindow && !hasOptOut) {
+    console.log('Note       No opt-out wording found in the message. TDRA requires one on');
+    console.log('           promotional SMS (e.g. "للإيقاف أرسل STOP"). Ignore for OTP/alerts.\n');
+  }
 
   if (pending.length === 0) {
     console.log('Nothing left to send.\n');
@@ -325,6 +391,15 @@ async function main() {
 
   for (const [index, item] of pending.entries()) {
     if (stopping) break;
+
+    // Hold at the edge of the permitted window rather than sending outside it.
+    const waitMinutes = minutesUntilOpen(sendWindow);
+    if (waitMinutes > 0) {
+      const opensAt = new Date(Date.now() + waitMinutes * 60_000).toTimeString().slice(0, 5);
+      console.log(`\n  Outside the ${sendWindow.spec} window. Holding ${waitMinutes} min, resuming at ${opensAt}.\n`);
+      await sleep(waitMinutes * 60_000);
+      if (stopping) break;
+    }
 
     let result;
     for (let attempt = 1; attempt <= args.retries; attempt += 1) {
