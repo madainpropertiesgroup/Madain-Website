@@ -1,13 +1,26 @@
 ---
-// Notice that the general assembly has been postponed. Nothing here links to
-// the assembly pages any more.
+// The new convocation: 4 November 2026 at Swissotel Al Murooj, attended in
+// person or by proxy only. Nothing here links to the old assembly pages.
 const meeting = {
   day: 'الأربعاء',
-  date: '02',
-  month: 'سبتمبر',
+  date: '04',
+  month: 'نوفمبر',
   year: '2026',
   time: '10:00 صباحاً',
 };
+
+const facts = [
+  {
+    label: 'مكان الانعقاد',
+    value: 'فندق سويس أوتيل المروج — وسط مدينة دبي',
+    icon: 'pin',
+  },
+  {
+    label: 'باب الترشح لعضوية مجلس الإدارة',
+    value: 'مفتوح حتى الأحد 11 أكتوبر 2026',
+    icon: 'user',
+  },
+];
 ---
 
 <section class="w-full bg-[#F3F1EA] py-5 md:py-7">
@@ -33,16 +46,47 @@ const meeting = {
           <span class="h-px w-16 bg-madain-gold/60 md:w-24"></span>
         </div>
 
-        <p class="mx-auto mt-5 max-w-[60ch] text-[14.5px] leading-loose text-madain-tundora md:text-[15.5px]">
-          نحيطكم علماً بأنه بناءً على قرار <b class="text-madain-goldDark">وزارة الاقتصاد والسياحة</b> الصادر بتاريخ
-          <b class="text-madain-goldDark">1 سبتمبر 2026</b>، تم تأجيل اجتماع الجمعية العمومية لشركة
-          <b class="text-[#0B2545]">مدائن العقارية ش.م.خ</b>، المقرر عقده يوم
-          <b class="text-madain-goldDark">الأربعاء الموافق 2 سبتمبر 2026 الساعة 10:00 صباحاً</b>، وذلك لإعادة إجراءات
-          الدعوة وفقاً لما ورد في قرار الوزارة.
+        <p class="mx-auto mt-5 max-w-[62ch] text-[14.5px] leading-loose text-madain-tundora md:text-[15.5px]">
+          يدعو رئيس مجلس إدارة شركة <b class="text-[#0B2545]">مدائن العقارية ش.م.خ</b> السادة المساهمين لحضور اجتماع
+          الجمعية العمومية المقرر عقده <b class="text-madain-goldDark">حضورياً يوم الأربعاء الموافق 4 نوفمبر 2026 الساعة
+          10:00 صباحاً</b> في فندق سويس أوتيل المروج، وسط مدينة دبي. ويبدأ التسجيل في
+          مقر الاجتماع الساعة 9:00 صباحاً.
+        </p>
+
+        <ul class="mx-auto mt-6 grid max-w-[640px] gap-2.5 text-right">
+          {facts.map((fact) => (
+            <li class="flex items-start gap-3 rounded-xl border border-madain-gold/25 bg-white/70 px-4 py-3">
+              <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#FDF6E4]">
+                {fact.icon === 'pin' && (
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z" /><circle cx="12" cy="10" r="2.4" />
+                  </svg>
+                )}
+                {fact.icon === 'user' && (
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="3.6" /><path d="M4.5 20a7.5 7.5 0 0 1 15 0" />
+                  </svg>
+                )}
+                {fact.icon === 'doc' && (
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" /><path d="M14 3v5h5" />
+                  </svg>
+                )}
+              </span>
+              <span class="text-[13.5px] leading-relaxed text-madain-tundora">
+                <b class="text-[#0B2545]">{fact.label}:</b> {fact.value}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        <p class="mt-5 text-[12.5px] leading-relaxed text-madain-boulder">
+          وستُنشر مستندات الاجتماع وبقية التفاصيل على الموقع الإلكتروني للشركة تباعاً. وللاستفسارات وإرسال طلبات الترشح:
+          <span class="font-inter font-semibold text-madain-goldDark" dir="ltr">info@alnaqbipartners.com</span>
         </p>
       </div>
 
-      <!-- Date of the postponed meeting -->
+      <!-- Meeting date -->
       <div
         class="order-1 flex items-center justify-center gap-8 bg-[#0B2545] px-6 py-5 text-white md:order-2 md:w-[210px] md:flex-col md:gap-6 md:py-9"
       >
@@ -89,7 +133,7 @@ const meeting = {
 
       <span class="hidden h-8 w-px bg-white/20 sm:block"></span>
 
-      <span class="font-inter text-[13.5px] font-semibold text-white/90" dir="ltr">madaingrp.ae</span>
+      <span class="font-inter text-[13.5px] font-semibold text-white/90" dir="ltr">www.madaingrp.ae</span>
 
       <span class="hidden h-8 w-px bg-white/20 sm:block"></span>
 
