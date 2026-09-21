@@ -1,0 +1,13 @@
+---
+// Banner stating that the clauses on the page are the notice's own words.
+const { href } = Astro.props;
+---
+<p class="mt-6 flex flex-col items-center gap-2 rounded-xl border border-madain-gold/40 bg-[#FDF9F0] px-5 py-4 text-center text-[13px] leading-relaxed text-madain-tundora sm:flex-row sm:justify-center sm:text-right">
+  <span>
+    النصوص الواردة في هذه الصفحة <b>منقولة حرفياً</b> من الدعوة المنشورة بتاريخ 21 سبتمبر 2026،
+    والأرقام المبيّنة بجانب كل فقرة هي أرقام بنودها في الدعوة.
+  </span>
+  <a href={href} target="_blank" rel="noopener" class="shrink-0 font-bold text-madain-goldDark underline underline-offset-4">
+    تحميل الدعوة
+  </a>
+</p>

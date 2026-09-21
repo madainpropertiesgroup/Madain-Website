@@ -1,30 +1,22 @@
 ---
 import AgmLayout from '../../layouts/AgmLayout.astro';
-import { meeting, agenda, contacts, NOTICE_PDF, NOMINATION_PDF } from '../../data/agm.js';
+import VerbatimNote from '../../components/VerbatimNote.astro';
+import VenueCard from '../../components/VenueCard.astro';
+import Clause from '../../components/Clause.astro';
+import { meeting, contacts, NOTICE_PDF, NOMINATION_PDF } from '../../data/agm.js';
+import { agenda } from '../../data/notice.js';
 
 const dates = [
   { label: 'إقفال باب الترشح', value: meeting.nominationDeadline, note: `فُتح الباب بتاريخ النشر ${meeting.publication}` },
-  { label: 'الموعد النهائي للتوكيلات', value: meeting.proxyDeadline, note: 'إلى سوق دبي المالي' },
+  { label: 'الموعد الأقصى للتوكيلات', value: meeting.proxyDeadline, note: 'إلى سوق دبي المالي / مركز دبي للإيداع' },
   { label: 'اجتماع الجمعية', value: meeting.full, note: `الساعة ${meeting.time}` },
   { label: 'الاجتماع الثاني', value: meeting.secondMeeting, note: 'عند عدم اكتمال النصاب' },
 ];
 
 const sections = [
-  {
-    title: 'الترشح لعضوية مجلس الإدارة',
-    text: 'الشروط والمستندات المطلوبة وطريقة التقديم قبل إقفال باب الترشح.',
-    href: '/general-assembly-2026/nomination/',
-  },
-  {
-    title: 'الحضور والتسجيل والتصويت',
-    text: 'الحضور الشخصي أو بالإنابة، التوكيلات، سجل الحضور، وآلية التصويت.',
-    href: '/general-assembly-2026/attendance-voting/',
-  },
-  {
-    title: 'الدعوة والمستندات',
-    text: 'نص الدعوة المنشورة وجدول الأعمال ونموذج الترشح للتحميل.',
-    href: '/general-assembly-2026/documents/',
-  },
+  { title: 'الترشح لعضوية مجلس الإدارة', text: 'البنود 2.1 إلى 2.4 من الدعوة: الشروط والمستندات وطريقة التقديم.', href: '/general-assembly-2026/nomination/' },
+  { title: 'الحضور والتسجيل والتصويت', text: 'البنود 3.1 إلى 3.15 من الدعوة: الحضور والتوكيلات والتصويت والنصاب.', href: '/general-assembly-2026/attendance-voting/' },
+  { title: 'نص الدعوة والمستندات', text: 'نص الدعوة المنشورة كاملاً، ونسخ الصحف، والنماذج للتحميل.', href: '/general-assembly-2026/documents/' },
 ];
 ---
 
@@ -52,10 +44,10 @@ const sections = [
         <h1 class="mt-2 text-[26px] font-bold leading-snug md:text-[32px]">
           دعوة لحضور اجتماع الجمعية العمومية
         </h1>
-        <p class="mt-4 max-w-[60ch] text-[14.5px] leading-loose text-white/85">
+        <p class="mt-4 max-w-[62ch] text-[14.5px] leading-loose text-white/85">
           يدعو السيد/ <b class="text-madain-straw">{meeting.chairman}</b> — {meeting.chairmanTitle} — السادة
-          المساهمين لحضور اجتماع الجمعية العمومية المقرر عقده <b class="text-madain-straw">حضورياً</b> في
-          {' '}{meeting.venue}، {meeting.venueDetail}. ويبدأ التسجيل في مقر الاجتماع الساعة {meeting.registration}.
+          المساهمين لحضور اجتماع الجمعية العمومية المقرر عقده <b class="text-madain-straw">حضورياً</b>،
+          ويبدأ التسجيل في مقر الاجتماع الساعة {meeting.registration}.
         </p>
 
         <div class="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -80,6 +72,8 @@ const sections = [
     </div>
   </section>
 
+  <div class="mt-6"><VenueCard /></div>
+
   <!-- Key dates -->
   <section class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
     {dates.map((item) => (
@@ -93,20 +87,12 @@ const sections = [
 
   <!-- Agenda -->
   <section class="mt-6 rounded-2xl border border-madain-gold/35 bg-white p-6 shadow-sm md:p-8">
-    <h2 class="text-[19px] font-bold text-madain-shaft">جدول الأعمال</h2>
+    <h2 class="text-[19px] font-bold text-madain-shaft">1. جدول الأعمال</h2>
     <p class="font-inter mt-1 text-[11.5px] font-semibold uppercase tracking-[0.12em] text-madain-gold">Agenda</p>
-    <div class="mt-4 h-px w-20 bg-madain-gold/50"></div>
-
-    <ol class="mt-5 divide-y divide-dashed divide-[#EFE7D6]">
-      {agenda.map((item, index) => (
-        <li class="flex items-start gap-3 py-3.5">
-          <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#0B2545] font-inter text-[12px] font-bold text-white">
-            {index + 1}
-          </span>
-          <span class="text-[14px] leading-relaxed text-madain-tundora">{item}</span>
-        </li>
-      ))}
-    </ol>
+    <VerbatimNote href={NOTICE_PDF} />
+    <div class="mt-5 space-y-3">
+      {agenda.map((item) => <Clause n={item.n}>{item.text}</Clause>)}
+    </div>
   </section>
 
   <!-- Sections -->
@@ -127,10 +113,8 @@ const sections = [
   <section class="mt-6 rounded-2xl border border-[#E8E2D4] bg-white p-6 text-center shadow-sm">
     <h2 class="text-[16px] font-bold text-madain-shaft">للاستفسارات</h2>
     <p class="mx-auto mt-2 max-w-[62ch] text-[13.5px] leading-relaxed text-madain-boulder">
-      لأي استفسار بشأن الجمعية العمومية أو المستندات أو إجراءات الترشح، يرجى التواصل عبر البريد الإلكتروني
-      {' '}<span class="font-inter font-semibold text-madain-goldDark" dir="ltr">{contacts.legal}</span>،
-      أو مع فريق دعم المساهمين لدى الشركة على واتساب
-      {' '}<span class="font-inter font-semibold text-madain-goldDark" dir="ltr">{contacts.whatsapp}</span>.
+      لأي استفسارات أخرى، يرجى التواصل مع:
+      {' '}<span class="font-inter font-semibold text-madain-goldDark" dir="ltr">{contacts.legal}</span>
     </p>
   </section>
 </AgmLayout>

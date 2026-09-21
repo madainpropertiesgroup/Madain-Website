@@ -1,18 +1,12 @@
 ---
 // The new convocation: 4 November 2026 at Swissotel Al Murooj, attended in
 // person or by proxy only. Nothing here links to the old assembly pages.
-const meeting = {
-  day: 'الأربعاء',
-  date: '04',
-  month: 'نوفمبر',
-  year: '2026',
-  time: '10:00 صباحاً',
-};
+import { meeting } from '../data/agm.js';
 
 const facts = [
   {
     label: 'مكان الانعقاد',
-    value: 'فندق سويس أوتيل المروج — وسط مدينة دبي',
+    value: `${meeting.venue} — ${meeting.venueDetail}`,
     icon: 'pin',
   },
   {
@@ -54,7 +48,7 @@ const facts = [
           <span class="mt-2 block">
             السادة المساهمين لحضور اجتماع الجمعية العمومية المقرر عقده
             <b class="text-madain-goldDark">حضورياً يوم الأربعاء الموافق 4 نوفمبر 2026 الساعة 10:00 صباحاً</b>
-            في فندق سويس أوتيل المروج، وسط مدينة دبي. ويبدأ التسجيل في مقر الاجتماع الساعة 9:00 صباحاً.
+            في {meeting.venue}، {meeting.venueDetail}. ويبدأ التسجيل في مقر الاجتماع الساعة {meeting.registration}.
           </span>
         </p>
 

@@ -1,0 +1,32 @@
+---
+import { meeting } from '../data/agm.js';
+---
+<div class="rounded-2xl border border-madain-gold/40 bg-[#FDF9F0] p-6">
+  <div class="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+    <div class="flex items-start gap-4">
+      <span class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-sm">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#9C8830" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z" /><circle cx="12" cy="10" r="2.4" />
+        </svg>
+      </span>
+      <div>
+        <div class="text-[12.5px] text-madain-boulder">مكان الانعقاد</div>
+        <h3 class="mt-0.5 text-[16.5px] font-bold text-madain-shaft">{meeting.venue}</h3>
+        <p class="font-inter text-[12.5px] text-madain-boulder" dir="ltr">{meeting.venueEn}</p>
+        <p class="mt-1 text-[13.5px] text-madain-tundora">{meeting.venueDetail}</p>
+      </div>
+    </div>
+
+    <a
+      href={meeting.venueMap}
+      target="_blank"
+      rel="noopener"
+      class="inline-flex shrink-0 items-center justify-center gap-2 rounded-md bg-[#0B2545] px-6 py-3 text-[14px] font-bold text-white transition hover:bg-[#153a67]"
+    >
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 3.5 3 6v14.5l6-2.5 6 2.5 6-2.5V3.5L15 6z" /><path d="M9 3.5V18M15 6v14.5" />
+      </svg>
+      عرض الموقع على الخريطة
+    </a>
+  </div>
+</div>
