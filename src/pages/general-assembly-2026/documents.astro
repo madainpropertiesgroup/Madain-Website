@@ -1,0 +1,122 @@
+---
+import AgmLayout from '../../layouts/AgmLayout.astro';
+import { meeting, agenda, contacts, NOTICE_PDF, NOMINATION_PDF, PRESS_ALWATAN, PRESS_ALIQTISADI } from '../../data/agm.js';
+
+const documents = [
+  { ar: 'دعوة الجمعية العمومية المنشورة', en: 'AGM Notice', href: NOTICE_PDF },
+  { ar: 'جدول الأعمال', en: 'Agenda', href: NOTICE_PDF },
+  { ar: 'نموذج الترشح لعضوية مجلس الإدارة', en: 'Nomination Form', href: NOMINATION_PDF },
+  { ar: 'جريدة الوطن — العدد كاملاً (الإعلان صفحة 6)', en: 'Al Watan — Full Issue', href: PRESS_ALWATAN },
+  { ar: 'جريدة الاقتصادي — العدد كاملاً (الإعلان صفحة 3)', en: 'Al Iqtisadi — Full Issue', href: PRESS_ALIQTISADI },
+  { ar: 'شروط الترشح وإجراءاته', en: 'Nomination Requirements', href: '/general-assembly-2026/nomination/' },
+  { ar: 'الحضور والتسجيل والتصويت', en: 'Attendance & Voting', href: '/general-assembly-2026/attendance-voting/' },
+];
+---
+
+<AgmLayout title="الدعوة والمستندات | الجمعية العمومية 2026" active="documents">
+  <header class="text-center">
+    <h1 class="text-[24px] font-bold text-madain-shaft md:text-[30px]">الدعوة والمستندات</h1>
+    <p class="font-inter mt-1 text-[12.5px] font-semibold uppercase tracking-[0.14em] text-madain-gold">
+      Notice &amp; Documents
+    </p>
+    <p class="mt-3 text-[14.5px] font-bold text-madain-shaft">
+      {meeting.full} &nbsp;|&nbsp; الساعة {meeting.time}
+    </p>
+    <div class="mx-auto mt-4 h-px w-24 bg-madain-gold/50"></div>
+  </header>
+
+  <div class="mt-7 grid gap-5 lg:grid-cols-[1.35fr_1fr]">
+    <!-- Agenda -->
+    <section class="rounded-2xl border border-madain-gold/35 bg-white p-6 shadow-sm md:p-7">
+      <h2 class="text-[19px] font-bold text-madain-shaft">جدول الأعمال</h2>
+      <p class="mt-1 text-[13px] text-madain-boulder">البنود المدرجة في الدعوة المنشورة للنظر والتقرير فيها.</p>
+
+      <ol class="mt-5 divide-y divide-dashed divide-[#EFE7D6]">
+        {agenda.map((item, index) => (
+          <li class="flex items-start gap-3 py-3.5">
+            <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#0B2545] font-inter text-[12px] font-bold text-white">
+              {index + 1}
+            </span>
+            <span class="text-[13.5px] leading-relaxed text-madain-tundora">{item}</span>
+          </li>
+        ))}
+      </ol>
+
+      <a
+        href={NOTICE_PDF}
+        target="_blank"
+        rel="noopener"
+        class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-md bg-[#0B2545] px-6 py-3 text-[14px] font-bold text-white transition hover:bg-[#153a67]"
+      >
+        تحميل الدعوة المنشورة
+      </a>
+    </section>
+
+    <!-- Documents -->
+    <section class="rounded-2xl border border-madain-gold/35 bg-white p-6 shadow-sm md:p-7">
+      <h2 class="text-[19px] font-bold text-madain-shaft">مستندات الجمعية</h2>
+      <p class="mt-1 text-[13px] text-madain-boulder">تُتاح المستندات العامة للاجتماع على هذه الصفحة.</p>
+
+      <div class="mt-5 space-y-3">
+        {documents.map((doc) => (
+          <a
+            href={doc.href}
+            target={doc.href.endsWith('.pdf') ? '_blank' : undefined}
+            rel={doc.href.endsWith('.pdf') ? 'noopener' : undefined}
+            class="flex items-center justify-between gap-3 rounded-xl border border-[#EFEADD] bg-[#FBF9F4] px-4 py-3.5 transition hover:border-madain-gold/60 hover:bg-[#FDF9F0]"
+          >
+            <span class="text-right">
+              <span class="block text-[14px] font-bold text-madain-shaft">{doc.ar}</span>
+              <span class="font-inter block text-[11px] uppercase tracking-[0.1em] text-madain-boulder">{doc.en}</span>
+            </span>
+            <span class="shrink-0 text-[13px] font-bold text-madain-goldDark">عرض</span>
+          </a>
+        ))}
+      </div>
+
+      <p class="mt-5 rounded-xl bg-[#FBF9F4] p-4 text-[13px] leading-relaxed text-madain-boulder">
+        أما سائر التقارير والمستندات ذات الطابع السري أو التفصيلي فتُرسل إلى المساهمين عبر روابط خاصة للعرض والتنزيل
+        على البريد الإلكتروني المسجل لكل منهم، تزامناً مع توجيه الدعوة. وعلى كل مساهم يواجه إشكالاً في الوصول إليها أو
+        لم تصله، التواصل مع مكتب النقبي ومشاركوه على
+        {' '}<span class="font-inter font-bold text-madain-goldDark" dir="ltr">{contacts.legal}</span>.
+      </p>
+    </section>
+  </div>
+
+  <!-- Press -->
+  <section class="mt-6 rounded-2xl border border-madain-gold/35 bg-white p-6 shadow-sm md:p-7">
+    <div class="grid items-center gap-6 md:grid-cols-[1fr_auto]">
+      <div>
+        <h2 class="text-[18px] font-bold text-madain-shaft">الدعوة كما نُشرت في الصحف المحلية</h2>
+        <p class="mt-2 max-w-[62ch] text-[13.5px] leading-relaxed text-madain-boulder">
+          نُشرت الدعوة يوم {meeting.publication}. ويمكنكم تحميل نسخة العدد كاملاً من كل صحيفة كما صدر — الإعلان في جريدة الوطن بالصفحة 6، وفي جريدة الاقتصادي بالصفحة 3.
+        </p>
+      </div>
+      <div class="flex flex-col gap-3 sm:flex-row">
+        <a
+          href={PRESS_ALWATAN}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center justify-center rounded-md bg-madain-gold px-6 py-2.5 text-[13.5px] font-bold text-white transition hover:bg-madain-goldDark"
+        >
+          جريدة الوطن — صفحة 6
+        </a>
+        <a
+          href={PRESS_ALIQTISADI}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center justify-center rounded-md border border-madain-gold px-6 py-2.5 text-[13.5px] font-bold text-madain-goldDark transition hover:bg-[#FDF9F0]"
+        >
+          جريدة الاقتصادي — صفحة 3
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Issuer -->
+  <section class="mt-6 rounded-2xl border border-[#E8E2D4] bg-white p-6 text-center shadow-sm">
+    <p class="text-[12.5px] uppercase tracking-[0.14em] text-madain-gold">جهة إصدار الدعوة</p>
+    <p class="mt-2 text-[17px] font-bold text-madain-shaft">{meeting.chairman}</p>
+    <p class="mx-auto mt-1 max-w-[60ch] text-[13.5px] leading-relaxed text-madain-boulder">{meeting.chairmanTitle}</p>
+  </section>
+</AgmLayout>

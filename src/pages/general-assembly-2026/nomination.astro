@@ -1,0 +1,121 @@
+---
+import AgmLayout from '../../layouts/AgmLayout.astro';
+import { meeting, contacts, NOMINATION_PDF } from '../../data/agm.js';
+
+const documents = [
+  'نموذج الترشح المعتمد من الشركة مستوفياً وموقعاً، وإقراراً خطياً بقبول الترشح.',
+  'إقرار بالالتزام بقانون الشركات التجارية والقرارات المنفذة له والنظام الأساسي للشركة، وببذل عناية الشخص الحريص.',
+  'سيرة ذاتية حديثة وصورة من الهوية الإماراتية أو جواز سفر ساري الصلاحية.',
+  'شهادة حالة جنائية سارية صادرة أو معتمدة من جهة رسمية في الدولة.',
+  'بيان بأسماء الشركات والمؤسسات التي يعمل بها المرشح أو يشغل عضوية مجالس إدارتها، وإفصاح عن أي نشاط ينافس الشركة بصورة مباشرة أو غير مباشرة أو يثير تعارض مصالح فعلياً أو محتملاً.',
+  'إقرار ومستندات مؤيدة بشأن ما إذا كان المرشح مستقلاً و/أو غير تنفيذي، للتحقق من استيفاء متطلبات تشكيل المجلس.',
+  'أي بيانات أو مستندات إضافية تطلبها الوزارة أو تقتضيها التشريعات النافذة أو النظام الأساسي أو أي قرار ملزم خاص بالشركة.',
+];
+
+const conditions = [
+  'يُخصَّص مقعد واحد على الأقل للمرأة ضمن التشكيل المقترح.',
+  'يجب أن يكون بين المرشحين ما يكفي لضمان وجود عضو مستقل واحد على الأقل ضمن التشكيل النهائي للمجلس، وفقاً لتعريف «عضو مجلس إدارة مستقل» الوارد في النظام الأساسي.',
+  'أن تتضمن قائمة المرشحين عدداً كافياً من المواطنين الإماراتيين بما يكفل أن تكون أغلبية أعضاء المجلس المنتخب من المتمتعين بجنسية دولة الإمارات العربية المتحدة.',
+  'على كل مرشح الالتزام بمتطلبات الإفصاح والاستقلالية وعدم تعارض المصالح، والإفصاح عن أي نزاع أو دعوى أو إخطار قانوني قائم مع الشركة أو أي من الشركات التابعة لها.',
+];
+
+const steps = [
+  { n: '1', t: 'تحميل النموذج', d: 'حمّل نموذج الترشح المعتمد من هذه الصفحة أو من الموقع الإلكتروني للشركة.' },
+  { n: '2', t: 'استيفاء البيانات', d: 'يُستوفى النموذج بخط واضح ومقروء وباللغة العربية دون ترك أي حقل شاغراً، ويوقّع المرشح بالأحرف الأولى أسفل كل صفحة.' },
+  { n: '3', t: 'إرفاق المستندات', d: 'أرفق جميع المستندات المؤيدة المطلوبة كاملة.' },
+  { n: '4', t: 'الإرسال', d: `أرسل الطلب كاملاً إلى البريد الإلكتروني ${contacts.legal} قبل إقفال باب الترشح.` },
+];
+---
+
+<AgmLayout title="الترشح لعضوية مجلس الإدارة | الجمعية العمومية 2026" active="nomination">
+  <header class="text-center">
+    <h1 class="text-[24px] font-bold text-madain-shaft md:text-[30px]">الترشح لعضوية مجلس الإدارة</h1>
+    <p class="font-inter mt-1 text-[12.5px] font-semibold uppercase tracking-[0.14em] text-madain-gold">
+      Board Membership Nomination
+    </p>
+    <div class="mx-auto mt-4 h-px w-24 bg-madain-gold/50"></div>
+  </header>
+
+  <!-- Deadline -->
+  <section class="mt-7 grid gap-4 sm:grid-cols-2">
+    <div class="rounded-2xl border border-madain-gold/50 bg-[#FDF9F0] p-6 text-center">
+      <div class="text-[13px] text-madain-boulder">فتح باب الترشح</div>
+      <div class="mt-1.5 text-[16px] font-bold text-madain-goldDark">{meeting.publication}</div>
+      <div class="mt-1 text-[12.5px] text-madain-boulder">تاريخ نشر الدعوة في الصحف</div>
+    </div>
+    <div class="rounded-2xl border border-madain-gold/50 bg-[#FDF9F0] p-6 text-center">
+      <div class="text-[13px] text-madain-boulder">إقفال باب الترشح</div>
+      <div class="mt-1.5 text-[16px] font-bold text-madain-goldDark">{meeting.nominationDeadline}</div>
+    </div>
+  </section>
+
+  <p class="mt-4 rounded-xl border border-[#EFEADD] bg-white p-5 text-center text-[13.5px] leading-relaxed text-madain-tundora shadow-sm">
+    يُعتبر الطلب المتأخر أو الناقص أو غير المستوفي لجميع المستندات المطلوبة كأنه لم يكن، مع مراعاة توجيهات الوزارة في
+    هذا الشأن.
+  </p>
+
+  <!-- How to apply -->
+  <section class="mt-6 rounded-2xl border border-[#E8E2D4] bg-white p-6 shadow-sm md:p-8">
+    <h2 class="text-[18px] font-bold text-madain-shaft">خطوات التقديم</h2>
+    <div class="mt-5 grid gap-4 sm:grid-cols-2">
+      {steps.map((step) => (
+        <article class="flex gap-4 rounded-xl border border-[#EFEADD] bg-[#FBF9F4] p-5">
+          <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-madain-gold font-inter text-[14px] font-bold text-white">
+            {step.n}
+          </span>
+          <div>
+            <h3 class="text-[15px] font-bold text-madain-shaft">{step.t}</h3>
+            <p class="mt-1.5 text-[13.5px] leading-relaxed text-madain-tundora">{step.d}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-6 flex flex-col items-center gap-4 rounded-xl border border-madain-gold/50 bg-[#FDF9F0] p-5 md:flex-row-reverse md:justify-between">
+      <p class="text-center text-[13.5px] text-madain-tundora md:text-right">
+        تُرسل الطلبات إلى مكتب النقبي ومشاركوه للمحاماة والاستشارات القانونية، المفوّض باستلام ومراجعة جميع نماذج
+        الترشح: <span class="font-inter font-bold text-madain-goldDark" dir="ltr">{contacts.legal}</span>
+      </p>
+      <a
+        href={NOMINATION_PDF}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex shrink-0 items-center gap-2 rounded-md bg-[#0B1B3B] px-7 py-3 text-[14px] font-bold text-white transition hover:bg-[#132a58]"
+      >
+        تحميل نموذج الترشح
+      </a>
+    </div>
+  </section>
+
+  <!-- Required documents -->
+  <section class="mt-6 rounded-2xl border border-[#E8E2D4] bg-white p-6 shadow-sm md:p-8">
+    <h2 class="text-[18px] font-bold text-madain-shaft">المستندات المطلوب إرفاقها بطلب الترشح</h2>
+    <ul class="mt-5 space-y-3">
+      {documents.map((item) => (
+        <li class="flex gap-3 text-[14px] leading-relaxed text-madain-tundora">
+          <span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-madain-gold"></span>
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- Conditions -->
+  <section class="mt-6 rounded-2xl border border-[#E8E2D4] bg-white p-6 shadow-sm md:p-8">
+    <h2 class="text-[18px] font-bold text-madain-shaft">شروط التشكيل والأهلية</h2>
+    <ul class="mt-5 space-y-3">
+      {conditions.map((item) => (
+        <li class="flex gap-3 text-[14px] leading-relaxed text-madain-tundora">
+          <span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-madain-gold"></span>
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+    <p class="mt-5 rounded-xl bg-[#FBF9F4] p-4 text-[13.5px] leading-relaxed text-madain-boulder">
+      تُراجع الأهلية وفقاً للتشريعات النافذة والنظام الأساسي وقرارات الوزارة وتوجيهاتها الخاصة بالشركة وأي أمر قضائي
+      واجب النفاذ. وتُنشر أسماء المرشحين وسيرهم الذاتية على الموقع الإلكتروني للشركة وتُقيد في السجل المعد لهذا الغرض
+      في مركزها الرئيسي قبل موعد الاجتماع بيومين (2) على الأقل، بعد استكمال المراجعة التي تطلبها الوزارة. ولا يجوز
+      للمرشح التنازل عن ترشحه بعد غلق باب الترشح، إلا في الحدود المقررة صراحةً للحكومة أو الشخص الاعتباري المساهم.
+    </p>
+  </section>
+</AgmLayout>

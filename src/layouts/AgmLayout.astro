@@ -1,0 +1,126 @@
+---
+import '../styles/global.css';
+import Analytics from '../components/Analytics.astro';
+
+interface Props {
+  title: string;
+  active: 'meeting' | 'nomination' | 'attendance' | 'documents';
+}
+
+const { title, active } = Astro.props;
+
+const SITE = 'https://madain.com';
+
+const tabs = [
+  { key: 'meeting', label: 'الجمعية العمومية', href: '/general-assembly-2026/' },
+  { key: 'nomination', label: 'الترشح لعضوية المجلس', href: '/general-assembly-2026/nomination/' },
+  { key: 'attendance', label: 'الحضور والتصويت', href: '/general-assembly-2026/attendance-voting/' },
+  { key: 'documents', label: 'الدعوة والمستندات', href: '/general-assembly-2026/documents/' },
+];
+
+const quickLinks = [
+  { label: 'الرئيسية', href: '/' },
+  { label: 'من نحن', href: `${SITE}/about-us/` },
+  { label: 'المشاريع', href: `${SITE}/projects/` },
+  { label: 'تواصل معنا', href: `${SITE}/contact-us/` },
+];
+---
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="معلومات اجتماع الجمعية العمومية لشركة مدائن العقارية ش.م.خ — الأربعاء 4 نوفمبر 2026."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap"
+    />
+    <title>{title}</title>
+    <Analytics />
+  </head>
+
+  <body class="font-arabic bg-[#FBF8F1] text-madain-tundora">
+    <!-- Top bar -->
+    <div class="bg-madain-gold text-white">
+      <div class="mx-auto flex w-[94%] max-w-[1180px] items-center justify-between py-2.5">
+        <a href="tel:+971800370" dir="ltr" class="text-[13px] font-light transition hover:text-madain-straw">
+          +971 800 370
+        </a>
+        <a
+          href={`${SITE}/contact-us/`}
+          class="rounded-sm border border-white/70 px-4 py-1.5 text-[12px] tracking-[0.12em] transition hover:bg-white/10"
+        >
+          احجز موعداً
+        </a>
+      </div>
+    </div>
+
+    <!-- Nav -->
+    <header class="bg-white shadow-sm">
+      <div class="mx-auto flex w-[94%] max-w-[1180px] items-center justify-between py-4">
+        <a href="/" class="font-inter text-[22px] font-semibold tracking-[0.18em] text-madain-gold">MADA'IN</a>
+        <nav class="hidden items-center gap-7 text-[14px] text-madain-shaft md:flex">
+          {quickLinks.map((link) => (
+            <a href={link.href} class="transition hover:text-madain-gold">{link.label}</a>
+          ))}
+        </nav>
+      </div>
+    </header>
+
+    <!-- Section tabs -->
+    <div class="border-b border-[#E8E2D4] bg-white">
+      <div class="mx-auto flex w-[94%] max-w-[1180px] gap-1 overflow-x-auto">
+        {tabs.map((tab) => (
+          <a
+            href={tab.href}
+            class={`shrink-0 border-b-2 px-4 py-3.5 text-[13.5px] transition ${
+              active === tab.key
+                ? 'border-madain-gold font-bold text-madain-goldDark'
+                : 'border-transparent text-madain-boulder hover:text-madain-shaft'
+            }`}
+          >
+            {tab.label}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <main class="mx-auto w-[94%] max-w-[980px] py-8 md:py-10">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#0B2545] text-white">
+      <div class="mx-auto grid w-[94%] max-w-[1180px] gap-6 py-8 text-center sm:grid-cols-3 sm:text-right">
+        <a href="https://wa.me/971800370" class="flex items-center justify-center gap-3 transition hover:text-madain-straw sm:justify-start">
+          <span>
+            <span class="block text-[12px] text-white/60">واتساب</span>
+            <span class="font-inter text-[15px] font-semibold" dir="ltr">+971 800 370</span>
+          </span>
+        </a>
+        <a href="tel:+971564777666" class="flex items-center justify-center gap-3 transition hover:text-madain-straw">
+          <span>
+            <span class="block text-[12px] text-white/60">اتصال مباشر</span>
+            <span class="font-inter text-[15px] font-semibold" dir="ltr">+971 56 477 7666</span>
+          </span>
+        </a>
+        <div class="flex items-center justify-center gap-3 sm:justify-end">
+          <span>
+            <span class="block text-[12px] text-white/60">الموقع الإلكتروني</span>
+            <span class="font-inter text-[15px] font-semibold" dir="ltr">www.madaingrp.ae</span>
+          </span>
+        </div>
+      </div>
+      <div class="border-t border-white/10 py-4 text-center text-[12px] text-white/55">
+        شركة مدائن العقارية (مدائن) ش.م.خ
+      </div>
+    </footer>
+  </body>
+</html>
