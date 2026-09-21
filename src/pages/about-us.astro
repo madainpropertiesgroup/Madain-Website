@@ -1,0 +1,100 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const values = ['Innovation', 'Quality', 'Sustainability', 'Customer-Centric', 'Integrity', 'Community Engagement'];
+---
+
+<Layout title="About Us | Mada'in Properties">
+  <Header />
+  <main>
+  <!-- Hero -->
+  <section class="relative isolate flex h-[340px] items-center justify-center overflow-hidden md:h-[420px]">
+    <img src="/images/site/about-overview.jpg" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover" />
+    <div class="absolute inset-0 -z-10 bg-[#0B1B3B]/55"></div>
+    <h1 class="px-6 text-center text-[34px] font-light uppercase tracking-[0.12em] text-white md:text-[52px]">
+      About Us
+    </h1>
+  </section>
+
+  <!-- Who are we -->
+  <section class="mx-auto max-w-container px-6 py-16 lg:py-20">
+    <h2 class="text-[26px] font-light uppercase tracking-[0.06em] text-madain-gold md:text-[30px]">Who are we?</h2>
+    <div class="mt-7 max-w-[88ch] space-y-5 text-[16px] font-light leading-[1.9] text-madain-tundora">
+      <p>
+        Mada'in Properties aims to redefine the UAE real estate development landscape with unique, boutique
+        properties that surpass all expectations in detail, design &ndash; and 5-star experiences. How we make the
+        difference, and what sets us apart, is our passion for innovative design, superior product value, timely
+        delivery and meticulous standards.
+      </p>
+      <p>
+        By striving to raise every bar in the development industry, we deliver results that will delight the most
+        sophisticated tastes. With phase one of our designer-inspired Mada&iacute;n Tower now complete, we are proud
+        to introduce our first vision of ultra-premium living to Dubai. A vision inspired by the extraordinary
+        &ndash; designed for the discerning.
+      </p>
+    </div>
+  </section>
+
+  <!-- Vision & mission -->
+  <section class="mx-auto max-w-container px-6 pb-16 lg:pb-20">
+    <div class="grid gap-6 md:grid-cols-2">
+      <article class="rounded-sm bg-madain-gallery/60 p-8">
+        <h3 class="text-[22px] font-light uppercase tracking-[0.06em] text-madain-gold">Vision</h3>
+        <p class="mt-5 text-[15.5px] font-light leading-[1.9] text-madain-tundora">
+          To emerge as the leading real estate developer in the United Arab Emirates and the broader region,
+          renowned for providing luxurious property solutions, shaping urban landscapes, enhancing lifestyles, and
+          contributing to the housing and urban development plans of the UAE.
+        </p>
+      </article>
+      <article class="rounded-sm bg-madain-gallery/60 p-8">
+        <h3 class="text-[22px] font-light uppercase tracking-[0.06em] text-madain-gold">Mission</h3>
+        <p class="mt-5 text-[15.5px] font-light leading-[1.9] text-madain-tundora">
+          To create iconic, sustainable, and community-centric real estate projects that provide value to our
+          customers, stakeholders, and the society at large.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Core values & what makes us unique -->
+  <section class="mx-auto max-w-container px-6 pb-20 lg:pb-24">
+    <div class="grid gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)]">
+      <div class="bg-[linear-gradient(160deg,#8A7A2E,#B9A44A)] p-8 text-white">
+        <h3 class="text-[22px] font-light uppercase tracking-[0.06em]">Core Values</h3>
+        <ul class="mt-7 space-y-4">
+          {values.map((value) => (
+            <li class="flex items-center gap-3 text-[15px] font-light uppercase tracking-[0.06em]">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              {value}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-[22px] font-light uppercase tracking-[0.06em] text-madain-gold">What makes us unique</h3>
+        <div class="mt-6 space-y-5 text-[15.5px] font-light leading-[1.9] text-madain-tundora">
+          <p>
+            At Mada'in Properties, we pride ourselves on our unique approach to real estate. We understand that it's
+            about crafting exceptional, memorable spaces, not just constructing buildings. Our commitment to
+            innovative design, sustainability, and positive community impact sets us apart. Each project is a
+            testament to our creativity, precision, and our ability to blend aesthetics with functionality
+            seamlessly. We strive for the extraordinary, never settling for the ordinary.
+          </p>
+          <p>
+            Our team's expertise and keen understanding of market dynamics ensure each development is unique and
+            stands out in the industry. When you choose us, you're choosing a partner who goes beyond bricks and
+            mortar, creating enduring, elegant, and distinctive spaces. We're not just constructing structures;
+            we're shaping the future of real estate with our relentless dedication to innovation and sustainability.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
+  <Footer />
+</Layout>

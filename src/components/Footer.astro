@@ -1,33 +1,18 @@
 ---
-const BASE = 'https://madain.com';
+import { company } from '../data/company.js';
 
+// Words we no longer host are plain text: the old madain.com pages are a
+// one-way door with no route back here.
 const columns = [
-  {
-    title: 'Projects',
-    links: [
-      { label: 'Investment', href: `${BASE}/investment/` },
-      { label: 'Completed', href: `${BASE}/completed-projects/` },
-      { label: 'Upcoming', href: `${BASE}/upcoming-projects/` },
-    ],
-  },
-  {
-    title: 'Other Services',
-    links: [
-      { label: 'Currency Converter', href: `${BASE}/currency-converter/` },
-      { label: 'Video Gallery', href: `${BASE}/video-gallery/` },
-      { label: 'Media Center', href: `${BASE}/media-center/` },
-    ],
-  },
-  {
-    title: 'Policy',
-    links: [
-      { label: 'Privacy Policy', href: `${BASE}/privacy-policy/` },
-      { label: 'Careers', href: `${BASE}/careers/` },
-      { label: 'Contact', href: `${BASE}/contact-us/` },
-      { label: 'About Us', href: `${BASE}/about-us/` },
-      { label: 'Blog', href: `${BASE}/blog/` },
-    ],
-  },
+  { title: 'Projects', items: ['Investment', 'Completed', 'Upcoming'] },
+  { title: 'Other Services', items: ['Currency Converter', 'Video Gallery', 'Media Center'] },
+  { title: 'Policy', items: ['Privacy Policy', 'Careers', 'Blog'] },
+];
+
+const siteLinks = [
+  { label: 'About Us', href: '/about-us/' },
+  { label: 'Contact', href: '/contact/' },
+  { label: 'General Assembly 2026', href: '/general-assembly-2026/' },
 ];
 ---
 
@@ -39,25 +24,35 @@ const columns = [
           <img src="/images/site/logo-white.png" alt="Mada'in Properties" class="mb-6 h-14 w-auto" />
         </a>
         <p class="mb-4 text-sm font-light leading-6 text-white/90">
-          Marina Arcade &mdash; Al Naseem St,<br />
-          Dubai Marina, PO Box 212525.
+          {company.address.map((line) => <>{line}<br /></>)}
         </p>
         <p class="text-sm font-light leading-6 text-white/90">
-          <a href="tel:+97142481444" class="hover:text-white">+971 4 248 1444</a><br />
-          <a href="tel:800370" class="hover:text-white">+971 800 370 &middot; 800 370</a>
+          {company.phones.map((phone) => (
+            <><a href={`tel:${phone.replace(/\s/g, '')}`} class="hover:text-white">{phone}</a><br /></>
+          ))}
+          <a href={`mailto:${company.email}`} class="hover:text-white">{company.email}</a>
         </p>
       </div>
 
-      {columns.map((col) => (
+      <div>
+        <h4 class="mb-6 text-sm font-light uppercase tracking-widest2 text-white">Site</h4>
+        <ul class="space-y-3">
+          {siteLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm font-light text-white/90 transition hover:text-white">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {columns.slice(0, 2).map((col) => (
         <div>
           <h4 class="mb-6 text-sm font-light uppercase tracking-widest2 text-white">{col.title}</h4>
           <ul class="space-y-3">
-            {col.links.map((l) => (
-              <li>
-                <a href={l.href} class="text-sm font-light text-white/90 transition hover:text-white">
-                  {l.label}
-                </a>
-              </li>
+            {col.items.map((item) => (
+              <li class="text-sm font-light text-white/50">{item}</li>
             ))}
           </ul>
         </div>
@@ -65,20 +60,14 @@ const columns = [
     </div>
 
     <div class="mx-auto mt-12 max-w-container border-t border-white/20 px-6 pt-6">
-      <p class="text-sm font-light text-white/80">
-        Mon &ndash; Fri: 08:00 AM &ndash; 05:00 PM &nbsp;|&nbsp; Closed: Sat &ndash; Sun
-      </p>
+      <p class="text-sm font-light text-white/80">{company.hours}</p>
     </div>
   </div>
 
   <div class="w-full border-t border-madain-abbey bg-white/95 py-4">
     <div class="mx-auto flex max-w-container flex-col items-center justify-between gap-2 px-6 text-xs font-light text-madain-tundora md:flex-row">
-      <p>&copy; {new Date().getFullYear()} MADA'IN PROPERTIES CO (MADA'IN) (P.J.S.C). All rights reserved.</p>
-      <nav class="flex gap-4">
-        <a href={`${BASE}/privacy-policy/`} class="hover:text-madain-gold">Privacy</a>
-        <a href={`${BASE}/terms/`} class="hover:text-madain-gold">Terms</a>
-        <a href={`${BASE}/sitemap/`} class="hover:text-madain-gold">Sitemap</a>
-      </nav>
+      <p>&copy; {new Date().getFullYear()} {company.legalName}. All rights reserved.</p>
+      <p class="text-madain-tundora/50">Privacy &nbsp;&middot;&nbsp; Terms &nbsp;&middot;&nbsp; Sitemap</p>
     </div>
   </div>
 </footer>

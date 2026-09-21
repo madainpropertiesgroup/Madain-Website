@@ -9,8 +9,6 @@ interface Props {
 
 const { title, active } = Astro.props;
 
-const SITE = 'https://madain.com';
-
 const tabs = [
   { key: 'meeting', label: 'الجمعية العمومية', href: '/general-assembly-2026/' },
   { key: 'nomination', label: 'الترشح لعضوية المجلس', href: '/general-assembly-2026/nomination/' },
@@ -20,9 +18,8 @@ const tabs = [
 
 const quickLinks = [
   { label: 'الرئيسية', href: '/' },
-  { label: 'من نحن', href: `${SITE}/about-us/` },
-  { label: 'المشاريع', href: `${SITE}/projects/` },
-  { label: 'تواصل معنا', href: `${SITE}/contact-us/` },
+  { label: 'من نحن', href: '/about-us/' },
+  { label: 'تواصل معنا', href: '/contact/' },
 ];
 ---
 
@@ -54,7 +51,7 @@ const quickLinks = [
           +971 800 370
         </a>
         <a
-          href={`${SITE}/contact-us/`}
+          href="/contact/"
           class="rounded-sm border border-white/70 px-4 py-1.5 text-[12px] tracking-[0.12em] transition hover:bg-white/10"
         >
           احجز موعداً

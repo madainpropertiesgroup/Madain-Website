@@ -1,21 +1,15 @@
 ---
-const BASE = 'https://madain.com';
-
+// Nothing here may leave the site: the old madain.com pages have no way back,
+// so labels we no longer host are plain words rather than links.
 const navItems = [
-  { label: 'Home', href: '/', active: true },
-  { label: 'About Us', href: `${BASE}/about-us/` },
-  {
-    label: 'Projects',
-    href: `${BASE}/projects/`,
-    badge: 'New',
-    children: [
-      { label: 'Completed', href: `${BASE}/completed-projects/` },
-      { label: 'Upcoming', href: `${BASE}/upcoming-projects/` },
-      { label: 'Investment', href: `${BASE}/investment/` },
-    ],
-  },
-  { label: 'Contact', href: `${BASE}/contact-us/` },
+  { label: 'Home', href: '/' },
+  { label: 'About Us', href: '/about-us/' },
+  { label: 'Projects' },
+  { label: 'Contact', href: '/contact/' },
 ];
+
+const norm = (path) => path.replace(/\/+$/, '') || '/';
+const here = norm(Astro.url.pathname);
 ---
 
 <header class="sticky top-0 z-50 w-full">
@@ -29,12 +23,11 @@ const navItems = [
         +971 800 370
       </a>
 
-
       <a
-        href={`${BASE}/book-appointment/`}
+        href="/general-assembly-2026/"
         class="inline-block bg-[#9C8A3A] px-8 py-3 text-sm font-light uppercase tracking-[0.15em] text-white shadow-inner transition hover:bg-[#78682A]"
       >
-        Book an Appointment
+        General Assembly 2026
       </a>
     </div>
   </div>
@@ -48,48 +41,27 @@ const navItems = [
 
       <nav class="hidden items-center gap-10 lg:flex">
         {navItems.map((item) => (
-          <div class="group relative">
-            {item.badge && (
-              <span class="pointer-events-none absolute -top-4 left-1/2 -translate-x-1/2 rounded-sm bg-black px-2 py-[2px] text-[10px] font-normal uppercase leading-none text-white">
-                {item.badge}
-              </span>
-            )}
+          item.href ? (
             <a
               href={item.href}
               class:list={[
-                'inline-flex items-center gap-1 text-base font-light text-[#0B1B3B] transition-colors hover:text-madain-gold',
-                item.active && 'border-b border-[#0B1B3B] pb-1',
+                'text-base font-light text-[#0B1B3B] transition-colors hover:text-madain-gold',
+                here === norm(item.href) && 'border-b border-[#0B1B3B] pb-1',
               ]}
             >
               {item.label}
-              {item.children && (
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
-                  <polygon points="6,9 12,15 18,9" />
-                </svg>
-              )}
             </a>
-            {item.children && (
-              <div class="pointer-events-none absolute left-1/2 top-full z-50 w-56 -translate-x-1/2 pt-3 opacity-0 transition group-hover:pointer-events-auto group-hover:opacity-100">
-                <div class="rounded-md bg-white py-2 shadow-lg ring-1 ring-madain-gallery">
-                  {item.children.map((c) => (
-                    <a href={c.href} class="block px-4 py-2 text-sm font-light text-[#0B1B3B] transition hover:bg-madain-gallery/50 hover:text-madain-gold">
-                      {c.label}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
+          ) : (
+            <span class="cursor-default select-none text-base font-light text-[#0B1B3B]/45">{item.label}</span>
+          )
         ))}
       </nav>
 
-      <button class="text-[#0B1B3B] lg:hidden" aria-label="Open menu">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="3" y1="6" x2="21" y2="6" />
-          <line x1="3" y1="12" x2="21" y2="12" />
-          <line x1="3" y1="18" x2="21" y2="18" />
+      <a href="/contact/" class="text-[#0B1B3B] lg:hidden" aria-label="Contact">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.2 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.94.36 1.86.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.95.34 1.87.57 2.81.7A2 2 0 0 1 22 16.92z" />
         </svg>
-      </button>
+      </a>
     </div>
   </div>
 </header>
