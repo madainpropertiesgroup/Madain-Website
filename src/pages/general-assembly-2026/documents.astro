@@ -1,7 +1,7 @@
 ---
 import AgmLayout from '../../layouts/AgmLayout.astro';
 import Clause from '../../components/Clause.astro';
-import { meeting, NOTICE_PDF, NOMINATION_PDF, PRESS_ALWATAN, PRESS_ALIQTISADI } from '../../data/agm.js';
+import { meeting, NOTICE_PDF, NOMINATION_PDF, PROXY_PDF_AR, PROXY_PDF_EN, PRESS_ALWATAN, PRESS_ALIQTISADI } from '../../data/agm.js';
 import {
   source, preamble, agenda, nomination, nominationAttachmentsIntro,
   nominationAttachments, nominationRest, notes, closing, issuer,
@@ -10,6 +10,8 @@ import {
 const files = [
   { ar: 'دعوة الجمعية العمومية المنشورة', en: 'AGM Notice', href: NOTICE_PDF },
   { ar: 'نموذج الترشح لعضوية مجلس الإدارة', en: 'Nomination Form', href: NOMINATION_PDF },
+  { ar: 'نموذج التوكيل — عربي', en: 'Proxy Form (Arabic)', href: PROXY_PDF_AR },
+  { ar: 'نموذج التوكيل — إنجليزي', en: 'Proxy Form (English)', href: PROXY_PDF_EN },
   { ar: 'جريدة الوطن — العدد كاملاً (الإعلان صفحة 6)', en: 'Al Watan — Full Issue', href: PRESS_ALWATAN },
   { ar: 'جريدة الاقتصادي — العدد كاملاً (الإعلان صفحة 3)', en: 'Al Iqtisadi — Full Issue', href: PRESS_ALIQTISADI },
 ];

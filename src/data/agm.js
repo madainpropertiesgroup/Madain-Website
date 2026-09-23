@@ -33,3 +33,5 @@ export const NOTICE_PDF = '/general-assembly-2026/documents/agm-notice-2026-11-0
 export const PRESS_ALWATAN = '/general-assembly-2026/documents/press-alwatan-2026-09-21.pdf';
 export const PRESS_ALIQTISADI = '/general-assembly-2026/documents/press-aliqtisadi-2026-09-21.pdf';
 export const NOMINATION_PDF = '/general-assembly-2026/forms/nomination-form-ar.pdf';
+export const PROXY_PDF_AR = '/general-assembly-2026/forms/proxy-form-ar.pdf';
+export const PROXY_PDF_EN = '/general-assembly-2026/forms/proxy-form-en.pdf';

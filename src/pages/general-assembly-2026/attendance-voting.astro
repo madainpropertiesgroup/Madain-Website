@@ -3,7 +3,7 @@ import AgmLayout from '../../layouts/AgmLayout.astro';
 import VerbatimNote from '../../components/VerbatimNote.astro';
 import VenueCard from '../../components/VenueCard.astro';
 import Clause from '../../components/Clause.astro';
-import { meeting, NOTICE_PDF } from '../../data/agm.js';
+import { meeting, NOTICE_PDF, PROXY_PDF_AR, PROXY_PDF_EN } from '../../data/agm.js';
 import { notes } from '../../data/notice.js';
 
 const pick = (...ns) => ns.map((n) => notes.find((c) => c.n === n)).filter(Boolean);
@@ -48,6 +48,34 @@ const groups = [
       <div class="text-[12.5px] text-madain-boulder">الاجتماع الثاني عند عدم اكتمال النصاب</div>
       <div class="mt-1.5 text-[16px] font-bold text-madain-goldDark">{meeting.secondMeeting}</div>
     </article>
+  </section>
+
+  <!-- Proxy forms -->
+  <section class="mt-6 rounded-2xl border border-madain-gold/50 bg-[#FDF9F0] p-6 shadow-sm md:p-7">
+    <h2 class="text-[18px] font-bold text-madain-shaft">نموذج التوكيل</h2>
+    <p class="mt-2 max-w-[70ch] text-[13.5px] leading-relaxed text-madain-tundora">
+      يُستوفى النموذج ويُوقّع ويُرفق بمستندات الهوية، ثم يُرسل إلى سوق دبي المالي / مركز دبي للإيداع على البريد
+      {' '}<span class="font-inter font-bold text-madain-goldDark" dir="ltr">FinancialServices@dfm.ae</span>
+      {' '}في موعد أقصاه <b>{meeting.proxyDeadline}</b>.
+    </p>
+    <div class="mt-5 flex flex-col gap-3 sm:flex-row">
+      <a
+        href={PROXY_PDF_AR}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center justify-center rounded-md bg-[#0B2545] px-7 py-3 text-[14px] font-bold text-white transition hover:bg-[#153a67]"
+      >
+        تحميل نموذج التوكيل — عربي
+      </a>
+      <a
+        href={PROXY_PDF_EN}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center justify-center rounded-md border-2 border-madain-gold px-7 py-3 text-[14px] font-bold text-madain-goldDark transition hover:bg-[#FDF9F0]"
+      >
+        Proxy Form &mdash; English
+      </a>
+    </div>
   </section>
 
   {groups.map((group) => (

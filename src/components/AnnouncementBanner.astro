@@ -1,7 +1,7 @@
 ---
 // The new convocation: 4 November 2026 at Swissotel Al Murooj, attended in
 // person or by proxy only. Nothing here links to the old assembly pages.
-import { meeting } from '../data/agm.js';
+import { meeting, PROXY_PDF_AR, PROXY_PDF_EN } from '../data/agm.js';
 
 const facts = [
   {
@@ -13,6 +13,11 @@ const facts = [
     label: 'باب الترشح لعضوية مجلس الإدارة',
     value: 'مفتوح حتى الأحد 11 أكتوبر 2026',
     icon: 'user',
+  },
+  {
+    label: 'الموعد الأقصى لتقديم التوكيلات',
+    value: `${meeting.proxyDeadline} — إلى سوق دبي المالي / مركز دبي للإيداع`,
+    icon: 'doc',
   },
 ];
 ---
@@ -91,6 +96,16 @@ const facts = [
             class="inline-flex items-center justify-center rounded-md border-2 border-madain-gold px-7 py-3 text-[14px] font-bold text-madain-goldDark transition hover:bg-[#FDF9F0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-madain-gold"
           >
             الترشح لعضوية المجلس
+          </a>
+        </div>
+
+        <div class="mt-4 flex flex-col items-center justify-center gap-x-6 gap-y-2 text-[13.5px] sm:flex-row">
+          <span class="text-madain-boulder">نموذج التوكيل:</span>
+          <a href={PROXY_PDF_AR} target="_blank" rel="noopener" class="font-bold text-madain-goldDark underline underline-offset-4 hover:text-[#0B2545]">
+            تحميل النسخة العربية
+          </a>
+          <a href={PROXY_PDF_EN} target="_blank" rel="noopener" class="font-bold text-madain-goldDark underline underline-offset-4 hover:text-[#0B2545]">
+            English version
           </a>
         </div>
       </div>
