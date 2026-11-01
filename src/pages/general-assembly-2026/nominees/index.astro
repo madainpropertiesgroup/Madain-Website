@@ -3,6 +3,7 @@ import AgmLayout from '../../../layouts/AgmLayout.astro';
 import Clause from '../../../components/Clause.astro';
 import { meeting, PROXY_PDF_AR } from '../../../data/agm.js';
 import { nominees, publishDeadline } from '../../../data/nominees.js';
+import { nomineeProfiles } from '../../../data/nomineeProfiles.js';
 import { nominationRest } from '../../../data/notice.js';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -36,12 +37,8 @@ const cards = nominees.map((nominee) => ({
 // assembly; only the meeting facts and the approved list differ.
 const rule = nominationRest.find((c) => c.n === '2.3');
 
-const cardSummaries = {
-  "asma-moosa": "خبرة في الجودة والتميز المؤسسي وإدارة الأداء والتدريب، شملت مؤسسة محمد بن راشد للإسكان وبلدية دبي والنيابة العامة بدبي. حاصلة على ماجستير في التميز المؤسسي والجودة وبكالوريوس إدارة الأعمال.",
-  "khamis-buharoon": "خبرة مصرفية ومالية تتجاوز 35 عاماً، شغل خلالها مناصب قيادية في مصرف أبوظبي الإسلامي والبنك التجاري الدولي وبنك أبوظبي الوطني والمصرف المركزي، إلى جانب رئاسة وعضوية مجالس إدارات شركات ومؤسسات مالية واستثمارية.",
-  "hazza-almansoori": "خبرة تتجاوز 24 عاماً في تطوير الأعمال والاتصال الحكومي والإعلام وريادة الأعمال، شغل خلالها مناصب استشارية وقيادية في قطاع التعليم. حاصل على ماجستير في الإدارة بتخصص القوة الناعمة والتسويق وبكالوريوس محاسبة.",
-  "ahmed-al-dhaheri": "خبرة في الاستثمار والإدارة المالية والموارد البشرية، شملت العمل بجهاز أبوظبي للاستثمار بين عامي 1986 و2012 في مجالات الخزينة والشؤون المالية والإدارية والتدريب. حاصل على بكالوريوس الاقتصاد ومؤهلات ماجستير في الإدارة والأعمال والموارد البشرية."
-};
+
+const cardSummaries = Object.fromEntries(Object.entries(nomineeProfiles).map(([k, v]) => [k, v.summary]));
 
 const resources = [
   { ar: 'دعوة الجمعية العمومية وجدول الأعمال', icon: 'megaphone', href: '/general-assembly-2026/' },
