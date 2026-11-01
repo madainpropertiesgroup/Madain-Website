@@ -11,12 +11,12 @@ const facts = [
   },
   {
     label: 'باب الترشح لعضوية مجلس الإدارة',
-    value: 'مفتوح حتى الأحد 11 أكتوبر 2026',
+    value: 'أُغلق يوم الأحد 11 أكتوبر 2026',
     icon: 'user',
   },
   {
-    label: 'الموعد الأقصى لتقديم التوكيلات',
-    value: `${meeting.proxyDeadline} — إلى سوق دبي المالي / مركز دبي للإيداع`,
+    label: 'تقديم التوكيلات',
+    value: `انتهت المهلة يوم ${meeting.proxyDeadline} — إلى سوق دبي المالي / مركز دبي للإيداع`,
     icon: 'doc',
   },
 ];
@@ -84,18 +84,24 @@ const facts = [
           ))}
         </ul>
 
-        <div class="mt-5 flex flex-col gap-2.5 sm:flex-row sm:justify-center">
+        <div class="mt-5 flex flex-col flex-wrap gap-2.5 sm:flex-row sm:justify-center">
           <a
             href="/general-assembly-2026/"
-            class="inline-flex items-center justify-center rounded-md bg-[#0B2545] px-6 py-2.5 text-[13.5px] font-bold text-white transition hover:bg-[#153a67] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-madain-gold"
+            class="inline-flex items-center justify-center rounded-md bg-[#0B2545] px-5 py-2.5 text-[13.5px] font-bold text-white transition hover:bg-[#153a67] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-madain-gold"
           >
             الدعوة وجدول الأعمال
           </a>
           <a
             href="/general-assembly-2026/nominees/"
-            class="inline-flex items-center justify-center rounded-md border-2 border-madain-gold px-6 py-2.5 text-[13.5px] font-bold text-madain-goldDark transition hover:bg-[#FDF9F0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-madain-gold"
+            class="inline-flex items-center justify-center rounded-md border-2 border-madain-gold px-5 py-2.5 text-[13.5px] font-bold text-madain-goldDark transition hover:bg-[#FDF9F0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-madain-gold"
           >
             المرشحون لعضوية المجلس
+          </a>
+          <a
+            href="/general-assembly-2026/briefing/"
+            class="inline-flex items-center justify-center rounded-md border-2 border-madain-gold px-5 py-2.5 text-[13.5px] font-bold text-madain-goldDark transition hover:bg-[#FDF9F0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-madain-gold"
+          >
+            التقارير والمستندات المتعلقة بجدول أعمال الجمعية العمومية
           </a>
         </div>
 

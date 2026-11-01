@@ -6,3 +6,6 @@ dist/
 
 me.csv
 shareholders.csv
+
+# Local backups never belong in the public repository
+backups/

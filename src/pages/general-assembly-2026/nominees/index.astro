@@ -115,13 +115,13 @@ const resources = [
             <img
               src={nominee.photo}
               alt={nominee.name}
-              class="aspect-[4/3] w-full bg-[#F7F4EC] object-contain"
+              class="aspect-[4/5] w-full bg-[#F7F4EC] object-contain"
               width="580"
-              height="435"
+              height="725"
               loading="lazy"
             />
           ) : (
-            <div class="flex aspect-[4/3] w-full items-center justify-center bg-[#F7F4EC]" aria-hidden="true">
+            <div class="flex aspect-[4/5] w-full items-center justify-center bg-[#F7F4EC]" aria-hidden="true">
               <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#C9BE9B" stroke-width="1.2" stroke-linecap="round">
                 <circle cx="12" cy="8.5" r="3.6" /><path d="M4.8 20a7.2 7.2 0 0 1 14.4 0" />
               </svg>
@@ -129,11 +129,14 @@ const resources = [
           )}
           <div class="flex flex-1 flex-col items-center border-t border-[#EFE7D6] px-4 py-5 text-center">
             <div class="flex min-h-[104px] flex-col items-center justify-start">
-              <h3 class="text-[16px] font-bold leading-snug text-[#0B2545]">{nominee.name}</h3>
+              <h3 class="text-[16px] font-bold leading-snug text-[#0B2545]">
+                <a href={`/general-assembly-2026/nominees/${nominee.slug}/`} class="hover:underline focus-visible:underline" title="عرض الملف التعريفي للمرشح">{nominee.name}</a>
+              </h3>
               {nominee.nameEn && (
                 <p class="font-inter mt-1 text-[12px] font-semibold uppercase tracking-wide text-madain-gold">{nominee.nameEn}</p>
               )}
               <p class="mt-1.5 text-[13px] text-madain-boulder">{nominee.role}</p>
+              <a href={`/general-assembly-2026/nominees/${nominee.slug}/`} class="mt-2 text-[12px] font-semibold text-madain-goldDark underline underline-offset-4 hover:text-[#0B2545]">الملف التعريفي والمعلومات الإضافية</a>
             {cardSummaries[nominee.slug] && (
               <p class="mt-3 mb-4 text-[12px] leading-6 text-[#455365]">
                 {cardSummaries[nominee.slug]}
@@ -178,7 +181,7 @@ const resources = [
     <section class="mt-8 rounded-2xl border border-[#E8E2D4] bg-white p-6 shadow-sm md:p-7">
       <h2 class="text-[17px] font-bold text-madain-shaft">نص الدعوة بشأن المرشحين</h2>
       <div class="mt-4">
-        <Clause n={rule.n} text={rule.text} />
+        <Clause n={rule.n}>{rule.text}</Clause>
       </div>
     </section>
   )}
