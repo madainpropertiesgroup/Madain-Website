@@ -16,7 +16,11 @@ const PUBLIC_DIR = path.resolve('public');
 const firstThatExists = (candidates) =>
   candidates.find((rel) => fs.existsSync(path.join(PUBLIC_DIR, rel))) ?? '';
 
-const cards = nominees.map((nominee) => ({
+// The data file keeps the board's approval order; the page shows the names
+// alphabetically, so the order carries no suggestion of preference.
+const cards = [...nominees]
+  .sort((a, b) => a.name.localeCompare(b.name, 'ar'))
+  .map((nominee) => ({
   ...nominee,
   photo:
     nominee.photo ||
@@ -165,7 +169,7 @@ const resources = [
       <svg class="mt-1 shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="#9C8830">
         <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2zm0-8h-2V7h2z" />
       </svg>
-      <span>ورد ترتيب الأسماء وفق كشف الاعتماد، ولا يعكس الترتيب أي أفضلية أو توصية من الشركة لأي مرشح.</span>
+      <span>رُتِّبت أسماء المرشحين أبجدياً، ولا يعكس ترتيب الأسماء أي أفضلية أو توصية من الشركة لأي مرشح.</span>
     </p>
 
     <p class="mx-auto mt-3 max-w-[72ch] text-center text-[13px] leading-relaxed text-madain-boulder">
