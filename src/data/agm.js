@@ -1,12 +1,26 @@
-// Details of the general assembly convocation of 4 November 2026.
+// The assembly was convened for 4 November 2026. The quorum was not reached,
+// so the meeting stands postponed to the second date named in the same notice,
+// 11 November 2026. The agenda, the venue and the hour did not change; only
+// the day did.
+//
+// `meeting` therefore describes the meeting that is still to be held, so every
+// page that reads it shows the date a shareholder has to turn up on. What
+// happened on 4 November is kept in `firstCall`, and the announcement itself
+// lives in postponement.js.
 export const meeting = {
   day: 'الأربعاء',
-  date: '04',
+  date: '11',
   month: 'نوفمبر',
   year: '2026',
-  full: 'الأربعاء 04 نوفمبر 2026',
+  full: 'الأربعاء 11 نوفمبر 2026',
   time: '10:00 صباحاً',
+  // The published notice set registration an hour before the meeting; the
+  // second call is held under that same notice. Article 44/4 of the articles
+  // of association closes the register half an hour after the hour set.
   registration: '9:00 صباحاً',
+  registrationCloses: '10:30 صباحاً',
+  // This is the second call, which is valid whatever the attendance.
+  isSecondCall: true,
   // The notice names the hotel "فندق سويس المروج"; its registered name is the
   // one below. Quoted passages keep the notice's wording, venueAsPublished.
   venue: 'فندق سويس أوتيل المروج دبي',
@@ -14,12 +28,21 @@ export const meeting = {
   venueEn: 'Swissôtel Al Murooj Dubai',
   venueDetail: 'وسط مدينة دبي، دبي، دولة الإمارات العربية المتحدة',
   venueMap: 'https://maps.app.goo.gl/9PzwHG2JPk5G3PEF9',
-  secondMeeting: 'الأربعاء 11 نوفمبر 2026',
   nominationDeadline: 'الأحد 11 أكتوبر 2026',
   proxyDeadline: 'الثلاثاء 27 أكتوبر 2026',
   publication: 'الاثنين 21 سبتمبر 2026',
   chairman: 'عادل عبد الحميد الحوسني',
   chairmanTitle: 'رئيس مجلس الإدارة وعضو مجلس الإدارة المتبقي والمكلّف بتسيير أعمال شركة مدائن العقارية ش.م.خ',
+};
+
+// The first call, for the one date the announcement refers back to. The
+// figures the minutes record — the shares represented, the percentage, the
+// attendance breakdown — are deliberately NOT held here. They belong to the
+// filed document, and the site links to that document rather than keeping a
+// second copy of its contents that could fall out of step with it.
+export const firstCall = {
+  full: 'الأربعاء 04 نوفمبر 2026',
+  short: '4 نوفمبر 2026',
 };
 
 export const contacts = {

@@ -1,5 +1,6 @@
 ---
 import AgmLayout from '../../layouts/AgmLayout.astro';
+import PostponementNotice from '../../components/PostponementNotice.astro';
 import VerbatimNote from '../../components/VerbatimNote.astro';
 import Clause from '../../components/Clause.astro';
 import { meeting, NOMINATION_PDF, NOTICE_PDF } from '../../data/agm.js';
@@ -7,7 +8,9 @@ import { nomination, nominationAttachmentsIntro, nominationAttachments, nominati
 ---
 
 <AgmLayout title="الترشح لعضوية مجلس الإدارة | الجمعية العمومية 2026" active="nomination">
-  <header class="text-center">
+  <PostponementNotice />
+
+  <header class="mt-7 text-center">
     <h1 class="text-[24px] font-bold text-madain-shaft md:text-[30px]">الترشح لعضوية مجلس الإدارة</h1>
     <p class="font-inter mt-1 text-[12.5px] font-semibold uppercase tracking-[0.14em] text-madain-gold">
       Board Membership Nomination

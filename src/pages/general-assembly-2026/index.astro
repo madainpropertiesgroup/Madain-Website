@@ -2,15 +2,16 @@
 import AgmLayout from '../../layouts/AgmLayout.astro';
 import VerbatimNote from '../../components/VerbatimNote.astro';
 import VenueCard from '../../components/VenueCard.astro';
+import PostponementNotice from '../../components/PostponementNotice.astro';
 import Clause from '../../components/Clause.astro';
-import { meeting, contacts, NOTICE_PDF, NOMINATION_PDF } from '../../data/agm.js';
+import { meeting, firstCall, contacts, NOTICE_PDF, NOMINATION_PDF } from '../../data/agm.js';
 import { agenda } from '../../data/notice.js';
 
 const dates = [
   { label: 'إقفال باب الترشح', value: meeting.nominationDeadline, note: `فُتح الباب بتاريخ النشر ${meeting.publication}` },
   { label: 'الموعد الأقصى للتوكيلات', value: meeting.proxyDeadline, note: 'إلى سوق دبي المالي / مركز دبي للإيداع' },
-  { label: 'اجتماع الجمعية', value: meeting.full, note: `الساعة ${meeting.time}` },
-  { label: 'الاجتماع الثاني', value: meeting.secondMeeting, note: 'عند عدم اكتمال النصاب' },
+  { label: 'الاجتماع الأول', value: firstCall.full, note: 'لم يكتمل النصاب القانوني' },
+  { label: 'اجتماع الجمعية (الموعد الثاني)', value: meeting.full, note: `الساعة ${meeting.time}` },
 ];
 
 const sections = [
@@ -21,8 +22,10 @@ const sections = [
 ---
 
 <AgmLayout title="الجمعية العمومية 2026 | مدائن العقارية ش.م.خ" active="meeting">
+  <PostponementNotice />
+
   <!-- Hero -->
-  <section class="overflow-hidden rounded-2xl bg-[#0B2545] text-white shadow-md">
+  <section class="mt-6 overflow-hidden rounded-2xl bg-[#0B2545] text-white shadow-md">
     <div class="flex flex-col gap-8 p-7 md:flex-row md:items-center md:p-10">
       <div class="shrink-0 text-center md:border-l md:border-white/15 md:pl-10">
         <div class="text-[14px] text-white/80">{meeting.day}</div>
@@ -46,8 +49,9 @@ const sections = [
         </h1>
         <p class="mt-4 max-w-[62ch] text-[14.5px] leading-loose text-white/85">
           يدعو السيد/ <b class="text-madain-straw">{meeting.chairman}</b> — {meeting.chairmanTitle} — السادة
-          المساهمين لحضور اجتماع الجمعية العمومية المقرر عقده <b class="text-madain-straw">حضورياً</b>،
-          ويبدأ التسجيل في مقر الاجتماع الساعة {meeting.registration}.
+          المساهمين لحضور اجتماع الجمعية العمومية المقرر عقده <b class="text-madain-straw">حضورياً</b>
+          في موعده الثاني، ويبدأ التسجيل في مقر الاجتماع الساعة {meeting.registration}، ويُقفل باب التسجيل
+          بعد مضي نصف ساعة على الموعد المحدد وفقاً للمادة (44/4) من النظام الأساسي.
         </p>
 
         <div class="mt-6 flex flex-col gap-3 sm:flex-row">

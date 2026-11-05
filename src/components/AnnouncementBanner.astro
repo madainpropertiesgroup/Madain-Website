@@ -1,6 +1,9 @@
 ---
-// The new convocation: 4 November 2026 at Swissotel Al Murooj, attended in
-// person or by proxy only. Nothing here links to the old assembly pages.
+// The convocation, at Swissotel Al Murooj, attended in person or by proxy
+// only. The date is read from `meeting` rather than written out here, so the
+// band followed the meeting when it moved to its second call instead of
+// announcing a day that had passed. Nothing here links to the old assembly
+// pages.
 import { meeting, PROXY_PDF_AR, PROXY_PDF_EN } from '../data/agm.js';
 
 const facts = [
@@ -13,11 +16,6 @@ const facts = [
     label: 'باب الترشح لعضوية مجلس الإدارة',
     value: 'أُغلق يوم الأحد 11 أكتوبر 2026',
     icon: 'user',
-  },
-  {
-    label: 'تقديم التوكيلات',
-    value: `انتهت المهلة يوم ${meeting.proxyDeadline} — إلى سوق دبي المالي / مركز دبي للإيداع`,
-    icon: 'doc',
   },
 ];
 ---
@@ -51,8 +49,8 @@ const facts = [
             رئيس مجلس الإدارة وعضو مجلس الإدارة المتبقي والمكلّف بتسيير أعمال شركة مدائن العقارية ش.م.خ
           </span>
           <span class="mt-2 block">
-            السادة المساهمين لحضور اجتماع الجمعية العمومية المقرر عقده حضورياً يوم الأربعاء الموافق
-            4 نوفمبر 2026 الساعة 10:00 صباحاً في {meeting.venue}، {meeting.venueDetail}.
+            السادة المساهمين لحضور اجتماع الجمعية العمومية المقرر عقده حضورياً يوم {meeting.day} الموافق
+            {meeting.date} {meeting.month} {meeting.year} الساعة {meeting.time} في {meeting.venue}، {meeting.venueDetail}.
             ويبدأ التسجيل في مقر الاجتماع الساعة {meeting.registration}.
           </span>
         </p>

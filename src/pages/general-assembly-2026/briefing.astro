@@ -1,5 +1,6 @@
 ---
 import AgmLayout from '../../layouts/AgmLayout.astro';
+import PostponementNotice from '../../components/PostponementNotice.astro';
 import { meeting } from '../../data/agm.js';
 import {
   header, intro, timelineTitle, timelineHead, timeline,
@@ -14,8 +15,10 @@ const items = sections.filter((s) => s.item).map((s) => s.item);
 ---
 
 <AgmLayout title="عرض للمساهمين بشأن التقارير والمستندات | الجمعية العمومية 2026" active="briefing">
+  <PostponementNotice />
+
   <!-- Hero -->
-  <section class="overflow-hidden rounded-2xl bg-[#0B2545] text-white">
+  <section class="mt-6 overflow-hidden rounded-2xl bg-[#0B2545] text-white">
     <div class="p-7 md:p-9">
       <p class="text-[13px] font-bold tracking-wide text-madain-straw">{header.company}</p>
       <h1 class="mt-2 text-[22px] font-bold leading-snug md:text-[29px]">{header.title}</h1>

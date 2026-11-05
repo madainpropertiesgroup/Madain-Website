@@ -5,13 +5,14 @@ import AgmEvents from '../components/AgmEvents.astro';
 
 interface Props {
   title: string;
-  active: 'meeting' | 'nomination' | 'nominees' | 'attendance' | 'documents' | 'briefing';
+  active: 'meeting' | 'postponement' | 'nomination' | 'nominees' | 'attendance' | 'documents' | 'briefing';
 }
 
 const { title, active } = Astro.props;
 
 const tabs = [
   { key: 'meeting', label: 'الجمعية العمومية', href: '/general-assembly-2026/' },
+  { key: 'postponement', label: 'تأجيل الاجتماع', href: '/general-assembly-2026/postponement/' },
   { key: 'nomination', label: 'الترشح لعضوية المجلس', href: '/general-assembly-2026/nomination/' },
   { key: 'nominees', label: 'المرشحون', href: '/general-assembly-2026/nominees/' },
   { key: 'briefing', label: 'عرض المساهمين', href: '/general-assembly-2026/briefing/' },
@@ -33,7 +34,7 @@ const quickLinks = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="معلومات اجتماع الجمعية العمومية لشركة مدائن العقارية ش.م.خ — الأربعاء 4 نوفمبر 2026."
+      content="معلومات اجتماع الجمعية العمومية لشركة مدائن العقارية ش.م.خ — تأجل إلى الأربعاء 11 نوفمبر 2026."
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

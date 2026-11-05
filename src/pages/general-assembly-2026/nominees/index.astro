@@ -1,5 +1,6 @@
 ---
 import AgmLayout from '../../../layouts/AgmLayout.astro';
+import PostponementNotice from '../../../components/PostponementNotice.astro';
 import Clause from '../../../components/Clause.astro';
 import { meeting, PROXY_PDF_AR } from '../../../data/agm.js';
 import { nominees, publishDeadline } from '../../../data/nominees.js';
@@ -54,8 +55,10 @@ const resources = [
 ---
 
 <AgmLayout title="المرشحون لعضوية مجلس الإدارة | الجمعية العمومية 2026" active="nominees">
+  <PostponementNotice />
+
   <!-- Hero -->
-  <section class="relative isolate overflow-hidden rounded-2xl bg-[#0B2545] text-white">
+  <section class="relative isolate mt-6 overflow-hidden rounded-2xl bg-[#0B2545] text-white">
     <div class="grid gap-6 p-7 md:grid-cols-[1fr_190px] md:items-center md:p-9">
       <div>
         <h1 class="text-[26px] font-bold leading-tight md:text-[32px]">المرشحون لعضوية مجلس الإدارة</h1>

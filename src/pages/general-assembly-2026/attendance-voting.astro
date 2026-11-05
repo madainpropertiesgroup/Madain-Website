@@ -3,6 +3,7 @@ import AgmLayout from '../../layouts/AgmLayout.astro';
 import VerbatimNote from '../../components/VerbatimNote.astro';
 import VenueCard from '../../components/VenueCard.astro';
 import Clause from '../../components/Clause.astro';
+import PostponementNotice from '../../components/PostponementNotice.astro';
 import { meeting, NOTICE_PDF, PROXY_PDF_AR, PROXY_PDF_EN } from '../../data/agm.js';
 import { notes } from '../../data/notice.js';
 
@@ -18,7 +19,9 @@ const groups = [
 ---
 
 <AgmLayout title="الحضور والتسجيل والتصويت | الجمعية العمومية 2026" active="attendance">
-  <header class="text-center">
+  <PostponementNotice />
+
+  <header class="mt-7 text-center">
     <h1 class="text-[24px] font-bold text-madain-shaft md:text-[30px]">الحضور والتسجيل والتوكيلات والتصويت</h1>
     <p class="font-inter mt-1 text-[12.5px] font-semibold uppercase tracking-[0.14em] text-madain-gold">
       Attendance, Proxies &amp; Voting
@@ -45,8 +48,9 @@ const groups = [
       <div class="mt-1 text-[12.5px] text-madain-boulder">إلى سوق دبي المالي / مركز دبي للإيداع</div>
     </article>
     <article class="rounded-xl border border-[#E8E2D4] bg-white p-5 text-center shadow-sm">
-      <div class="text-[12.5px] text-madain-boulder">الاجتماع الثاني عند عدم اكتمال النصاب</div>
-      <div class="mt-1.5 text-[16px] font-bold text-madain-goldDark">{meeting.secondMeeting}</div>
+      <div class="text-[12.5px] text-madain-boulder">إقفال باب التسجيل</div>
+      <div class="mt-1.5 text-[16px] font-bold text-madain-goldDark">{meeting.registrationCloses}</div>
+      <div class="mt-1 text-[12.5px] text-madain-boulder">المادة (44/4) من النظام الأساسي</div>
     </article>
   </section>
 
