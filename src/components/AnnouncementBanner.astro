@@ -4,7 +4,16 @@
 // band followed the meeting when it moved to its second call instead of
 // announcing a day that had passed. Nothing here links to the old assembly
 // pages.
-import { meeting, PROXY_PDF_AR, PROXY_PDF_EN } from '../data/agm.js';
+import fs from 'node:fs';
+import path from 'node:path';
+import { meeting } from '../data/agm.js';
+import { MINUTES_PDF_PATH } from '../data/postponement.js';
+
+// The signed minutes, linked only when the file is really there, so the front
+// page can never carry a link that leads nowhere.
+const minutes = fs.existsSync(path.join(path.resolve('public'), MINUTES_PDF_PATH))
+  ? '/' + MINUTES_PDF_PATH
+  : '';
 
 const facts = [
   {
@@ -104,13 +113,14 @@ const facts = [
         </div>
 
         <div class="mt-4 flex flex-col items-center justify-center gap-x-6 gap-y-2 text-[13.5px] sm:flex-row">
-          <span class="text-madain-boulder">نموذج التوكيل:</span>
-          <a href={PROXY_PDF_AR} target="_blank" rel="noopener" class="font-bold text-madain-goldDark underline underline-offset-4 hover:text-[#0B2545]">
-            تحميل النسخة العربية
+          <a href="/general-assembly-2026/postponement/" class="font-bold text-madain-goldDark underline underline-offset-4 hover:text-[#0B2545]">
+            إعلان تأجيل الاجتماع إلى الموعد الثاني
           </a>
-          <a href={PROXY_PDF_EN} target="_blank" rel="noopener" class="font-bold text-madain-goldDark underline underline-offset-4 hover:text-[#0B2545]">
-            English version
-          </a>
+          {minutes && (
+            <a href={minutes} target="_blank" rel="noopener" class="font-bold text-madain-goldDark underline underline-offset-4 hover:text-[#0B2545]">
+              محضر إثبات عدم اكتمال النصاب القانوني
+            </a>
+          )}
         </div>
       </div>
 
